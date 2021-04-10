@@ -39,5 +39,8 @@
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
-  "gitHead": "6d4296d84b72c900dcceef3378c7ce20fd82b70e"
+  "gitHead": "6d4296d84b72c900dcceef3378c7ce20fd82b70e",
+  "devDependencies": {
+    "@jamashita/anden-helper": "1.5.0"
+  }
 }
