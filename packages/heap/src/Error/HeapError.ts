@@ -1,7 +1,7 @@
 import { DataSourceError } from '@jamashita/anden-error';
 
-export class HeapError extends DataSourceError<'CacheError', 'Cache'> {
+export class HeapError extends DataSourceError<'HeapError', 'Heap'> {
   public constructor(message: string, cause?: Error) {
-    super('CacheError', 'Cache', message, cause);
+    super('HeapError', 'Heap', message, cause);
   }
 }
