@@ -29,6 +29,7 @@
   "dependencies": {
     "@jamashita/anden-error": "1.5.0",
     "@jamashita/anden-type": "1.5.0",
+    "@jamashita/steckdose-json": "1.0.0",
     "node-fetch": "3.0.0-beta.9"
   },
   "devDependencies": {

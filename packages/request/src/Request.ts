@@ -22,7 +22,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${res.status}`);
       }
 
-      return this.hydrate(res);
+      return await this.hydrate(res);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
