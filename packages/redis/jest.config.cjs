@@ -15,7 +15,7 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   moduleNameMapper: {
-    '^@jamashita/catacombe-(.*)$': '<rootDir>/node_modules/@jamashita/catacombe-$1/src/index'
+    '^@jamashita/catacombe-(.*)$': '<rootDir>/../$1/src/index'
   },
   moduleFileExtensions: [
     'js',
