@@ -6,7 +6,7 @@
   },
   "references": [
     {
-      "path": "../error/tsconfig.cjs.json"
+      "path": "../datasource/tsconfig.cjs.json"
     }
   ]
 }

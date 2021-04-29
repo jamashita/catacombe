@@ -1,4 +1,4 @@
-import { DataSourceError } from '@jamashita/catacombe-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
 export class RedisError extends DataSourceError<'RedisError'> {
   public readonly noun: 'RedisError' = 'RedisError';

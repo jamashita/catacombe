@@ -1,4 +1,4 @@
-import { DataSourceError } from '@jamashita/catacombe-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
 export class FetchError extends DataSourceError<'FetchError'> {
   public readonly noun: 'FetchError' = 'FetchError';

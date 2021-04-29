@@ -6,7 +6,7 @@
   },
   "references": [
     {
-      "path": "../error/tsconfig.esm.json"
+      "path": "../datasource/tsconfig.esm.json"
     }
   ]
 }

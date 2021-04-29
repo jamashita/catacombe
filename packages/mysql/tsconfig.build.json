@@ -11,7 +11,7 @@
   ],
   "references": [
     {
-      "path": "../error/tsconfig.build.json"
+      "path": "../datasource/tsconfig.build.json"
     }
   ]
 }

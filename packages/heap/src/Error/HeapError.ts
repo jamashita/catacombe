@@ -1,4 +1,4 @@
-import { DataSourceError } from '@jamashita/catacombe-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
 export class HeapError extends DataSourceError<'HeapError'> {
   public readonly noun: 'HeapError' = 'HeapError';
