@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-fetch-v1.2.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.1.0...@jamashita/catacombe-fetch-v1.2.0) (2021-04-29)
+
+
+### Features
+
+* 🎸 removed all DataSourceError ([abb99e7](https://github.com/jamashita/catacombe/commit/abb99e7eb451d781bd023ed497aa0c3369d8e590))
+
 # [@jamashita/catacombe-fetch-v1.1.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.0.1...@jamashita/catacombe-fetch-v1.1.0) (2021-04-26)
 
 
