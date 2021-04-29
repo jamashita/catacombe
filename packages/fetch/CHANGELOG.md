@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-fetch-v1.4.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.3.0...@jamashita/catacombe-fetch-v1.4.0) (2021-04-29)
+
+
+### Features
+
+* 🎸 removed abstract keyword ([1ac711e](https://github.com/jamashita/catacombe/commit/1ac711eb7d41cc36b4804f49f771c04eb9a650f6))
+
 # [@jamashita/catacombe-fetch-v1.3.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.2.0...@jamashita/catacombe-fetch-v1.3.0) (2021-04-29)
 
 
