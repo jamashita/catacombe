@@ -1,6 +1,6 @@
-import { RuntimeError } from '@jamashita/anden-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
-export class RedisError extends RuntimeError<'RedisError'> {
+export class RedisError extends DataSourceError<'RedisError'> {
   public readonly noun: 'RedisError' = 'RedisError';
 
   public constructor(message: string, cause?: Error) {
