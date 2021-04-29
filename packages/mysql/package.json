@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@jamashita/anden-error": "1.7.0",
+    "@jamashita/catacombe-error": "1.0.0",
     "@jamashita/anden-type": "1.9.0",
     "mysql": "2.18.1"
   },

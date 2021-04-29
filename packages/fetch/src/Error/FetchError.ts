@@ -1,6 +1,6 @@
-import { RuntimeError } from '@jamashita/anden-error';
+import { DataSourceError } from '@jamashita/catacombe-error';
 
-export class FetchError extends RuntimeError<'FetchError'> {
+export class FetchError extends DataSourceError<'FetchError'> {
   public readonly noun: 'FetchError' = 'FetchError';
 
   public constructor(message: string, cause?: Error) {
