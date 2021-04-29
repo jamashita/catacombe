@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-heap-v1.1.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v1.0.0...@jamashita/catacombe-heap-v1.1.0) (2021-04-29)
+
+
+### Features
+
+* 🎸 removed all DataSourceError ([abb99e7](https://github.com/jamashita/catacombe/commit/abb99e7eb451d781bd023ed497aa0c3369d8e590))
+
 # @jamashita/catacombe-heap-v1.0.0 (2021-04-13)
 
 
