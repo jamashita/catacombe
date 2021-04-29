@@ -1,13 +1,13 @@
 {
-  "name": "@jamashita/catacombe-heap",
+  "name": "@jamashita/catacombe-error",
   "version": "1.0.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/publikum.git/packages/heap"
+    "url": "git@github.com:jamashita/catacombe.git/packages/error"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "jamashita <jamashita@arazchnid.xyz>",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -18,17 +18,15 @@
   ],
   "scripts": {
     "build": "yarn clean && concurrently \"npm:build:*\"",
-    "test": "jest test",
     "build:cjs": "tsc -b tsconfig.cjs.json",
     "build:esm": "tsc -b tsconfig.esm.json",
+    "test": "jest test",
     "clean": "concurrently \"npm:clean:*\"",
     "clean:coverage": "rimraf coverage",
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "1.7.0",
-    "@jamashita/catacombe-error": "1.0.0",
-    "@jamashita/anden-type": "1.9.0"
+    "@jamashita/anden-error": "1.7.0"
   },
   "engines": {
     "node": ">= 12.0.0",
@@ -37,8 +35,5 @@
   "engineStrict": true,
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@jamashita/anden-helper": "1.6.0"
   }
 }
