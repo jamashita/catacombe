@@ -1,7 +1,9 @@
-import { DataSourceError } from '@jamashita/anden-error';
+import { RuntimeError } from '@jamashita/anden-error';
 
-export class MySQLError extends DataSourceError<'MySQLError', 'MySQL'> {
+export class MySQLError extends RuntimeError<'MySQLError'> {
+  public readonly noun: 'MySQLError' = 'MySQLError';
+
   public constructor(message: string, cause?: Error) {
-    super('MySQLError', 'MySQL', message, cause);
+    super(message, cause);
   }
 }
