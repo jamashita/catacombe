@@ -1,7 +1,9 @@
-import { DataSourceError } from '@jamashita/anden-error';
+import { RuntimeError } from '@jamashita/anden-error';
 
-export class RequestError extends DataSourceError<'RequestError', 'Request'> {
+export class RequestError extends RuntimeError<'RequestError'> {
+  public readonly noun: 'RequestError' = 'RequestError';
+
   public constructor(message: string, cause?: Error) {
-    super('RequestError', 'Request', message, cause);
+    super(message, cause);
   }
 }
