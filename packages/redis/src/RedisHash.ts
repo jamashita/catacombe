@@ -1,7 +1,7 @@
 import { Nullable } from '@jamashita/anden-type';
 import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
-import { IRedisHash } from './Interface/IRedisHash';
+import { RedisError } from './Error/RedisError.js';
+import { IRedisHash } from './Interface/IRedisHash.js';
 
 export class RedisHash implements IRedisHash {
   private readonly client: IORedis.Redis;
@@ -10,15 +10,13 @@ export class RedisHash implements IRedisHash {
     this.client = client;
   }
 
-  public async set(key: string, field: string, value: string): Promise<boolean> {
+  public async delete(key: string, field: string): Promise<number> {
     try {
-      await this.client.hset(key, field, value);
-
-      return true;
+      return await this.client.hdel(key, field);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON HSET', err);
+        throw new RedisError('FAIL ON HDEL', err);
       }
 
       throw err;
@@ -38,13 +36,19 @@ export class RedisHash implements IRedisHash {
     }
   }
 
-  public async delete(key: string, field: string): Promise<number> {
+  public async has(key: string, field: string): Promise<boolean> {
     try {
-      return await this.client.hdel(key, field);
+      const result: 0 | 1 = await this.client.hexists(key, field);
+
+      if (result === 0) {
+        return false;
+      }
+
+      return true;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON HDEL', err);
+        throw new RedisError('FAIL ON HEXISTS', err);
       }
 
       throw err;
@@ -64,19 +68,15 @@ export class RedisHash implements IRedisHash {
     }
   }
 
-  public async has(key: string, field: string): Promise<boolean> {
+  public async set(key: string, field: string, value: string): Promise<boolean> {
     try {
-      const result: 0 | 1 = await this.client.hexists(key, field);
-
-      if (result === 0) {
-        return false;
-      }
+      await this.client.hset(key, field, value);
 
       return true;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON HEXISTS', err);
+        throw new RedisError('FAIL ON HSET', err);
       }
 
       throw err;

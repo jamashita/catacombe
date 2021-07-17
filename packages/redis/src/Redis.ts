@@ -1,10 +1,10 @@
 import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
-import { IRedis } from './Interface/IRedis';
-import { RedisHash } from './RedisHash';
-import { RedisList } from './RedisList';
-import { RedisSet } from './RedisSet';
-import { RedisString } from './RedisString';
+import { RedisError } from './Error/RedisError.js';
+import { IRedis } from './Interface/IRedis.js';
+import { RedisHash } from './RedisHash.js';
+import { RedisList } from './RedisList.js';
+import { RedisSet } from './RedisSet.js';
+import { RedisString } from './RedisString.js';
 
 export type RedisConfig = IORedis.RedisOptions;
 
@@ -23,26 +23,6 @@ export class Redis implements IRedis {
     this.set = new RedisSet(client);
     this.list = new RedisList(client);
     this.string = new RedisString(client);
-  }
-
-  public getClient(): IORedis.Redis {
-    return this.client;
-  }
-
-  public getHash(): RedisHash {
-    return this.hash;
-  }
-
-  public getSet(): RedisSet {
-    return this.set;
-  }
-
-  public getList(): RedisList {
-    return this.list;
-  }
-
-  public getString(): RedisString {
-    return this.string;
   }
 
   public async delete(...keys: ReadonlyArray<string>): Promise<boolean> {
@@ -102,6 +82,52 @@ export class Redis implements IRedis {
     }
   }
 
+  public getClient(): IORedis.Redis {
+    return this.client;
+  }
+
+  public getHash(): RedisHash {
+    return this.hash;
+  }
+
+  public getList(): RedisList {
+    return this.list;
+  }
+
+  public getSet(): RedisSet {
+    return this.set;
+  }
+
+  public getString(): RedisString {
+    return this.string;
+  }
+
+  public on(callback: (channel: string, message: string) => void): void {
+    try {
+      this.client.on('message', callback);
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        throw new RedisError('FAIL ON ON', err);
+      }
+
+      throw err;
+    }
+  }
+
+  public async publish(channel: string, message: string): Promise<number> {
+    try {
+      return await this.client.publish(channel, message);
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        throw new RedisError('FAIL ON PUBLISH', err);
+      }
+
+      throw err;
+    }
+  }
+
   public async subscribe(...channels: ReadonlyArray<string>): Promise<number> {
     try {
       return await this.client.subscribe(...channels);
@@ -122,32 +148,6 @@ export class Redis implements IRedis {
     catch (err: unknown) {
       if (err instanceof Error) {
         throw new RedisError('FAIL ON UNSUBSCRIBE', err);
-      }
-
-      throw err;
-    }
-  }
-
-  public async publish(channel: string, message: string): Promise<number> {
-    try {
-      return await this.client.publish(channel, message);
-    }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON PUBLISH', err);
-      }
-
-      throw err;
-    }
-  }
-
-  public on(callback: (channel: string, message: string) => void): void {
-    try {
-      this.client.on('message', callback);
-    }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON ON', err);
       }
 
       throw err;
