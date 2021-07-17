@@ -1,3 +1,19 @@
+# [@jamashita/catacombe-heap-v1.2.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v1.1.0...@jamashita/catacombe-heap-v1.2.0) (2021-04-29)
+
+
+### Features
+
+* 🎸 done ([3b9eaea](https://github.com/jamashita/catacombe/commit/3b9eaead38785d097c8dccdcc94b3243873a9c1e))
+* 🎸 donedone ([cb8a0a3](https://github.com/jamashita/catacombe/commit/cb8a0a32a8976744e041d93357cdc7e48916ccf5))
+* 🎸 error -> datasource ([bf1b95c](https://github.com/jamashita/catacombe/commit/bf1b95c1f591893654296a00ba5683a5665cdea8))
+
+# [@jamashita/catacombe-heap-v1.1.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v1.0.0...@jamashita/catacombe-heap-v1.1.0) (2021-04-29)
+
+
+### Features
+
+* 🎸 removed all DataSourceError ([abb99e7](https://github.com/jamashita/catacombe/commit/abb99e7eb451d781bd023ed497aa0c3369d8e590))
+
 # @jamashita/catacombe-heap-v1.0.0 (2021-04-13)
 
 

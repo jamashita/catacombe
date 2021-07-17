@@ -1,7 +1,9 @@
-import { DataSourceError } from '@jamashita/anden-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
-export class RedisError extends DataSourceError<'RedisError', 'Redis'> {
+export class RedisError extends DataSourceError<'RedisError'> {
+  public readonly noun: 'RedisError' = 'RedisError';
+
   public constructor(message: string, cause?: Error) {
-    super('RedisError', 'Redis', message, cause);
+    super('RedisError', message, cause);
   }
 }
