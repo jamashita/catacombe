@@ -1,1 +1,1 @@
-export * from './DataSourceError';
+export * from './DataSourceError.js';
