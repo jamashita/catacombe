@@ -1,9 +1,17 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IRequest } from '../Interface/IRequest';
-import { RequestResponse, RequestResponseType } from '../RequestResponse';
+import { IRequest } from '../Interface/IRequest.js';
+import { RequestResponse, RequestResponseType } from '../RequestResponse.js';
 
 export class MockRequest<T extends RequestResponseType> implements IRequest<T> {
+  public delete(): Promise<RequestResponse<T>> {
+    throw new UnimplementedError();
+  }
+
   public get(): Promise<RequestResponse<T>> {
+    throw new UnimplementedError();
+  }
+
+  public head(): Promise<RequestResponse<T>> {
     throw new UnimplementedError();
   }
 
@@ -12,14 +20,6 @@ export class MockRequest<T extends RequestResponseType> implements IRequest<T> {
   }
 
   public put(): Promise<RequestResponse<T>> {
-    throw new UnimplementedError();
-  }
-
-  public delete(): Promise<RequestResponse<T>> {
-    throw new UnimplementedError();
-  }
-
-  public head(): Promise<RequestResponse<T>> {
     throw new UnimplementedError();
   }
 }

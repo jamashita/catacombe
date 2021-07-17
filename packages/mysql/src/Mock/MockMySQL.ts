@@ -1,12 +1,12 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IMySQL } from '../Interface/IMySQL';
+import { IMySQL } from '../Interface/IMySQL.js';
 
 export class MockMySQL implements IMySQL {
-  public transact<R>(): Promise<R> {
+  public execute<R>(): Promise<R> {
     throw new UnimplementedError();
   }
 
-  public execute<R>(): Promise<R> {
+  public transact<R>(): Promise<R> {
     throw new UnimplementedError();
   }
 }

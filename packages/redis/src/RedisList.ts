@@ -1,6 +1,6 @@
 import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
-import { IRedisList } from './Interface/IRedisList';
+import { RedisError } from './Error/RedisError.js';
+import { IRedisList } from './Interface/IRedisList.js';
 
 export class RedisList implements IRedisList {
   private readonly client: IORedis.Redis;
@@ -9,13 +9,26 @@ export class RedisList implements IRedisList {
     this.client = client;
   }
 
-  public async push(key: string, value: string): Promise<number> {
+  public async dump(key: string): Promise<Array<string>> {
     try {
-      return await this.client.rpush(key, value);
+      return await this.client.lrange(key, 0, -1);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON RPUSH', err);
+        throw new RedisError('FAIL ON LRANGE', err);
+      }
+
+      throw err;
+    }
+  }
+
+  public async length(key: string): Promise<number> {
+    try {
+      return await this.client.llen(key);
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        throw new RedisError('FAIL ON LLEN', err);
       }
 
       throw err;
@@ -35,26 +48,13 @@ export class RedisList implements IRedisList {
     }
   }
 
-  public async shift(key: string): Promise<string> {
+  public async push(key: string, value: string): Promise<number> {
     try {
-      return await this.client.lpop(key);
+      return await this.client.rpush(key, value);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON LPOP', err);
-      }
-
-      throw err;
-    }
-  }
-
-  public async length(key: string): Promise<number> {
-    try {
-      return await this.client.llen(key);
-    }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LLEN', err);
+        throw new RedisError('FAIL ON RPUSH', err);
       }
 
       throw err;
@@ -90,13 +90,13 @@ export class RedisList implements IRedisList {
     }
   }
 
-  public async dump(key: string): Promise<Array<string>> {
+  public async shift(key: string): Promise<string> {
     try {
-      return await this.client.lrange(key, 0, -1);
+      return await this.client.lpop(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON LRANGE', err);
+        throw new RedisError('FAIL ON LPOP', err);
       }
 
       throw err;
