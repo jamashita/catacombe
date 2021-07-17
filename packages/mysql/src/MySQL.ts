@@ -1,9 +1,9 @@
 import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import mysql from 'mysql';
-import { Connection } from './Connection';
-import { MySQLError } from './Error/MySQLError';
-import { IMySQL } from './Interface/IMySQL';
-import { ITransaction } from './Interface/ITransaction';
+import { Connection } from './Connection.js';
+import { MySQLError } from './Error/MySQLError.js';
+import { IMySQL } from './Interface/IMySQL.js';
+import { ITransaction } from './Interface/ITransaction.js';
 
 export type MySQLConfig = mysql.PoolConfig;
 
@@ -32,6 +32,20 @@ export class MySQL implements IMySQL {
     this.pool = pool;
   }
 
+  public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
+    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
+      this.pool.query(sql, value, (err: Nullable<mysql.MysqlError>, result: R) => {
+        if (!Kind.isNull(err)) {
+          reject(new MySQLError('MySQL.execute()', err));
+
+          return;
+        }
+
+        resolve(result);
+      });
+    });
+  }
+
   public async transact<R>(transaction: ITransaction<R>): Promise<R> {
     const connection: Connection = await this.getConnection();
 
@@ -49,20 +63,6 @@ export class MySQL implements IMySQL {
 
       throw err;
     }
-  }
-
-  public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
-    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
-      this.pool.query(sql, value, (err: Nullable<mysql.MysqlError>, result: R) => {
-        if (!Kind.isNull(err)) {
-          reject(new MySQLError('MySQL.execute()', err));
-
-          return;
-        }
-
-        resolve(result);
-      });
-    });
   }
 
   private getConnection(): Promise<Connection> {

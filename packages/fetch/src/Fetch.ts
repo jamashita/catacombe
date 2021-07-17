@@ -1,14 +1,39 @@
 import { Ambiguous, Kind, ObjectLiteral } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
-import { FetchError } from './Error/FetchError';
-import { FetchResponse, FetchResponseType } from './FetchResponse';
-import { IFetch } from './Interface/IFetch';
+import { FetchError } from './Error/FetchError.js';
+import { FetchResponse, FetchResponseType } from './FetchResponse.js';
+import { IFetch } from './Interface/IFetch.js';
 
 export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private readonly type: T;
 
   public constructor(type: T) {
     this.type = type;
+  }
+
+  public async delete(url: string): Promise<FetchResponse<T>> {
+    try {
+      const res: Response = await fetch(url, {
+        method: 'DELETE'
+      });
+
+      if (!res.ok) {
+        throw new FetchError(`fetch RETURNED ${res.status}`);
+      }
+
+      // eslint-disable-next-line @typescript-eslint/return-await
+      return this.hydrate(res);
+    }
+    catch (err: unknown) {
+      if (err instanceof FetchError) {
+        throw err;
+      }
+      if (err instanceof Error) {
+        throw new FetchError(err.message, err);
+      }
+
+      throw err;
+    }
   }
 
   public async get(url: string): Promise<FetchResponse<T>> {
@@ -19,6 +44,31 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       if (!res.ok) {
         throw new FetchError(`Fetch RETURNED ${res.status}`);
+      }
+
+      // eslint-disable-next-line @typescript-eslint/return-await
+      return this.hydrate(res);
+    }
+    catch (err: unknown) {
+      if (err instanceof FetchError) {
+        throw err;
+      }
+      if (err instanceof Error) {
+        throw new FetchError(err.message, err);
+      }
+
+      throw err;
+    }
+  }
+
+  public async head(url: string): Promise<FetchResponse<T>> {
+    try {
+      const res: Response = await fetch(url, {
+        method: 'HEAD'
+      });
+
+      if (!res.ok) {
+        throw new FetchError(`fetch RETURNED ${res.status}`);
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
@@ -69,56 +119,6 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       const res: Response = await fetch(url, {
         method: 'PUT',
         body
-      });
-
-      if (!res.ok) {
-        throw new FetchError(`fetch RETURNED ${res.status}`);
-      }
-
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
-    }
-    catch (err: unknown) {
-      if (err instanceof FetchError) {
-        throw err;
-      }
-      if (err instanceof Error) {
-        throw new FetchError(err.message, err);
-      }
-
-      throw err;
-    }
-  }
-
-  public async delete(url: string): Promise<FetchResponse<T>> {
-    try {
-      const res: Response = await fetch(url, {
-        method: 'DELETE'
-      });
-
-      if (!res.ok) {
-        throw new FetchError(`fetch RETURNED ${res.status}`);
-      }
-
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
-    }
-    catch (err: unknown) {
-      if (err instanceof FetchError) {
-        throw err;
-      }
-      if (err instanceof Error) {
-        throw new FetchError(err.message, err);
-      }
-
-      throw err;
-    }
-  }
-
-  public async head(url: string): Promise<FetchResponse<T>> {
-    try {
-      const res: Response = await fetch(url, {
-        method: 'HEAD'
       });
 
       if (!res.ok) {

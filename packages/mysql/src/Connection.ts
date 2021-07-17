@@ -1,27 +1,13 @@
 import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import mysql from 'mysql';
-import { MySQLError } from './Error/MySQLError';
-import { IConnection } from './Interface/IConnection';
+import { MySQLError } from './Error/MySQLError.js';
+import { IConnection } from './Interface/IConnection.js';
 
 export class Connection implements IConnection {
   private readonly connection: mysql.PoolConnection;
 
   public constructor(connection: mysql.PoolConnection) {
     this.connection = connection;
-  }
-
-  public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
-    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
-      this.connection.query(sql, value, (err: Nullable<mysql.MysqlError>, result: R) => {
-        if (!Kind.isNull(err)) {
-          reject(new MySQLError('Connection.execute()', err));
-
-          return;
-        }
-
-        resolve(result);
-      });
-    });
   }
 
   public commit(): Promise<void> {
@@ -39,6 +25,24 @@ export class Connection implements IConnection {
     });
   }
 
+  public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
+    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
+      this.connection.query(sql, value, (err: Nullable<mysql.MysqlError>, result: R) => {
+        if (!Kind.isNull(err)) {
+          reject(new MySQLError('Connection.execute()', err));
+
+          return;
+        }
+
+        resolve(result);
+      });
+    });
+  }
+
+  public release(): void {
+    this.connection.release();
+  }
+
   public rollback(): Promise<void> {
     return new Promise<void>((resolve: Resolve<void>, reject: Reject) => {
       this.connection.rollback((err: mysql.MysqlError) => {
@@ -52,9 +56,5 @@ export class Connection implements IConnection {
         resolve();
       });
     });
-  }
-
-  public release(): void {
-    this.connection.release();
   }
 }

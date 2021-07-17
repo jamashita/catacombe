@@ -1,7 +1,7 @@
 import { Nullable } from '@jamashita/anden-type';
 import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
-import { IRedisSet } from './Interface/IRedisSet';
+import { RedisError } from './Error/RedisError.js';
+import { IRedisSet } from './Interface/IRedisSet.js';
 
 export class RedisSet implements IRedisSet {
   private readonly client: IORedis.Redis;
@@ -23,13 +23,13 @@ export class RedisSet implements IRedisSet {
     }
   }
 
-  public async remove(key: string, ...values: ReadonlyArray<string>): Promise<number> {
+  public async dump(key: string): Promise<Array<string>> {
     try {
-      return await this.client.srem(key, ...values);
+      return await this.client.smembers(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON SREM', err);
+        throw new RedisError('FAIL ON SMEMBERS', err);
       }
 
       throw err;
@@ -68,13 +68,13 @@ export class RedisSet implements IRedisSet {
     }
   }
 
-  public async dump(key: string): Promise<Array<string>> {
+  public async pop(key: string): Promise<Nullable<string>> {
     try {
-      return await this.client.smembers(key);
+      return await this.client.spop(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON SMEMBERS', err);
+        throw new RedisError('FAIL ON SPOP', err);
       }
 
       throw err;
@@ -94,13 +94,13 @@ export class RedisSet implements IRedisSet {
     }
   }
 
-  public async pop(key: string): Promise<Nullable<string>> {
+  public async remove(key: string, ...values: ReadonlyArray<string>): Promise<number> {
     try {
-      return await this.client.spop(key);
+      return await this.client.srem(key, ...values);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
-        throw new RedisError('FAIL ON SPOP', err);
+        throw new RedisError('FAIL ON SREM', err);
       }
 
       throw err;
