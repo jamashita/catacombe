@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IRequest } from '../Interface/IRequest.js';
+import { IRequest } from '../IRequest.js';
 import { RequestResponse, RequestResponseType } from '../RequestResponse.js';
 
 export class MockRequest<T extends RequestResponseType> implements IRequest<T> {

@@ -1,6 +1,6 @@
 import { UnimplementedError } from '@jamashita/anden-error';
 import { Nullable } from '@jamashita/anden-type';
-import { IRedisHash } from '../Interface/IRedisHash.js';
+import { IRedisHash } from '../IRedisHash.js';
 
 export class MockRedisHash implements IRedisHash {
   public delete(): Promise<number> {
