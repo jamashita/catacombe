@@ -1,6 +1,6 @@
 # Catacombe
 
-This package enpowers you to develop.
+A repository packages that provides from various datasource.
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -12,20 +12,13 @@ This package enpowers you to develop.
 
 ```
 > node -v
-v12.0.0
-```
-
-### My environment
-
-```
-> node -v
-v15.5.0
+v16.2.0
 
 > npm -v
-7.3.0
+7.13.0
 
 > yarn -v
-1.22.20
+1.22.10
 ```
 
 ## Conventional commit

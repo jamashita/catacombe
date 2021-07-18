@@ -1,14 +1,9 @@
-import { DataSourceError } from '@jamashita/anden-error';
+import { DataSourceError } from '@jamashita/catacombe-datasource';
 
-export class FetchError extends DataSourceError<'FetchError', 'Fetch'> {
-  private status: number;
+export class FetchError extends DataSourceError<'FetchError'> {
+  public override readonly noun: 'FetchError' = 'FetchError';
 
-  public constructor(message: string, status: number, cause?: Error) {
-    super('FetchError', 'Fetch', message, cause);
-    this.status = status;
-  }
-
-  public getStatus(): number {
-    return this.status;
+  public constructor(message: string, cause?: Error) {
+    super('FetchError', message, cause);
   }
 }

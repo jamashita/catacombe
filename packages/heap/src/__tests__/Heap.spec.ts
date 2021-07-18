@@ -1,6 +1,6 @@
 import { wait } from '@jamashita/anden-helper';
-import { HeapError } from '../Error/HeapError';
-import { Heap } from '../Heap';
+import { HeapError } from '../Error/HeapError.js';
+import { Heap } from '../Heap.js';
 
 describe('Heap', () => {
   describe('get', () => {

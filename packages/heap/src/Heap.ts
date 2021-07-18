@@ -1,6 +1,6 @@
 import { Ambiguous, Kind } from '@jamashita/anden-type';
-import { HeapError } from './Error/HeapError';
-import { IHeap } from './Interface/IHeap';
+import { HeapError } from './Error/HeapError.js';
+import { IHeap } from './Interface/IHeap.js';
 
 const LIFETIME_MAX: number = Infinity;
 
@@ -22,11 +22,6 @@ export class Heap implements IHeap {
     this.lifetime = seconds * 1000;
   }
 
-  public set(identifier: symbol, value: unknown): void {
-    this.values.set(identifier, value);
-    this.setTimeout(identifier);
-  }
-
   public get<H>(identifier: symbol): H {
     const instance: Ambiguous<unknown> = this.values.get(identifier);
 
@@ -35,6 +30,19 @@ export class Heap implements IHeap {
     }
 
     return instance as H;
+  }
+
+  public set(identifier: symbol, value: unknown): void {
+    this.values.set(identifier, value);
+    this.setTimeout(identifier);
+  }
+
+  private cancelTimeout(identifier: symbol): void {
+    const timeout: Ambiguous<NodeJS.Timeout> = this.timeouts.get(identifier);
+
+    if (!Kind.isUndefined(timeout)) {
+      clearTimeout(timeout);
+    }
   }
 
   private setTimeout(identifier: symbol): void {
@@ -50,13 +58,5 @@ export class Heap implements IHeap {
     }, this.lifetime);
 
     this.timeouts.set(identifier, timeout);
-  }
-
-  private cancelTimeout(identifier: symbol): void {
-    const timeout: Ambiguous<NodeJS.Timeout> = this.timeouts.get(identifier);
-
-    if (!Kind.isUndefined(timeout)) {
-      clearTimeout(timeout);
-    }
   }
 }

@@ -1,9 +1,9 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import nock, { Scope } from 'nock';
-import { RequestError } from '../Error/RequestError';
-import { Request } from '../Request';
-import { RequestResponse } from '../RequestResponse';
+import { RequestError } from '../Error/RequestError.js';
+import { Request } from '../Request.js';
+import { RequestResponse } from '../RequestResponse.js';
 
 const sr: string = 'ce8781d8-85ac-4b3e-908f-17253facb1af';
 const jr: ObjectLiteral = {

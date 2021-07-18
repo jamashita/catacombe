@@ -1,9 +1,9 @@
 import { UnimplementedError } from '@jamashita/anden-error';
 import { Nullable } from '@jamashita/anden-type';
-import { IRedisHash } from '../Interface/IRedisHash';
+import { IRedisHash } from '../Interface/IRedisHash.js';
 
 export class MockRedisHash implements IRedisHash {
-  public set(): Promise<boolean> {
+  public delete(): Promise<number> {
     throw new UnimplementedError();
   }
 
@@ -11,7 +11,7 @@ export class MockRedisHash implements IRedisHash {
     throw new UnimplementedError();
   }
 
-  public delete(): Promise<number> {
+  public has(): Promise<boolean> {
     throw new UnimplementedError();
   }
 
@@ -19,7 +19,7 @@ export class MockRedisHash implements IRedisHash {
     throw new UnimplementedError();
   }
 
-  public has(): Promise<boolean> {
+  public set(): Promise<boolean> {
     throw new UnimplementedError();
   }
 }

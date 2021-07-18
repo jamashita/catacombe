@@ -1,13 +1,13 @@
 {
-  "name": "@jamashita/catacombe-mysql",
-  "version": "1.4.0",
+  "name": "@jamashita/catacombe-datasource",
+  "version": "1.2.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/publikum.git/packages/mysql"
+    "url": "git@github.com:jamashita/catacombe.git/packages/datasource"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "jamashita <jamashita@arazchnid.xyz>",
   "sideEffects": false,
   "type": "module",
   "exports": {
@@ -27,10 +27,7 @@
     "clean:others": "rimraf *.log && rimraf tsconfig.build.tsbuildinfo"
   },
   "dependencies": {
-    "@jamashita/anden-error": "1.10.0",
-    "@jamashita/catacombe-error": "1.0.0",
-    "@jamashita/anden-type": "1.10.1",
-    "mysql": "2.18.1"
+    "@jamashita/anden-error": "1.10.0"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0",

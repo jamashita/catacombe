@@ -1,9 +1,9 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import fetchMock, { MockResponseInit } from 'jest-fetch-mock';
-import { FetchError } from '../Error/FetchError';
-import { Fetch } from '../Fetch';
-import { FetchResponse } from '../FetchResponse';
+import { FetchError } from '../Error/FetchError.js';
+import { Fetch } from '../Fetch.js';
+import { FetchResponse } from '../FetchResponse.js';
 
 const bufToChar = (buf: ArrayBuffer): string => {
   return Buffer.from(new Uint8Array(buf)).toString('hex');
@@ -14,9 +14,6 @@ const jr: ObjectLiteral = {
   nu: false,
   pq: -13
 };
-const br: Blob = new Blob([sr], {
-  type: 'text/plain'
-});
 const bfr: ArrayBuffer = new ArrayBuffer(1);
 const url: string = 'https://example.com/morceau/de/poitrine';
 
@@ -94,29 +91,6 @@ describe('Fetch', () => {
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is blob', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: sr
-        });
-      });
-
-      const ajax: Fetch<'blob'> = new Fetch<'blob'>('blob');
-
-      const r: FetchResponse<'blob'> = await ajax.get(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.size).toBe(br.size);
     });
 
     it('responds OK: response is arraybuffer', async () => {
@@ -270,29 +244,6 @@ describe('Fetch', () => {
       expect(r.body).toStrictEqual(jr);
     });
 
-    it('responds OK: response is blob', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse((): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: sr
-        });
-      });
-
-      const ajax: Fetch<'blob'> = new Fetch<'blob'>('blob');
-
-      const r: FetchResponse<'blob'> = await ajax.post(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.size).toBe(br.size);
-    });
-
     it('responds OK: response is arraybuffer', async () => {
       expect.assertions(2);
 
@@ -442,29 +393,6 @@ describe('Fetch', () => {
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is blob', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse((): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: sr
-        });
-      });
-
-      const ajax: Fetch<'blob'> = new Fetch<'blob'>('blob');
-
-      const r: FetchResponse<'blob'> = await ajax.put(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.size).toBe(br.size);
     });
 
     it('responds OK: response is arraybuffer', async () => {
@@ -618,29 +546,6 @@ describe('Fetch', () => {
       expect(r.body).toStrictEqual(jr);
     });
 
-    it('responds OK: response is blob', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: sr
-        });
-      });
-
-      const ajax: Fetch<'blob'> = new Fetch<'blob'>('blob');
-
-      const r: FetchResponse<'blob'> = await ajax.delete(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.size).toBe(br.size);
-    });
-
     it('responds OK: response is arraybuffer', async () => {
       expect.assertions(2);
 
@@ -790,29 +695,6 @@ describe('Fetch', () => {
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is blob', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: sr
-        });
-      });
-
-      const ajax: Fetch<'blob'> = new Fetch<'blob'>('blob');
-
-      const r: FetchResponse<'blob'> = await ajax.head(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.size).toBe(br.size);
     });
 
     it('responds OK: response is arraybuffer', async () => {
