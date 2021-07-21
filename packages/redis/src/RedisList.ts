@@ -1,6 +1,6 @@
 import IORedis from 'ioredis';
 import { RedisError } from './Error/RedisError.js';
-import { IRedisList } from './Interface/IRedisList.js';
+import { IRedisList } from './IRedisList.js';
 
 export class RedisList implements IRedisList {
   private readonly client: IORedis.Redis;

@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IHeap } from '../Interface/IHeap.js';
+import { IHeap } from '../IHeap.js';
 
 export class MockHeap implements IHeap {
   public get<H>(): H {

@@ -2,7 +2,7 @@ import { Ambiguous, Kind, ObjectLiteral } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
 import fetch from 'node-fetch';
 import { RequestError } from './Error/RequestError.js';
-import { IRequest } from './Interface/IRequest.js';
+import { IRequest } from './IRequest.js';
 import { RequestResponse, RequestResponseType } from './RequestResponse.js';
 
 export class Request<T extends RequestResponseType> implements IRequest<T> {
