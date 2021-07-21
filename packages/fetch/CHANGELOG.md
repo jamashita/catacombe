@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-fetch-v1.6.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.5.0...@jamashita/catacombe-fetch-v1.6.0) (2021-07-21)
+
+
+### Features
+
+* 🎸 update ([a4e6b3b](https://github.com/jamashita/catacombe/commit/a4e6b3bbeaa41bed0a9fac179b4311812f5ba91c))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
