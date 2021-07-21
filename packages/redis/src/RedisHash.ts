@@ -1,7 +1,7 @@
 import { Nullable } from '@jamashita/anden-type';
 import IORedis from 'ioredis';
 import { RedisError } from './Error/RedisError.js';
-import { IRedisHash } from './Interface/IRedisHash.js';
+import { IRedisHash } from './IRedisHash.js';
 
 export class RedisHash implements IRedisHash {
   private readonly client: IORedis.Redis;

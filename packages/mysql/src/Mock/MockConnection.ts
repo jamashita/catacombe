@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IConnection } from '../Interface/IConnection.js';
+import { IConnection } from '../IConnection.js';
 
 export class MockConnection implements IConnection {
   public commit(): Promise<void> {

@@ -1,6 +1,6 @@
 import IORedis from 'ioredis';
 import { RedisError } from './Error/RedisError.js';
-import { IRedis } from './Interface/IRedis.js';
+import { IRedis } from './IRedis.js';
 import { RedisHash } from './RedisHash.js';
 import { RedisList } from './RedisList.js';
 import { RedisSet } from './RedisSet.js';

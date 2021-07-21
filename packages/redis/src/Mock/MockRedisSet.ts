@@ -1,6 +1,6 @@
 import { UnimplementedError } from '@jamashita/anden-error';
 import { Nullable } from '@jamashita/anden-type';
-import { IRedisSet } from '../Interface/IRedisSet.js';
+import { IRedisSet } from '../IRedisSet.js';
 
 export class MockRedisSet implements IRedisSet {
   public add(): Promise<number> {

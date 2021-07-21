@@ -1,10 +1,10 @@
 import { UnimplementedError } from '@jamashita/anden-error';
 import IORedis from 'ioredis';
-import { IRedis } from '../Interface/IRedis.js';
-import { IRedisHash } from '../Interface/IRedisHash.js';
-import { IRedisList } from '../Interface/IRedisList.js';
-import { IRedisSet } from '../Interface/IRedisSet.js';
-import { IRedisString } from '../Interface/IRedisString.js';
+import { IRedis } from '../IRedis.js';
+import { IRedisHash } from '../IRedisHash.js';
+import { IRedisList } from '../IRedisList.js';
+import { IRedisSet } from '../IRedisSet.js';
+import { IRedisString } from '../IRedisString.js';
 import { MockRedisHash } from './MockRedisHash.js';
 import { MockRedisList } from './MockRedisList.js';
 import { MockRedisSet } from './MockRedisSet.js';
