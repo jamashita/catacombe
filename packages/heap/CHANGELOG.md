@@ -1,3 +1,16 @@
+# [@jamashita/catacombe-heap-v2.0.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v1.5.0...@jamashita/catacombe-heap-v2.0.0) (2021-07-22)
+
+
+### Features
+
+* 🎸 update ([0fb0488](https://github.com/jamashita/catacombe/commit/0fb048801ef034adfbcafc9af6f0ae6b92329548))
+* 🎸 ver up ([742a0ff](https://github.com/jamashita/catacombe/commit/742a0fffd8af41f3ba29a6707ec28d8b7477a67f))
+
+
+### BREAKING CHANGES
+
+* 🧨 ver up
+
 # [@jamashita/catacombe-heap-v1.5.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v1.4.0...@jamashita/catacombe-heap-v1.5.0) (2021-07-22)
 
 
