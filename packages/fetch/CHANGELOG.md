@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-fetch-v1.7.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.6.0...@jamashita/catacombe-fetch-v1.7.0) (2021-07-22)
+
+
+### Features
+
+* 🎸 add datasource ([9acb3fc](https://github.com/jamashita/catacombe/commit/9acb3fc14be842655eae52df180a8e8f993c229b))
+
 # [@jamashita/catacombe-fetch-v1.6.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v1.5.0...@jamashita/catacombe-fetch-v1.6.0) (2021-07-21)
 
 
