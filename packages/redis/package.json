@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe-redis",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -27,8 +27,9 @@
     "clean:others": "rimraf *.log && rimraf tsconfig.build.tsbuildinfo"
   },
   "dependencies": {
-    "@jamashita/anden-error": "1.11.1",
-    "@jamashita/anden-type": "1.11.1",
+    "@jamashita/anden-error": "2.0.0",
+    "@jamashita/anden-type": "2.0.0",
+    "@jamashita/catacombe-datasource": "^2.0.0",
     "@jamashita/catacombe-error": "1.0.0",
     "ioredis": "4.27.6"
   },
