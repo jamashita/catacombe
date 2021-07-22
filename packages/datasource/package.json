@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe-datasource",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "clean:others": "rimraf *.log && rimraf tsconfig.build.tsbuildinfo"
   },
   "dependencies": {
-    "@jamashita/anden-error": "1.11.1"
+    "@jamashita/anden-error": "2.0.0"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0",
