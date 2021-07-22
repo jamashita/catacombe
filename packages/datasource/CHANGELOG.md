@@ -1,3 +1,16 @@
+# [@jamashita/catacombe-datasource-v2.0.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-datasource-v1.3.1...@jamashita/catacombe-datasource-v2.0.0) (2021-07-22)
+
+
+### Features
+
+* 🎸 update ([0fb0488](https://github.com/jamashita/catacombe/commit/0fb048801ef034adfbcafc9af6f0ae6b92329548))
+* 🎸 ver up ([742a0ff](https://github.com/jamashita/catacombe/commit/742a0fffd8af41f3ba29a6707ec28d8b7477a67f))
+
+
+### BREAKING CHANGES
+
+* 🧨 ver up
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
