@@ -1,3 +1,18 @@
+# [@jamashita/catacombe-redis-v2.0.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v1.4.0...@jamashita/catacombe-redis-v2.0.0) (2021-07-22)
+
+
+### Features
+
+* 🎸 add datasource ([9acb3fc](https://github.com/jamashita/catacombe/commit/9acb3fc14be842655eae52df180a8e8f993c229b))
+* 🎸 update ([0fb0488](https://github.com/jamashita/catacombe/commit/0fb048801ef034adfbcafc9af6f0ae6b92329548))
+* 🎸 update ([a4e6b3b](https://github.com/jamashita/catacombe/commit/a4e6b3bbeaa41bed0a9fac179b4311812f5ba91c))
+* 🎸 ver up ([742a0ff](https://github.com/jamashita/catacombe/commit/742a0fffd8af41f3ba29a6707ec28d8b7477a67f))
+
+
+### BREAKING CHANGES
+
+* 🧨 ver up
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
