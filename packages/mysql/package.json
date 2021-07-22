@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe-mysql",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@jamashita/anden-error": "2.0.0",
     "@jamashita/anden-type": "2.0.0",
-    "@jamashita/catacombe-datasource": "1.3.0",
+    "@jamashita/catacombe-datasource": "^2.0.0",
     "@jamashita/catacombe-error": "1.0.0",
     "mysql": "2.18.1"
   },
