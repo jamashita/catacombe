@@ -1096,22 +1096,6 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jamashita/anden-error@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@jamashita/anden-error/-/anden-error-1.10.0.tgz#bd20112562314ab17405cc2173ad43de3a91fd90"
-  integrity sha512-LpzS77lkG+v6loZUDxRPli7s5IIlRfsI7PMMmtrxdfJlBbgqdO7fcf7ZIVG7uMBh6ufaXifMM3rtjMi4OUaCVg==
-  dependencies:
-    "@jamashita/anden-type" "^1.10.1"
-    make-error-cause "2.3.0"
-
-"@jamashita/anden-error@1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@jamashita/anden-error/-/anden-error-1.11.1.tgz#1711ba4e50cd9f215781a20af7814222ae6bae2f"
-  integrity sha512-EibKp1VcRDtxhw/PsMK+8p6dYCC+bdQs905zmCS8Q7a/9Rgu4kRRIha2kxCa8VO9GR1N6XWZWggCf2p0dFIZvw==
-  dependencies:
-    "@jamashita/anden-type" "^1.11.1"
-    make-error-cause "2.3.0"
-
 "@jamashita/anden-error@1.7.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@jamashita/anden-error/-/anden-error-1.7.0.tgz#0614c2835351d20b1cfcb36df3bce5ee33808402"
@@ -1120,12 +1104,27 @@
     "@jamashita/anden-type" "^1.8.0"
     make-error-cause "2.3.0"
 
-"@jamashita/anden-helper@1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@jamashita/anden-helper/-/anden-helper-1.7.1.tgz#e392f6680334d0ad05d65c5b0f1c1f0c545c76ba"
-  integrity sha512-azijXoedQclm0Sum3pMaYnbKZM04as3s4TzwIq0ghhfxjo917SCkzDAOhNiBJ3e38yzjdPOXilc91BCS2Re2rg==
+"@jamashita/anden-error@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jamashita/anden-error/-/anden-error-2.0.0.tgz#ca3acb6b63d880bff4832c5ecddb2eaf2cb4aba5"
+  integrity sha512-UxupOYca5ReIBHdMbUxWK9MieTAu1dAqb02VFzIBaAAqCMxRYmM5cZ3S6mAWkEnR4R+bs80By1IVZZPhExa8ew==
+  dependencies:
+    "@jamashita/anden-type" "^2.0.0"
+    make-error-cause "2.3.0"
 
-"@jamashita/anden-type@1.11.1", "@jamashita/anden-type@^1.10.1", "@jamashita/anden-type@^1.11.1", "@jamashita/anden-type@^1.8.0":
+"@jamashita/anden-helper@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jamashita/anden-helper/-/anden-helper-2.0.0.tgz#0e7db17c73691f744d317b9f5d89203391bd65c0"
+  integrity sha512-Tn4w6sMowBblIoySZOaoPI49yY+IxOEvF9UhFI+7hDM0vmA2VybKvaS/87/HY5gEuMSabSvS75S9Nlq6MLPpXg==
+
+"@jamashita/anden-type@2.0.0", "@jamashita/anden-type@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jamashita/anden-type/-/anden-type-2.0.0.tgz#dfce63a8275dd0f4280189fcfbde3f27feec7d0a"
+  integrity sha512-1WT0AOAXc4NjfZV2Y1XxBcS9S4vB0S8FeTdJAazcOKOgFvBYDZLACNopHSgY556G1dKUSpCUlHYPFhQz31npng==
+  dependencies:
+    reflect-metadata "0.1.13"
+
+"@jamashita/anden-type@^1.8.0":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@jamashita/anden-type/-/anden-type-1.11.1.tgz#587778da42195a44aba867e140ea04a609abd68a"
   integrity sha512-TluRN/XkjkIJjLPZi8abiGHsdMg7BwuiKL2z3GN3MpodlRlSdR8FTHYy9NvN+52tDEX3ySYrH8f6+VzHg+U9Og==
@@ -1154,13 +1153,13 @@
     eslint-plugin-react "7.24.0"
     eslint-plugin-react-hooks "4.2.0"
 
-"@jamashita/steckdose-json@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@jamashita/steckdose-json/-/steckdose-json-1.5.0.tgz#14afbf8e983fb42156ee4d1543de51dc963a32ca"
-  integrity sha512-c5DWRVfSSIbIruEQBf90LQiV9dKXgmPNspmrmWD5zx1Z7zWjdMmDsfkLMgd0AGo0ahlGKqK0YliYG8WG+IzqoQ==
+"@jamashita/steckdose-json@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@jamashita/steckdose-json/-/steckdose-json-2.1.0.tgz#040e8f9a513010bb491abbd93fc31dff6e28b116"
+  integrity sha512-iVnPnxH9/1DjEdL7IxX0z9e0sgwUsaFMtYWhqMDTBmqL5NhXTtRhxsySTmJUyFd351Jxs3MH/7k/ACTqQJxMmA==
   dependencies:
-    "@jamashita/anden-error" "1.11.1"
-    "@jamashita/anden-type" "1.11.1"
+    "@jamashita/anden-error" "2.0.0"
+    "@jamashita/anden-type" "2.0.0"
 
 "@jest/console@^27.0.6":
   version "27.0.6"
@@ -6475,10 +6474,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.0.1.tgz#1b8ae8ed5a52ed87252db95fe008c2618c85f55a"
-  integrity sha512-RkTA1ulE6jAGFskxpGAwxfVRXjHp7D9gFg/+KMARUWMPiVFP0t28Em2u0gL8sA0w3/ck3TC57F2v2RNeQ5XPnw==
+lint-staged@11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.1.0.tgz#a21d67ffe4516e907635adeaf6d6450d8cffb4e4"
+  integrity sha512-pzwEf+NKbTauAlk7gPPwTfulRXESEPZCSFXYfg20F220UOObebxu5uL5mkr9csQLNOM2Ydfrt3DJXakzAL7aaQ==
   dependencies:
     chalk "^4.1.1"
     cli-truncate "^2.1.0"
@@ -9524,9 +9523,9 @@ typescript@4.3.5:
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 uglify-js@^3.1.4:
-  version "3.13.10"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.13.10.tgz#a6bd0d28d38f592c3adb6b180ea6e07e1e540a8d"
-  integrity sha512-57H3ACYFXeo1IaZ1w02sfA71wI60MGco/IQFjOqK+WtKoprh7Go2/yvd2HPtoJILO2Or84ncLccI4xoHMTSbGg==
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.0.tgz#2d723a0afee81e0d08db9354a9c277006e942386"
+  integrity sha512-R/tiGB1ZXp2BC+TkRGLwj8xUZgdfT2f4UZEgX6aVjJ5uttPrr4fYmwTWDGqVnBCLbOXRMY6nr/BTbwCtVfps0g==
 
 uid-number@0.0.6:
   version "0.0.6"
