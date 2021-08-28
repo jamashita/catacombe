@@ -1,6 +1,6 @@
 import { UnimplementedError } from '@jamashita/anden-error';
 import { Nullable } from '@jamashita/anden-type';
-import { IRedisString } from '../IRedisString.js';
+import { IRedisString } from '../IRedisString';
 
 export class MockRedisString implements IRedisString {
   public get(): Promise<Nullable<string>> {

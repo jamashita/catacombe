@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import { IMySQL } from '../IMySQL.js';
+import { IMySQL } from '../IMySQL';
 
 export class MockMySQL implements IMySQL {
   public execute<R>(): Promise<R> {
