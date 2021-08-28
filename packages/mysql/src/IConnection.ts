@@ -1,4 +1,4 @@
-import { ISQL } from './ISQL.js';
+import { ISQL } from './ISQL';
 
 export interface IConnection extends ISQL {
   commit(): Promise<void>;

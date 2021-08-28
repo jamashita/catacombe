@@ -1,5 +1,5 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
-import { RequestResponse, RequestResponseType } from './RequestResponse.js';
+import { RequestResponse, RequestResponseType } from './RequestResponse';
 
 export interface IRequest<T extends RequestResponseType> {
   delete(url: string): Promise<RequestResponse<T>>;

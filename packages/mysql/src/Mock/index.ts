@@ -1,3 +1,3 @@
-export * from './MockConnection.js';
-export * from './MockMySQL.js';
-export * from './MockSQL.js';
+export * from './MockConnection';
+export * from './MockMySQL';
+export * from './MockSQL';

@@ -1,9 +1,9 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import fetchMock, { MockResponseInit } from 'jest-fetch-mock';
-import { FetchError } from '../Error/FetchError.js';
-import { Fetch } from '../Fetch.js';
-import { FetchResponse } from '../FetchResponse.js';
+import { FetchError } from '../Error/FetchError';
+import { Fetch } from '../Fetch';
+import { FetchResponse } from '../FetchResponse';
 
 const bufToChar = (buf: ArrayBuffer): string => {
   return Buffer.from(new Uint8Array(buf)).toString('hex');
