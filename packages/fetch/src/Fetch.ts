@@ -1,8 +1,8 @@
 import { Ambiguous, Kind, ObjectLiteral } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
-import { FetchError } from './Error/FetchError.js';
-import { FetchResponse, FetchResponseType } from './FetchResponse.js';
-import { IFetch } from './IFetch.js';
+import { FetchError } from './Error/FetchError';
+import { FetchResponse, FetchResponseType } from './FetchResponse';
+import { IFetch } from './IFetch';
 
 export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private readonly type: T;
