@@ -1,10 +1,10 @@
 import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError.js';
-import { IRedis } from './IRedis.js';
-import { RedisHash } from './RedisHash.js';
-import { RedisList } from './RedisList.js';
-import { RedisSet } from './RedisSet.js';
-import { RedisString } from './RedisString.js';
+import { RedisError } from './Error/RedisError';
+import { IRedis } from './IRedis';
+import { RedisHash } from './RedisHash';
+import { RedisList } from './RedisList';
+import { RedisSet } from './RedisSet';
+import { RedisString } from './RedisString';
 
 export type RedisConfig = IORedis.RedisOptions;
 

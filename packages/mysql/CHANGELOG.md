@@ -1,3 +1,15 @@
+# [@jamashita/catacombe-mysql-v2.1.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.0.0...@jamashita/catacombe-mysql-v2.1.0) (2021-08-28)
+
+
+### Bug Fixes
+
+* 🐛 remove .js to adopt Dual package ([6dc7cab](https://github.com/jamashita/catacombe/commit/6dc7cab884d1d9e008fa1d7fdc3857c6854a2d6a))
+
+
+### Features
+
+* 🎸 update ([a3c544c](https://github.com/jamashita/catacombe/commit/a3c544c5eef23789181c82957ada8cecaeeec01f))
+
 # [@jamashita/catacombe-mysql-v2.0.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v1.4.0...@jamashita/catacombe-mysql-v2.0.0) (2021-07-22)
 
 

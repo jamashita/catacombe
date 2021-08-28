@@ -1,9 +1,9 @@
 import { BinaryFunction } from '@jamashita/anden-type';
 import IORedis from 'ioredis';
-import { IRedisHash } from './IRedisHash.js';
-import { IRedisList } from './IRedisList.js';
-import { IRedisSet } from './IRedisSet.js';
-import { IRedisString } from './IRedisString.js';
+import { IRedisHash } from './IRedisHash';
+import { IRedisList } from './IRedisList';
+import { IRedisSet } from './IRedisSet';
+import { IRedisString } from './IRedisString';
 
 export interface IRedis {
   delete(...keys: ReadonlyArray<string>): Promise<boolean>;

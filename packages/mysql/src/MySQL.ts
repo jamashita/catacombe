@@ -1,9 +1,9 @@
 import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import mysql from 'mysql';
-import { Connection } from './Connection.js';
-import { MySQLError } from './Error/MySQLError.js';
-import { IMySQL } from './IMySQL.js';
-import { ITransaction } from './ITransaction.js';
+import { Connection } from './Connection';
+import { MySQLError } from './Error/MySQLError';
+import { IMySQL } from './IMySQL';
+import { ITransaction } from './ITransaction';
 
 export type MySQLConfig = mysql.PoolConfig;
 
