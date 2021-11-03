@@ -1,9 +1,11 @@
-import { Ambiguous, Kind, ObjectLiteral } from '@jamashita/anden-type';
+import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
-import fetch from 'node-fetch';
+import needle, { NeedleResponse } from 'needle';
 import { RequestError } from './Error/RequestError';
 import { IRequest } from './IRequest';
 import { RequestResponse, RequestResponseType } from './RequestResponse';
+
+const HAPPY: number = 2;
 
 export class Request<T extends RequestResponseType> implements IRequest<T> {
   private readonly type: T;
@@ -14,15 +16,25 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async delete(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: fetch.Response = await fetch(url, {
-        method: 'DELETE'
+      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+        needle.delete(url, null, (err: Nullable<Error>, response: NeedleResponse) => {
+          if (!Kind.isNull(err)) {
+            reject(err);
+
+            return;
+          }
+
+          resolve(response);
+        });
       });
 
-      if (!res.ok) {
-        throw new RequestError(`request RETURNED ${res.status}`);
+      if (Kind.isUndefined(res.statusCode)) {
+        throw new RequestError('request RETURNED undefined');
+      }
+      if (res.statusCode / 100 !== HAPPY) {
+        throw new RequestError(`request RETURNED ${res.statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
       return this.hydrate(res);
     }
     catch (err: unknown) {
@@ -39,15 +51,26 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async get(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: fetch.Response = await fetch(url, {
-        method: 'GET'
+      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+        needle.get(url, (err: Nullable<Error>, response: NeedleResponse) => {
+          if (!Kind.isNull(err)) {
+            reject(err);
+
+            return;
+          }
+
+          resolve(response);
+        });
       });
 
-      if (!res.ok) {
-        throw new RequestError(`request RETURNED ${res.status}`);
+      if (Kind.isUndefined(res.statusCode)) {
+        throw new RequestError('request RETURNED undefined');
+      }
+      if (res.statusCode / 100 !== HAPPY) {
+        throw new RequestError(`request RETURNED ${res.statusCode}`);
       }
 
-      return await this.hydrate(res);
+      return this.hydrate(res);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -63,15 +86,25 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async head(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: fetch.Response = await fetch(url, {
-        method: 'HEAD'
+      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+        needle.head(url, (err: Nullable<Error>, response: NeedleResponse) => {
+          if (!Kind.isNull(err)) {
+            reject(err);
+
+            return;
+          }
+
+          resolve(response);
+        });
       });
 
-      if (!res.ok) {
-        throw new RequestError(`request RETURNED ${res.status}`);
+      if (Kind.isUndefined(res.statusCode)) {
+        throw new RequestError('request RETURNED undefined');
+      }
+      if (res.statusCode / 100 !== HAPPY) {
+        throw new RequestError(`request RETURNED ${res.statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
       return this.hydrate(res);
     }
     catch (err: unknown) {
@@ -88,17 +121,26 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async post(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
-      const body: Ambiguous<string> = await this.flatten(payload);
-      const res: fetch.Response = await fetch(url, {
-        method: 'POST',
-        body
+      const body: Nullable<string> = await this.flatten(payload);
+      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+        needle.post(url, body, (err: Nullable<Error>, response: NeedleResponse) => {
+          if (!Kind.isNull(err)) {
+            reject(err);
+
+            return;
+          }
+
+          resolve(response);
+        });
       });
 
-      if (!res.ok) {
-        throw new RequestError(`request RETURNED ${res.status}`);
+      if (Kind.isUndefined(res.statusCode)) {
+        throw new RequestError('request RETURNED undefined');
+      }
+      if (res.statusCode / 100 !== HAPPY) {
+        throw new RequestError(`request RETURNED ${res.statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
       return this.hydrate(res);
     }
     catch (err: unknown) {
@@ -115,17 +157,26 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async put(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
-      const body: Ambiguous<string> = await this.flatten(payload);
-      const res: fetch.Response = await fetch(url, {
-        method: 'PUT',
-        body
+      const body: Nullable<string> = await this.flatten(payload);
+      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+        needle.put(url, body, (err: Nullable<Error>, response: NeedleResponse) => {
+          if (!Kind.isNull(err)) {
+            reject(err);
+
+            return;
+          }
+
+          resolve(response);
+        });
       });
 
-      if (!res.ok) {
-        throw new RequestError(`request RETURNED ${res.status}`);
+      if (Kind.isUndefined(res.statusCode)) {
+        throw new RequestError('request RETURNED undefined');
+      }
+      if (res.statusCode / 100 !== HAPPY) {
+        throw new RequestError(`request RETURNED ${res.statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
       return this.hydrate(res);
     }
     catch (err: unknown) {
@@ -140,32 +191,32 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
     }
   }
 
-  private async flatten(payload?: ObjectLiteral): Promise<Ambiguous<string>> {
+  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
     if (Kind.isUndefined(payload)) {
-      return Promise.resolve<undefined>(undefined);
+      return Promise.resolve<null>(null);
     }
 
     return JSONA.stringify(payload);
   }
 
-  private async hydrate(res: fetch.Response): Promise<RequestResponse<T>> {
+  private hydrate(res: NeedleResponse): RequestResponse<T> {
     switch (this.type) {
       case 'buffer': {
         return {
-          status: res.status,
-          body: await res.buffer()
+          status: res.statusCode,
+          body: res.raw
         } as RequestResponse<T>;
       }
       case 'json': {
         return {
-          status: res.status,
-          body: await res.json() as ObjectLiteral
+          status: res.statusCode,
+          body: res.body
         } as RequestResponse<T>;
       }
       case 'text': {
         return {
-          status: res.status,
-          body: await res.text()
+          status: res.statusCode,
+          body: res.raw.toString('utf-8')
         } as RequestResponse<T>;
       }
       default: {
