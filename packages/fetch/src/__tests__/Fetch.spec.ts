@@ -5,16 +5,12 @@ import { FetchError } from '../Error/FetchError';
 import { Fetch } from '../Fetch';
 import { FetchResponse } from '../FetchResponse';
 
-const bufToChar = (buf: ArrayBuffer): string => {
-  return Buffer.from(new Uint8Array(buf)).toString('hex');
-};
 const sr: string = '2ea736db-8aa0-496f-950b-dec53b2eb268';
 const jr: ObjectLiteral = {
   mo: 'response string',
   nu: false,
   pq: -13
 };
-const bfr: ArrayBuffer = new ArrayBuffer(1);
 const url: string = 'https://example.com/morceau/de/poitrine';
 
 describe('Fetch', () => {
@@ -42,9 +38,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.get(url)).rejects.toThrow(FetchError);
+      await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
 
     it('responds OK: response is text', async () => {
@@ -62,9 +58,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      const r: FetchResponse<'text'> = await ajax.get(url);
+      const r: FetchResponse<'text'> = await fetch.get(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toBe(sr);
@@ -85,35 +81,12 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'json'> = new Fetch<'json'>('json');
+      const fetch: Fetch<'json'> = new Fetch<'json'>('json');
 
-      const r: FetchResponse<'json'> = await ajax.get(url);
+      const r: FetchResponse<'json'> = await fetch.get(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is arraybuffer', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: bufToChar(bfr)
-        });
-      });
-
-      const ajax: Fetch<'arraybuffer'> = new Fetch<'arraybuffer'>('arraybuffer');
-
-      const r: FetchResponse<'arraybuffer'> = await ajax.get(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(bfr);
     });
 
     it('responds MULTIPLE_CHOICE', async () => {
@@ -131,9 +104,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.get(url)).rejects.toThrow(FetchError);
+      await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
 
     it('responds BAD_REQUEST', async () => {
@@ -151,9 +124,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.get(url)).rejects.toThrow(FetchError);
+      await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
 
     it('responds INTERNAL_SERVER_ERROR', async () => {
@@ -171,9 +144,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.get(url)).rejects.toThrow(FetchError);
+      await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
   });
 
@@ -193,9 +166,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.post(url)).rejects.toThrow(FetchError);
+      await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
 
     it('responds OK: response is text', async () => {
@@ -213,9 +186,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      const r: FetchResponse<'text'> = await ajax.post(url);
+      const r: FetchResponse<'text'> = await fetch.post(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toBe(sr);
@@ -236,35 +209,12 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'json'> = new Fetch<'json'>('json');
+      const fetch: Fetch<'json'> = new Fetch<'json'>('json');
 
-      const r: FetchResponse<'json'> = await ajax.post(url);
+      const r: FetchResponse<'json'> = await fetch.post(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is arraybuffer', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse((): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: bufToChar(bfr)
-        });
-      });
-
-      const ajax: Fetch<'arraybuffer'> = new Fetch<'arraybuffer'>('arraybuffer');
-
-      const r: FetchResponse<'arraybuffer'> = await ajax.post(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(bfr);
     });
 
     it('responds MULTIPLE_CHOICES', async () => {
@@ -282,9 +232,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.post(url)).rejects.toThrow(FetchError);
+      await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
 
     it('responds BAD_REQUEST', async () => {
@@ -302,9 +252,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.post(url)).rejects.toThrow(FetchError);
+      await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
 
     it('responds INTERNAL_SERVER_ERROR', async () => {
@@ -322,9 +272,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.post(url)).rejects.toThrow(FetchError);
+      await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
   });
 
@@ -344,9 +294,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.put(url)).rejects.toThrow(FetchError);
+      await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
 
     it('responds OK: response is text', async () => {
@@ -364,9 +314,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      const r: FetchResponse<'text'> = await ajax.put(url);
+      const r: FetchResponse<'text'> = await fetch.put(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toBe(sr);
@@ -387,35 +337,12 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'json'> = new Fetch<'json'>('json');
+      const fetch: Fetch<'json'> = new Fetch<'json'>('json');
 
-      const r: FetchResponse<'json'> = await ajax.put(url);
+      const r: FetchResponse<'json'> = await fetch.put(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is arraybuffer', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse((): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: bufToChar(bfr)
-        });
-      });
-
-      const ajax: Fetch<'arraybuffer'> = new Fetch<'arraybuffer'>('arraybuffer');
-
-      const r: FetchResponse<'arraybuffer'> = await ajax.put(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(bfr);
     });
 
     it('responds MULTIPLE_CHOICES', async () => {
@@ -433,9 +360,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.put(url)).rejects.toThrow(FetchError);
+      await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
 
     it('responds BAD_REQUEST', async () => {
@@ -453,9 +380,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.put(url)).rejects.toThrow(FetchError);
+      await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
 
     it('responds INTERNAL_SERVER_ERROR', async () => {
@@ -473,9 +400,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.put(url)).rejects.toThrow(FetchError);
+      await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
   });
 
@@ -495,9 +422,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.delete(url)).rejects.toThrow(FetchError);
+      await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
 
     it('responds OK: response is text', async () => {
@@ -515,9 +442,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      const r: FetchResponse<'text'> = await ajax.delete(url);
+      const r: FetchResponse<'text'> = await fetch.delete(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toBe(sr);
@@ -538,35 +465,12 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'json'> = new Fetch<'json'>('json');
+      const fetch: Fetch<'json'> = new Fetch<'json'>('json');
 
-      const r: FetchResponse<'json'> = await ajax.delete(url);
+      const r: FetchResponse<'json'> = await fetch.delete(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is arraybuffer', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: bufToChar(bfr)
-        });
-      });
-
-      const ajax: Fetch<'arraybuffer'> = new Fetch<'arraybuffer'>('arraybuffer');
-
-      const r: FetchResponse<'arraybuffer'> = await ajax.delete(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(bfr);
     });
 
     it('responds MULTIPLE_CHOICE', async () => {
@@ -584,9 +488,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.delete(url)).rejects.toThrow(FetchError);
+      await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
 
     it('responds BAD_REQUEST', async () => {
@@ -604,9 +508,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.delete(url)).rejects.toThrow(FetchError);
+      await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
 
     it('responds INTERNAL_SERVER_ERROR', async () => {
@@ -624,9 +528,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.delete(url)).rejects.toThrow(FetchError);
+      await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
   });
 
@@ -646,9 +550,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.head(url)).rejects.toThrow(FetchError);
+      await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
 
     it('responds OK: response is text', async () => {
@@ -666,9 +570,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      const r: FetchResponse<'text'> = await ajax.head(url);
+      const r: FetchResponse<'text'> = await fetch.head(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toBe(sr);
@@ -689,35 +593,12 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'json'> = new Fetch<'json'>('json');
+      const fetch: Fetch<'json'> = new Fetch<'json'>('json');
 
-      const r: FetchResponse<'json'> = await ajax.head(url);
+      const r: FetchResponse<'json'> = await fetch.head(url);
 
       expect(r.status).toBe(StatusCodes.OK);
       expect(r.body).toStrictEqual(jr);
-    });
-
-    it('responds OK: response is arraybuffer', async () => {
-      expect.assertions(2);
-
-      fetchMock.mockResponse(async (): Promise<MockResponseInit> => {
-        return Promise.resolve<MockResponseInit>({
-          init: {
-            status: StatusCodes.OK,
-            headers: {
-              'Content-Type': 'text/html'
-            }
-          },
-          body: bufToChar(bfr)
-        });
-      });
-
-      const ajax: Fetch<'arraybuffer'> = new Fetch<'arraybuffer'>('arraybuffer');
-
-      const r: FetchResponse<'arraybuffer'> = await ajax.head(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(bfr);
     });
 
     it('responds MULTIPLE_CHOICE', async () => {
@@ -735,9 +616,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.head(url)).rejects.toThrow(FetchError);
+      await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
 
     it('responds BAD_REQUEST', async () => {
@@ -755,9 +636,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.head(url)).rejects.toThrow(FetchError);
+      await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
 
     it('responds INTERNAL_SERVER_ERROR', async () => {
@@ -775,9 +656,9 @@ describe('Fetch', () => {
         });
       });
 
-      const ajax: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
 
-      await expect(ajax.head(url)).rejects.toThrow(FetchError);
+      await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
   });
 });
