@@ -1,4 +1,4 @@
-import { Ambiguous, Kind, ObjectLiteral } from '@jamashita/anden-type';
+import { Kind, Nullable, ObjectLiteral } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
 import { FetchError } from './Error/FetchError';
 import { FetchResponse, FetchResponseType } from './FetchResponse';
@@ -88,7 +88,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async post(url: string, payload?: ObjectLiteral): Promise<FetchResponse<T>> {
     try {
-      const body: Ambiguous<string> = await this.flatten(payload);
+      const body: Nullable<string> = await this.flatten(payload);
       const res: Response = await fetch(url, {
         method: 'POST',
         body
@@ -115,7 +115,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async put(url: string, payload?: ObjectLiteral): Promise<FetchResponse<T>> {
     try {
-      const body: Ambiguous<string> = await this.flatten(payload);
+      const body: Nullable<string> = await this.flatten(payload);
       const res: Response = await fetch(url, {
         method: 'PUT',
         body
@@ -140,9 +140,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     }
   }
 
-  private async flatten(payload?: ObjectLiteral): Promise<Ambiguous<string>> {
+  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
     if (Kind.isUndefined(payload)) {
-      return Promise.resolve<undefined>(undefined);
+      return Promise.resolve<null>(null);
     }
 
     return JSONA.stringify(payload);
@@ -151,27 +151,35 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private async hydrate(res: Response): Promise<FetchResponse<T>> {
     switch (this.type) {
       case 'arraybuffer': {
+        const body: ArrayBuffer = await res.arrayBuffer();
+
         return {
           status: res.status,
-          body: await res.arrayBuffer()
+          body
         } as FetchResponse<T>;
       }
       case 'blob': {
+        const body: Blob = await res.blob();
+
         return {
           status: res.status,
-          body: await res.blob()
+          body
         } as FetchResponse<T>;
       }
       case 'json': {
+        const body: ObjectLiteral = await res.json() as ObjectLiteral;
+
         return {
           status: res.status,
-          body: await res.json() as ObjectLiteral
+          body
         } as FetchResponse<T>;
       }
       case 'text': {
+        const body: string = await res.text();
+
         return {
           status: res.status,
-          body: await res.text()
+          body
         } as FetchResponse<T>;
       }
       default: {
