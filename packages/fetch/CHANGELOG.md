@@ -1,3 +1,12 @@
+# [@jamashita/catacombe-fetch-v2.2.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.1.0...@jamashita/catacombe-fetch-v2.2.0) (2021-11-04)
+
+
+### Features
+
+* 🎸 fetch package updated ([be50229](https://github.com/jamashita/catacombe/commit/be50229fbe9068afd86e0e67c7c50ec6e1140de3))
+* 🎸 packages updated ([21aa84d](https://github.com/jamashita/catacombe/commit/21aa84d03a0d9a0524c46106cb46591df7c0bb69))
+* 🎸 removed sinon ([8b4e1b2](https://github.com/jamashita/catacombe/commit/8b4e1b2e5e2ef59d93859da68b92d3c5dd99acc1))
+
 # [@jamashita/catacombe-fetch-v2.1.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.0.0...@jamashita/catacombe-fetch-v2.1.0) (2021-08-28)
 
 
