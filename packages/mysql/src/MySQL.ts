@@ -1,19 +1,17 @@
 import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
-import mysql from 'mysql';
+import { Connection as Conn, createPool, MysqlError, Pool, PoolConfig, PoolConnection } from 'mysql';
 import { Connection } from './Connection';
 import { MySQLError } from './Error/MySQLError';
 import { IMySQL } from './IMySQL';
 import { ITransaction } from './ITransaction';
 
-export type MySQLConfig = mysql.PoolConfig;
-
 export class MySQL implements IMySQL {
-  private readonly pool: mysql.Pool;
+  private readonly pool: Pool;
 
-  public constructor(config: MySQLConfig) {
-    const pool: mysql.Pool = mysql.createPool(config);
+  public constructor(config: PoolConfig) {
+    const pool: Pool = createPool(config);
 
-    pool.on('connection', (connection: mysql.Connection) => {
+    pool.on('connection', (connection: Conn) => {
       connection.config.queryFormat = (query: string, value?: Inconnu) => {
         if (Kind.isUndefined(value)) {
           return query;
@@ -34,9 +32,9 @@ export class MySQL implements IMySQL {
 
   public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
     return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
-      this.pool.query(sql, value, (err: Nullable<mysql.MysqlError>, result: R) => {
+      this.pool.query(sql, value, (err: Nullable<MysqlError>, result: R) => {
         if (!Kind.isNull(err)) {
-          reject(new MySQLError('MySQL.execute()', err));
+          reject(new MySQLError(err.message));
 
           return;
         }
@@ -67,18 +65,18 @@ export class MySQL implements IMySQL {
 
   private getConnection(): Promise<Connection> {
     return new Promise<Connection>((resolve: Resolve<Connection>, reject: Reject) => {
-      this.pool.getConnection((err1: mysql.MysqlError, connection: mysql.PoolConnection) => {
+      this.pool.getConnection((err1: MysqlError, connection: PoolConnection) => {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unnecessary-condition
         if (err1) {
-          reject(new MySQLError('MySQL.getConnection()', err1));
+          reject(new MySQLError(err1.message));
 
           return;
         }
 
-        connection.beginTransaction((err2: mysql.MysqlError) => {
+        connection.beginTransaction((err2: MysqlError) => {
           // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unnecessary-condition
           if (err2) {
-            reject(new MySQLError('MySQL.getConnection()', err2));
+            reject(new MySQLError(err2.message));
 
             return;
           }
