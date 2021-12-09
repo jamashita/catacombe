@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@jamashita/anden-error": "2.3.0",
-    "@jamashita/anden-type": "2.2.0",
+    "@jamashita/anden-type": "2.3.0",
     "@jamashita/catacombe-datasource": "^2.3.0",
     "@jamashita/catacombe-error": "1.0.0",
     "@jamashita/steckdose-json": "2.3.0"
