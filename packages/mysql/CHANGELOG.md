@@ -1,3 +1,11 @@
+# [@jamashita/catacombe-mysql-v2.3.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.2.0...@jamashita/catacombe-mysql-v2.3.0) (2021-12-09)
+
+
+### Features
+
+* 🎸 removed noun ([298e3dc](https://github.com/jamashita/catacombe/commit/298e3dc5db1d9cf2e7199f0b6f3e01a398801467))
+* 🎸 update ([12eec39](https://github.com/jamashita/catacombe/commit/12eec396b07ea5c6dffae89680bef91c2d3c5d80))
+
 # [@jamashita/catacombe-mysql-v2.2.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.1.0...@jamashita/catacombe-mysql-v2.2.0) (2021-11-04)
 
 
