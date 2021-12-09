@@ -44,25 +44,6 @@ export class MySQL implements IMySQL {
     });
   }
 
-  public async transact<R>(transaction: ITransaction<R>): Promise<R> {
-    const connection: Connection = await this.getConnection();
-
-    try {
-      const ret: R = await transaction.with(connection);
-
-      await connection.commit();
-      connection.release();
-
-      return ret;
-    }
-    catch (err: unknown) {
-      await connection.rollback();
-      connection.release();
-
-      throw err;
-    }
-  }
-
   private getConnection(): Promise<Connection> {
     return new Promise<Connection>((resolve: Resolve<Connection>, reject: Reject) => {
       this.pool.getConnection((err1: MysqlError, connection: PoolConnection) => {
@@ -85,5 +66,24 @@ export class MySQL implements IMySQL {
         });
       });
     });
+  }
+
+  public async transact<R>(transaction: ITransaction<R>): Promise<R> {
+    const connection: Connection = await this.getConnection();
+
+    try {
+      const ret: R = await transaction.with(connection);
+
+      await connection.commit();
+      connection.release();
+
+      return ret;
+    }
+    catch (err: unknown) {
+      await connection.rollback();
+      connection.release();
+
+      throw err;
+    }
   }
 }

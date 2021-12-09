@@ -49,6 +49,14 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
     }
   }
 
+  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
+    if (Kind.isUndefined(payload)) {
+      return Promise.resolve<null>(null);
+    }
+
+    return JSONA.stringify(payload);
+  }
+
   public async get(url: string): Promise<RequestResponse<T>> {
     try {
       const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
@@ -116,6 +124,32 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       }
 
       throw err;
+    }
+  }
+
+  private hydrate(res: NeedleResponse): RequestResponse<T> {
+    switch (this.type) {
+      case 'buffer': {
+        return {
+          status: res.statusCode,
+          body: res.raw
+        } as RequestResponse<T>;
+      }
+      case 'json': {
+        return {
+          status: res.statusCode,
+          body: res.body
+        } as RequestResponse<T>;
+      }
+      case 'text': {
+        return {
+          status: res.statusCode,
+          body: res.raw.toString('utf-8')
+        } as RequestResponse<T>;
+      }
+      default: {
+        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+      }
     }
   }
 
@@ -188,40 +222,6 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       }
 
       throw err;
-    }
-  }
-
-  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
-    if (Kind.isUndefined(payload)) {
-      return Promise.resolve<null>(null);
-    }
-
-    return JSONA.stringify(payload);
-  }
-
-  private hydrate(res: NeedleResponse): RequestResponse<T> {
-    switch (this.type) {
-      case 'buffer': {
-        return {
-          status: res.statusCode,
-          body: res.raw
-        } as RequestResponse<T>;
-      }
-      case 'json': {
-        return {
-          status: res.statusCode,
-          body: res.body
-        } as RequestResponse<T>;
-      }
-      case 'text': {
-        return {
-          status: res.statusCode,
-          body: res.raw.toString('utf-8')
-        } as RequestResponse<T>;
-      }
-      default: {
-        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
-      }
     }
   }
 }
