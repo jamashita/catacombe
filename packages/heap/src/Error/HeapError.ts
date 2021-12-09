@@ -1,9 +1,7 @@
 import { DataSourceError } from '@jamashita/catacombe-datasource';
 
-export class HeapError extends DataSourceError<'HeapError'> {
-  public override readonly noun: 'HeapError' = 'HeapError';
-
+export class HeapError extends DataSourceError {
   public constructor(message: string, cause?: Error) {
-    super('HeapError', message, cause);
+    super(message, cause);
   }
 }

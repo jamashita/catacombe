@@ -1,9 +1,7 @@
 import { DataSourceError } from '@jamashita/catacombe-datasource';
 
-export class MySQLError extends DataSourceError<'MySQLError'> {
-  public override readonly noun: 'MySQLError' = 'MySQLError';
-
+export class MySQLError extends DataSourceError {
   public constructor(message: string, cause?: Error) {
-    super('MySQLError', message, cause);
+    super(message, cause);
   }
 }
