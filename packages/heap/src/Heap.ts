@@ -22,6 +22,14 @@ export class Heap implements IHeap {
     this.lifetime = seconds * 1000;
   }
 
+  private cancelTimeout(identifier: symbol): void {
+    const timeout: Ambiguous<NodeJS.Timeout> = this.timeouts.get(identifier);
+
+    if (!Kind.isUndefined(timeout)) {
+      clearTimeout(timeout);
+    }
+  }
+
   public get<H>(identifier: symbol): H {
     const instance: Ambiguous<unknown> = this.values.get(identifier);
 
@@ -35,14 +43,6 @@ export class Heap implements IHeap {
   public set(identifier: symbol, value: unknown): void {
     this.values.set(identifier, value);
     this.setTimeout(identifier);
-  }
-
-  private cancelTimeout(identifier: symbol): void {
-    const timeout: Ambiguous<NodeJS.Timeout> = this.timeouts.get(identifier);
-
-    if (!Kind.isUndefined(timeout)) {
-      clearTimeout(timeout);
-    }
   }
 
   private setTimeout(identifier: symbol): void {

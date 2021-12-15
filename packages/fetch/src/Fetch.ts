@@ -36,6 +36,14 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     }
   }
 
+  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
+    if (Kind.isUndefined(payload)) {
+      return Promise.resolve<null>(null);
+    }
+
+    return JSONA.stringify(payload);
+  }
+
   public async get(url: string): Promise<FetchResponse<T>> {
     try {
       const res: Response = await fetch(url, {
@@ -83,6 +91,46 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       throw err;
+    }
+  }
+
+  private async hydrate(res: Response): Promise<FetchResponse<T>> {
+    switch (this.type) {
+      case 'arraybuffer': {
+        const body: ArrayBuffer = await res.arrayBuffer();
+
+        return {
+          status: res.status,
+          body
+        } as FetchResponse<T>;
+      }
+      case 'blob': {
+        const body: Blob = await res.blob();
+
+        return {
+          status: res.status,
+          body
+        } as FetchResponse<T>;
+      }
+      case 'json': {
+        const body: ObjectLiteral = await res.json() as ObjectLiteral;
+
+        return {
+          status: res.status,
+          body
+        } as FetchResponse<T>;
+      }
+      case 'text': {
+        const body: string = await res.text();
+
+        return {
+          status: res.status,
+          body
+        } as FetchResponse<T>;
+      }
+      default: {
+        throw new FetchError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+      }
     }
   }
 
@@ -137,54 +185,6 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       throw err;
-    }
-  }
-
-  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
-    if (Kind.isUndefined(payload)) {
-      return Promise.resolve<null>(null);
-    }
-
-    return JSONA.stringify(payload);
-  }
-
-  private async hydrate(res: Response): Promise<FetchResponse<T>> {
-    switch (this.type) {
-      case 'arraybuffer': {
-        const body: ArrayBuffer = await res.arrayBuffer();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'blob': {
-        const body: Blob = await res.blob();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'json': {
-        const body: ObjectLiteral = await res.json() as ObjectLiteral;
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'text': {
-        const body: string = await res.text();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      default: {
-        throw new FetchError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
-      }
     }
   }
 }
