@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-fetch-v2.5.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.4.0...@jamashita/catacombe-fetch-v2.5.0) (2021-12-09)
+
+
+### Features
+
+* 🎸 package updated ([fb7f7d3](https://github.com/jamashita/catacombe/commit/fb7f7d36ab49ad91c1361d2dcb430967ed4d630c))
+
 # [@jamashita/catacombe-fetch-v2.4.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.3.0...@jamashita/catacombe-fetch-v2.4.0) (2021-12-09)
 
 
