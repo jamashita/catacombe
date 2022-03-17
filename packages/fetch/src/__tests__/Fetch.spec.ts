@@ -1,7 +1,7 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import fetchMock, { MockResponseInit } from 'jest-fetch-mock';
-import { FetchError } from '../Error/FetchError';
+import { FetchError } from '../FetchError';
 import { Fetch } from '../Fetch';
 import { FetchResponse } from '../FetchResponse';
 

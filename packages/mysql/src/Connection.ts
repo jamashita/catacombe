@@ -1,7 +1,7 @@
 import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import { MysqlError, PoolConnection } from 'mysql';
-import { MySQLError } from './Error/MySQLError';
 import { IConnection } from './IConnection';
+import { MySQLError } from './MySQLError';
 
 export class Connection implements IConnection {
   private readonly connection: PoolConnection;

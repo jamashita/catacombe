@@ -1,6 +1,6 @@
 import { Kind, Nullable, ObjectLiteral } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
-import { FetchError } from './Error/FetchError';
+import { FetchError } from './FetchError';
 import { FetchResponse, FetchResponseType } from './FetchResponse';
 import { IFetch } from './IFetch';
 

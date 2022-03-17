@@ -1,7 +1,7 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import nock, { Scope } from 'nock';
-import { RequestError } from '../Error/RequestError';
+import { RequestError } from '../RequestError';
 import { Request } from '../Request';
 import { RequestResponse } from '../RequestResponse';
 
