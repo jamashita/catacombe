@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-mysql-v2.6.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.5.0...@jamashita/catacombe-mysql-v2.6.0) (2021-12-15)
+
+
+### Features
+
+* 🎸 remove catacombe-error ([2d4d682](https://github.com/jamashita/catacombe/commit/2d4d682f4dcdbfa5731fc7f7ff435d05f508c291))
+
 # [@jamashita/catacombe-mysql-v2.5.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.4.0...@jamashita/catacombe-mysql-v2.5.0) (2021-12-09)
 
 
