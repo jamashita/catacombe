@@ -1,4 +1,4 @@
-export * from './a/index';
+export * from './mock/index';
 export * from './IRedis';
 export * from './IRedisHash';
 export * from './IRedisList';

@@ -1,4 +1,4 @@
-export * from './a/index';
+export * from './mock/index';
 export * from './Connection';
 export * from './IConnection';
 export * from './IMySQL';
