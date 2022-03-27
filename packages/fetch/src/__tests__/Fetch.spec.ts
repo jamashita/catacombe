@@ -1,8 +1,8 @@
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import fetchMock, { MockResponseInit } from 'jest-fetch-mock';
-import { FetchError } from '../Error/FetchError';
 import { Fetch } from '../Fetch';
+import { FetchError } from '../FetchError';
 import { FetchResponse } from '../FetchResponse';
 
 const sr: string = '2ea736db-8aa0-496f-950b-dec53b2eb268';
@@ -38,7 +38,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
@@ -58,7 +58,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       const r: FetchResponse<'text'> = await fetch.get(url);
 
@@ -104,7 +104,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
@@ -124,7 +124,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
@@ -144,7 +144,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.get(url)).rejects.toThrow(FetchError);
     });
@@ -166,7 +166,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
@@ -186,7 +186,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       const r: FetchResponse<'text'> = await fetch.post(url);
 
@@ -232,7 +232,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
@@ -252,7 +252,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
@@ -272,7 +272,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.post(url)).rejects.toThrow(FetchError);
     });
@@ -294,7 +294,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
@@ -314,7 +314,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       const r: FetchResponse<'text'> = await fetch.put(url);
 
@@ -360,7 +360,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
@@ -380,7 +380,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
@@ -400,7 +400,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.put(url)).rejects.toThrow(FetchError);
     });
@@ -422,7 +422,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
@@ -442,7 +442,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       const r: FetchResponse<'text'> = await fetch.delete(url);
 
@@ -488,7 +488,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
@@ -508,7 +508,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
@@ -528,7 +528,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.delete(url)).rejects.toThrow(FetchError);
     });
@@ -550,7 +550,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
@@ -570,7 +570,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       const r: FetchResponse<'text'> = await fetch.head(url);
 
@@ -616,7 +616,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
@@ -636,7 +636,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });
@@ -656,7 +656,7 @@ describe('Fetch', () => {
         });
       });
 
-      const fetch: Fetch<'text'> = new Fetch<'text'>('text');
+      const fetch: Fetch<'text'> = new Fetch('text');
 
       await expect(fetch.head(url)).rejects.toThrow(FetchError);
     });

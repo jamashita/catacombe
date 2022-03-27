@@ -1,8 +1,8 @@
 import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
 import needle, { NeedleResponse } from 'needle';
-import { RequestError } from './Error/RequestError';
 import { IRequest } from './IRequest';
+import { RequestError } from './RequestError';
 import { RequestResponse, RequestResponseType } from './RequestResponse';
 
 const HAPPY: number = 2;
