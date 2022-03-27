@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden-error';
-import IORedis from 'ioredis';
+import Redis from 'ioredis';
 import { IRedis } from '../IRedis';
 import { IRedisHash } from '../IRedisHash';
 import { IRedisList } from '../IRedisList';
@@ -18,7 +18,7 @@ type MockRedisSetting = Partial<Readonly<{
 }>>;
 
 export class MockRedis implements IRedis {
-  private readonly client: IORedis.Redis;
+  private readonly client: Redis;
   private readonly hash: IRedisHash;
   private readonly set: IRedisSet;
   private readonly list: IRedisList;
@@ -30,7 +30,7 @@ export class MockRedis implements IRedis {
     list = new MockRedisList(),
     string = new MockRedisString()
   }: MockRedisSetting = {}) {
-    this.client = new IORedis({});
+    this.client = new Redis({});
     this.hash = hash;
     this.set = set;
     this.list = list;
@@ -49,7 +49,7 @@ export class MockRedis implements IRedis {
     throw new UnimplementedError();
   }
 
-  public getClient(): IORedis.Redis {
+  public getClient(): Redis {
     return this.client;
   }
 
@@ -77,11 +77,11 @@ export class MockRedis implements IRedis {
     throw new UnimplementedError();
   }
 
-  public subscribe(): Promise<number> {
+  public subscribe(): Promise<unknown> {
     throw new UnimplementedError();
   }
 
-  public unsubscribe(): Promise<number> {
+  public unsubscribe(): Promise<unknown> {
     throw new UnimplementedError();
   }
 }
