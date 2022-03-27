@@ -1,11 +1,12 @@
-import IORedis from 'ioredis';
+import { Nullable } from '@jamashita/anden-type';
+import Redis from 'ioredis';
 import { IRedisList } from './IRedisList';
 import { RedisError } from './RedisError';
 
 export class RedisList implements IRedisList {
-  private readonly client: IORedis.Redis;
+  private readonly client: Redis;
 
-  public constructor(client: IORedis.Redis) {
+  public constructor(client: Redis) {
     this.client = client;
   }
 
@@ -35,7 +36,7 @@ export class RedisList implements IRedisList {
     }
   }
 
-  public async pop(key: string): Promise<string> {
+  public async pop(key: string): Promise<Nullable<string>> {
     try {
       return await this.client.rpop(key);
     }
@@ -90,7 +91,7 @@ export class RedisList implements IRedisList {
     }
   }
 
-  public async shift(key: string): Promise<string> {
+  public async shift(key: string): Promise<Nullable<string>> {
     try {
       return await this.client.lpop(key);
     }

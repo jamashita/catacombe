@@ -1,5 +1,5 @@
 import { BinaryFunction } from '@jamashita/anden-type';
-import IORedis from 'ioredis';
+import Redis from 'ioredis';
 import { IRedisHash } from './IRedisHash';
 import { IRedisList } from './IRedisList';
 import { IRedisSet } from './IRedisSet';
@@ -12,7 +12,7 @@ export interface IRedis {
 
   expires(key: string, seconds: number): Promise<boolean>;
 
-  getClient(): IORedis.Redis;
+  getClient(): Redis;
 
   getHash(): IRedisHash;
 
@@ -26,7 +26,7 @@ export interface IRedis {
 
   publish(channel: string, message: string): Promise<number>;
 
-  subscribe(...channels: ReadonlyArray<string>): Promise<number>;
+  subscribe(...channels: ReadonlyArray<string>): Promise<unknown>;
 
-  unsubscribe(...channels: ReadonlyArray<string>): Promise<number>;
+  unsubscribe(...channels: ReadonlyArray<string>): Promise<unknown>;
 }
