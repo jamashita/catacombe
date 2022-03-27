@@ -25,8 +25,8 @@
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.3.0",
-    "@jamashita/anden-type": "2.3.0",
+    "@jamashita/anden-error": "2.4.0",
+    "@jamashita/anden-type": "2.4.0",
     "@jamashita/catacombe-datasource": "^2.3.0"
   },
   "engines": {
@@ -38,6 +38,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@jamashita/anden-helper": "2.0.2"
+    "@jamashita/anden-helper": "2.1.0"
   }
 }
