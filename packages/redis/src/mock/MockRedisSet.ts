@@ -23,7 +23,7 @@ export class MockRedisSet implements IRedisSet {
     throw new UnimplementedError();
   }
 
-  public random(): Promise<Nullable<string>> {
+  public random(): Promise<Nullable<string> | Array<unknown>> {
     throw new UnimplementedError();
   }
 
