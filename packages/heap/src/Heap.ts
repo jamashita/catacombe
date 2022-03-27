@@ -1,5 +1,5 @@
 import { Ambiguous, Kind } from '@jamashita/anden-type';
-import { HeapError } from './Error/HeapError';
+import { HeapError } from './HeapError';
 import { IHeap } from './IHeap';
 
 const LIFETIME_MAX: number = Infinity;
