@@ -1,12 +1,12 @@
 import { Nullable } from '@jamashita/anden-type';
-import IORedis from 'ioredis';
+import Redis from 'ioredis';
 import { IRedisString } from './IRedisString';
 import { RedisError } from './RedisError';
 
 export class RedisString implements IRedisString {
-  private readonly client: IORedis.Redis;
+  private readonly client: Redis;
 
-  public constructor(client: IORedis.Redis) {
+  public constructor(client: Redis) {
     this.client = client;
   }
 

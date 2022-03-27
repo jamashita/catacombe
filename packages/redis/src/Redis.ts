@@ -1,4 +1,4 @@
-import IORedis from 'ioredis';
+import R, { RedisOptions } from 'ioredis';
 import { IRedis } from './IRedis';
 import { RedisError } from './RedisError';
 import { RedisHash } from './RedisHash';
@@ -6,17 +6,17 @@ import { RedisList } from './RedisList';
 import { RedisSet } from './RedisSet';
 import { RedisString } from './RedisString';
 
-export type RedisConfig = IORedis.RedisOptions;
+export type RedisConfig = RedisOptions;
 
 export class Redis implements IRedis {
-  private readonly client: IORedis.Redis;
+  private readonly client: R;
   private readonly hash: RedisHash;
   private readonly set: RedisSet;
   private readonly list: RedisList;
   private readonly string: RedisString;
 
   public constructor(config: RedisConfig) {
-    const client: IORedis.Redis = new IORedis(config);
+    const client: R = new R(config);
 
     this.client = client;
     this.hash = new RedisHash(client);
@@ -65,7 +65,7 @@ export class Redis implements IRedis {
 
   public async expires(key: string, seconds: number): Promise<boolean> {
     try {
-      const result: 0 | 1 = await this.client.expire(key, seconds);
+      const result: number = await this.client.expire(key, seconds);
 
       if (result === 0) {
         return false;
@@ -82,7 +82,7 @@ export class Redis implements IRedis {
     }
   }
 
-  public getClient(): IORedis.Redis {
+  public getClient(): R {
     return this.client;
   }
 
@@ -128,7 +128,7 @@ export class Redis implements IRedis {
     }
   }
 
-  public async subscribe(...channels: ReadonlyArray<string>): Promise<number> {
+  public async subscribe(...channels: ReadonlyArray<string>): Promise<unknown> {
     try {
       return await this.client.subscribe(...channels);
     }
@@ -141,7 +141,7 @@ export class Redis implements IRedis {
     }
   }
 
-  public async unsubscribe(...channels: ReadonlyArray<string>): Promise<number> {
+  public async unsubscribe(...channels: ReadonlyArray<string>): Promise<unknown> {
     try {
       return await this.client.unsubscribe(...channels);
     }
