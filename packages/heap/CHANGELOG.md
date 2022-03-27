@@ -1,3 +1,24 @@
+# [@jamashita/catacombe-heap-v2.7.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v2.6.0...@jamashita/catacombe-heap-v2.7.0) (2022-03-27)
+
+
+### Features
+
+* 🎸 update ([48731d4](https://github.com/jamashita/catacombe/commit/48731d4c8e62eafb81681dadec75e52be380880b))
+
+# [@jamashita/catacombe-heap-v2.6.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v2.5.0...@jamashita/catacombe-heap-v2.6.0) (2021-12-15)
+
+
+### Features
+
+* 🎸 remove catacombe-error ([2d4d682](https://github.com/jamashita/catacombe/commit/2d4d682f4dcdbfa5731fc7f7ff435d05f508c291))
+
+# [@jamashita/catacombe-heap-v2.5.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v2.4.0...@jamashita/catacombe-heap-v2.5.0) (2021-12-09)
+
+
+### Features
+
+* 🎸 package updated ([fb7f7d3](https://github.com/jamashita/catacombe/commit/fb7f7d36ab49ad91c1361d2dcb430967ed4d630c))
+
 # [@jamashita/catacombe-heap-v2.4.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-heap-v2.3.0...@jamashita/catacombe-heap-v2.4.0) (2021-12-09)
 
 

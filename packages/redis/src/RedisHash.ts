@@ -1,12 +1,12 @@
 import { Nullable } from '@jamashita/anden-type';
-import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
+import Redis from 'ioredis';
 import { IRedisHash } from './IRedisHash';
+import { RedisError } from './RedisError';
 
 export class RedisHash implements IRedisHash {
-  private readonly client: IORedis.Redis;
+  private readonly client: Redis;
 
-  public constructor(client: IORedis.Redis) {
+  public constructor(client: Redis) {
     this.client = client;
   }
 
@@ -38,7 +38,7 @@ export class RedisHash implements IRedisHash {
 
   public async has(key: string, field: string): Promise<boolean> {
     try {
-      const result: 0 | 1 = await this.client.hexists(key, field);
+      const result: number = await this.client.hexists(key, field);
 
       if (result === 0) {
         return false;

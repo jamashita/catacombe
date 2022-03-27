@@ -1,5 +1,5 @@
 import { wait } from '@jamashita/anden-helper';
-import { HeapError } from '../Error/HeapError';
+import { HeapError } from '../HeapError';
 import { Heap } from '../Heap';
 
 describe('Heap', () => {

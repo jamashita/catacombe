@@ -1,8 +1,8 @@
 import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden-type';
 import { JSONA } from '@jamashita/steckdose-json';
 import needle, { NeedleResponse } from 'needle';
-import { RequestError } from './Error/RequestError';
 import { IRequest } from './IRequest';
+import { RequestError } from './RequestError';
 import { RequestResponse, RequestResponseType } from './RequestResponse';
 
 const HAPPY: number = 2;
@@ -47,6 +47,14 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       throw err;
     }
+  }
+
+  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
+    if (Kind.isUndefined(payload)) {
+      return Promise.resolve<null>(null);
+    }
+
+    return JSONA.stringify(payload);
   }
 
   public async get(url: string): Promise<RequestResponse<T>> {
@@ -119,6 +127,32 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
     }
   }
 
+  private hydrate(res: NeedleResponse): RequestResponse<T> {
+    switch (this.type) {
+      case 'buffer': {
+        return {
+          status: res.statusCode,
+          body: res.raw
+        } as RequestResponse<T>;
+      }
+      case 'json': {
+        return {
+          status: res.statusCode,
+          body: res.body
+        } as RequestResponse<T>;
+      }
+      case 'text': {
+        return {
+          status: res.statusCode,
+          body: res.raw.toString('utf-8')
+        } as RequestResponse<T>;
+      }
+      default: {
+        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+      }
+    }
+  }
+
   public async post(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
       const body: Nullable<string> = await this.flatten(payload);
@@ -188,40 +222,6 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       }
 
       throw err;
-    }
-  }
-
-  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
-    if (Kind.isUndefined(payload)) {
-      return Promise.resolve<null>(null);
-    }
-
-    return JSONA.stringify(payload);
-  }
-
-  private hydrate(res: NeedleResponse): RequestResponse<T> {
-    switch (this.type) {
-      case 'buffer': {
-        return {
-          status: res.statusCode,
-          body: res.raw
-        } as RequestResponse<T>;
-      }
-      case 'json': {
-        return {
-          status: res.statusCode,
-          body: res.body
-        } as RequestResponse<T>;
-      }
-      case 'text': {
-        return {
-          status: res.statusCode,
-          body: res.raw.toString('utf-8')
-        } as RequestResponse<T>;
-      }
-      default: {
-        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
-      }
     }
   }
 }

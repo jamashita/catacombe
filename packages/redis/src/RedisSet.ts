@@ -1,12 +1,12 @@
 import { Nullable } from '@jamashita/anden-type';
-import IORedis from 'ioredis';
-import { RedisError } from './Error/RedisError';
+import Redis from 'ioredis';
 import { IRedisSet } from './IRedisSet';
+import { RedisError } from './RedisError';
 
 export class RedisSet implements IRedisSet {
-  private readonly client: IORedis.Redis;
+  private readonly client: Redis;
 
-  public constructor(client: IORedis.Redis) {
+  public constructor(client: Redis) {
     this.client = client;
   }
 
@@ -38,7 +38,7 @@ export class RedisSet implements IRedisSet {
 
   public async has(key: string, value: string): Promise<boolean> {
     try {
-      const result: 0 | 1 = await this.client.sismember(key, value);
+      const result: number = await this.client.sismember(key, value);
 
       if (result === 0) {
         return false;
@@ -81,7 +81,7 @@ export class RedisSet implements IRedisSet {
     }
   }
 
-  public async random(key: string): Promise<Nullable<string>> {
+  public async random(key: string): Promise<Nullable<string> | Array<unknown>> {
     try {
       return await this.client.srandmember(key);
     }
