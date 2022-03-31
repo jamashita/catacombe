@@ -1,3 +1,16 @@
+# [@jamashita/catacombe-redis-v2.7.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.6.0...@jamashita/catacombe-redis-v2.7.0) (2022-03-27)
+
+
+### Bug Fixes
+
+* 🐛 type definiotions ([5917097](https://github.com/jamashita/catacombe/commit/59170971f91e2f679be316ef939ccacb942f42de))
+* 🐛 type definitions ([6afc4bb](https://github.com/jamashita/catacombe/commit/6afc4bbc2c918165de7a8e4fbf68f6c4e41d332d))
+
+
+### Features
+
+* 🎸 update ([48731d4](https://github.com/jamashita/catacombe/commit/48731d4c8e62eafb81681dadec75e52be380880b))
+
 # [@jamashita/catacombe-redis-v2.6.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.5.0...@jamashita/catacombe-redis-v2.6.0) (2021-12-15)
 
 
