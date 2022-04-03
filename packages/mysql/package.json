@@ -31,8 +31,7 @@
     "mysql": "2.18.1"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": "npm is not supported"
+    "node": ">=14.0.0"
   },
   "engineStrict": true,
   "publishConfig": {
