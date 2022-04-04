@@ -25,10 +25,10 @@
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.6.0",
-    "@jamashita/anden-type": "2.5.0",
+    "@jamashita/anden-error": "2.7.0",
+    "@jamashita/anden-type": "2.6.1",
     "@jamashita/catacombe-datasource": "^2.4.0",
-    "@jamashita/steckdose-json": "2.5.0",
+    "@jamashita/steckdose-json": "2.7.0",
     "needle": "3.0.0"
   },
   "devDependencies": {
@@ -36,8 +36,7 @@
     "nock": "13.2.4"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": "npm is not supported"
+    "node": ">=14.0.0"
   },
   "engineStrict": true,
   "publishConfig": {
