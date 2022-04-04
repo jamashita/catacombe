@@ -1,3 +1,16 @@
+# [@jamashita/catacombe-fetch-v2.8.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.7.0...@jamashita/catacombe-fetch-v2.8.0) (2022-04-04)
+
+
+### Bug Fixes
+
+* 🐛 remove nom restriction ([d10b60f](https://github.com/jamashita/catacombe/commit/d10b60f5649d1346beb20766f93d24b0abbf6bb7))
+
+
+### Features
+
+* 🎸 packages updated ([3d0a6c1](https://github.com/jamashita/catacombe/commit/3d0a6c1442693962e8b8ef9a3290f227cf6878a7))
+* 🎸 packages updated ([300816c](https://github.com/jamashita/catacombe/commit/300816c3907d2e85e8f532ac54ced20a0089c1c6))
+
 # [@jamashita/catacombe-fetch-v2.7.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-fetch-v2.6.0...@jamashita/catacombe-fetch-v2.7.0) (2022-03-27)
 
 
