@@ -33,6 +33,96 @@ describe('Request', () => {
     nock.enableNetConnect();
   });
 
+  describe('delete', () => {
+    it('responds CONTINUE', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.CONTINUE, br);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.delete(url)).rejects.toThrow(RequestError);
+
+      scope.done();
+    });
+
+    it('responds OK: response is text', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, sr);
+
+      const request: Request<'text'> = new Request('text');
+      const r: RequestResponse<'text'> = await request.delete(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body).toBe(sr);
+
+      scope.done();
+    });
+
+    it('responds OK: response is json', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, jr);
+
+      const request: Request<'json'> = new Request('json');
+      const r: RequestResponse<'json'> = await request.delete(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body).toStrictEqual(jr);
+
+      scope.done();
+    });
+
+    it('responds OK: response is buffer', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, br);
+
+      const request: Request<'buffer'> = new Request('buffer');
+      const r: RequestResponse<'buffer'> = await request.delete(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body.equals(br)).toBe(true);
+
+      scope.done();
+    });
+
+    it('responds MULTIPLE_CHOICES', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.MULTIPLE_CHOICES, br);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.delete(url)).rejects.toThrow(RequestError);
+      scope.done();
+    });
+
+    it('responds BAD_REQUEST', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.BAD_REQUEST, br);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.delete(url)).rejects.toThrow(RequestError);
+
+      scope.done();
+    });
+
+    it('responds INTERNAL_SERVER_ERROR', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).delete('/').reply(StatusCodes.INTERNAL_SERVER_ERROR, br);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.delete(url)).rejects.toThrow(RequestError);
+      scope.done();
+    });
+  });
+
   describe('get', () => {
     it('responds CONTINUE', async () => {
       expect.assertions(1);
@@ -120,6 +210,86 @@ describe('Request', () => {
       const request: Request<'text'> = new Request('text');
 
       await expect(request.get(url)).rejects.toThrow(RequestError);
+
+      scope.done();
+    });
+  });
+
+  describe('head', () => {
+    it('responds OK: response is text', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, sr);
+
+      const request: Request<'text'> = new Request('text');
+      const r: RequestResponse<'text'> = await request.head(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body).toBe(sr);
+
+      scope.done();
+    });
+
+    it('responds OK: response is json', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, jr);
+
+      const request: Request<'json'> = new Request('json');
+      const r: RequestResponse<'json'> = await request.head(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body).toStrictEqual(jr);
+
+      scope.done();
+    });
+
+    it('responds OK: response is buffer', async () => {
+      expect.assertions(2);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, br);
+
+      const request: Request<'buffer'> = new Request('buffer');
+      const r: RequestResponse<'buffer'> = await request.head(url);
+
+      expect(r.status).toBe(StatusCodes.OK);
+      expect(r.body.equals(br)).toBe(true);
+
+      scope.done();
+    });
+
+    it('responds MULTIPLE_CHOICES', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.MULTIPLE_CHOICES);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.head(url)).rejects.toThrow(RequestError);
+
+      scope.done();
+    });
+
+    it('responds BAD_REQUEST', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.BAD_REQUEST);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.head(url)).rejects.toThrow(RequestError);
+
+      scope.done();
+    });
+
+    it('responds INTERNAL_SERVER_ERROR', async () => {
+      expect.assertions(1);
+
+      const scope: Scope = nock(url).head('/').reply(StatusCodes.INTERNAL_SERVER_ERROR);
+
+      const request: Request<'text'> = new Request('text');
+
+      await expect(request.head(url)).rejects.toThrow(RequestError);
 
       scope.done();
     });
@@ -300,176 +470,6 @@ describe('Request', () => {
       const request: Request<'text'> = new Request('text');
 
       await expect(request.put(url)).rejects.toThrow(RequestError);
-      scope.done();
-    });
-  });
-
-  describe('delete', () => {
-    it('responds CONTINUE', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.CONTINUE, br);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.delete(url)).rejects.toThrow(RequestError);
-
-      scope.done();
-    });
-
-    it('responds OK: response is text', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, sr);
-
-      const request: Request<'text'> = new Request('text');
-      const r: RequestResponse<'text'> = await request.delete(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toBe(sr);
-
-      scope.done();
-    });
-
-    it('responds OK: response is json', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, jr);
-
-      const request: Request<'json'> = new Request('json');
-      const r: RequestResponse<'json'> = await request.delete(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(jr);
-
-      scope.done();
-    });
-
-    it('responds OK: response is buffer', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.OK, br);
-
-      const request: Request<'buffer'> = new Request('buffer');
-      const r: RequestResponse<'buffer'> = await request.delete(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.equals(br)).toBe(true);
-
-      scope.done();
-    });
-
-    it('responds MULTIPLE_CHOICES', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.MULTIPLE_CHOICES, br);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.delete(url)).rejects.toThrow(RequestError);
-      scope.done();
-    });
-
-    it('responds BAD_REQUEST', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.BAD_REQUEST, br);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.delete(url)).rejects.toThrow(RequestError);
-
-      scope.done();
-    });
-
-    it('responds INTERNAL_SERVER_ERROR', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).delete('/').reply(StatusCodes.INTERNAL_SERVER_ERROR, br);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.delete(url)).rejects.toThrow(RequestError);
-      scope.done();
-    });
-  });
-
-  describe('head', () => {
-    it('responds OK: response is text', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, sr);
-
-      const request: Request<'text'> = new Request('text');
-      const r: RequestResponse<'text'> = await request.head(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toBe(sr);
-
-      scope.done();
-    });
-
-    it('responds OK: response is json', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, jr);
-
-      const request: Request<'json'> = new Request('json');
-      const r: RequestResponse<'json'> = await request.head(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body).toStrictEqual(jr);
-
-      scope.done();
-    });
-
-    it('responds OK: response is buffer', async () => {
-      expect.assertions(2);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.OK, br);
-
-      const request: Request<'buffer'> = new Request('buffer');
-      const r: RequestResponse<'buffer'> = await request.head(url);
-
-      expect(r.status).toBe(StatusCodes.OK);
-      expect(r.body.equals(br)).toBe(true);
-
-      scope.done();
-    });
-
-    it('responds MULTIPLE_CHOICES', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.MULTIPLE_CHOICES);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.head(url)).rejects.toThrow(RequestError);
-
-      scope.done();
-    });
-
-    it('responds BAD_REQUEST', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.BAD_REQUEST);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.head(url)).rejects.toThrow(RequestError);
-
-      scope.done();
-    });
-
-    it('responds INTERNAL_SERVER_ERROR', async () => {
-      expect.assertions(1);
-
-      const scope: Scope = nock(url).head('/').reply(StatusCodes.INTERNAL_SERVER_ERROR);
-
-      const request: Request<'text'> = new Request('text');
-
-      await expect(request.head(url)).rejects.toThrow(RequestError);
-
       scope.done();
     });
   });
