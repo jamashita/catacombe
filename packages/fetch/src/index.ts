@@ -1,4 +1,4 @@
-export * from './mock/MockFetch';
+export * from './mock/index';
 export * from './Fetch';
 export * from './FetchError';
 export * from './FetchResponse';
