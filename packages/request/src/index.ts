@@ -1,4 +1,4 @@
-export * from './mock/MockRequest';
+export * from './mock/index';
 export * from './IRequest';
 export * from './Request';
 export * from './RequestError';
