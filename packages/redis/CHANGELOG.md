@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-redis-v2.9.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.8.0...@jamashita/catacombe-redis-v2.9.0) (2022-04-07)
+
+
+### Features
+
+* 🎸 packages updated ([823e536](https://github.com/jamashita/catacombe/commit/823e53624cad0630c9a6054c580b16c588c2ce3c))
+
 # [@jamashita/catacombe-redis-v2.8.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.7.0...@jamashita/catacombe-redis-v2.8.0) (2022-04-04)
 
 
