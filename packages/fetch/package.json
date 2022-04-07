@@ -25,10 +25,10 @@
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.7.0",
-    "@jamashita/anden-type": "2.6.1",
-    "@jamashita/catacombe-datasource": "^2.4.0",
-    "@jamashita/steckdose-json": "2.7.0"
+    "@jamashita/anden-error": "2.8.0",
+    "@jamashita/anden-type": "2.7.0",
+    "@jamashita/catacombe-datasource": "^2.6.0",
+    "@jamashita/steckdose-json": "2.8.0"
   },
   "devDependencies": {
     "http-status-codes": "2.2.0",
