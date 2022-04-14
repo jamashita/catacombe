@@ -25,9 +25,9 @@
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.8.0",
-    "@jamashita/anden-type": "2.7.0",
-    "@jamashita/catacombe-datasource": "^2.6.0",
+    "@jamashita/anden-error": "2.13.0",
+    "@jamashita/anden-type": "2.8.0",
+    "@jamashita/catacombe-datasource": "^2.7.0",
     "mysql": "2.18.1"
   },
   "engines": {
