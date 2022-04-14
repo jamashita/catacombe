@@ -25,10 +25,10 @@
     "clean:dist": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.8.0",
-    "@jamashita/anden-type": "2.7.0",
-    "@jamashita/catacombe-datasource": "^2.6.0",
-    "ioredis": "5.0.3"
+    "@jamashita/anden-error": "2.13.0",
+    "@jamashita/anden-type": "2.8.0",
+    "@jamashita/catacombe-datasource": "^2.7.0",
+    "ioredis": "5.0.4"
   },
   "engines": {
     "node": ">=14.0.0"
