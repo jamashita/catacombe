@@ -1,3 +1,11 @@
+# [@jamashita/catacombe-redis-v2.11.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.10.0...@jamashita/catacombe-redis-v2.11.0) (2022-04-15)
+
+
+### Features
+
+* 🎸 no constructor ([8f3e6c4](https://github.com/jamashita/catacombe/commit/8f3e6c4259e8ee12c057aa7c0a15381a5d2717a5))
+* 🎸 pakcages updated ([5aca884](https://github.com/jamashita/catacombe/commit/5aca884c3dd3e88b3200066e094ea0417284089d))
+
 # [@jamashita/catacombe-redis-v2.10.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-redis-v2.9.0...@jamashita/catacombe-redis-v2.10.0) (2022-04-14)
 
 
