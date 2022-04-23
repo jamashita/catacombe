@@ -27,7 +27,7 @@
   "dependencies": {
     "@jamashita/anden-error": "2.15.0",
     "@jamashita/anden-type": "2.8.0",
-    "@jamashita/catacombe-datasource": "^2.8.0",
+    "@jamashita/catacombe-datasource": "^2.9.0",
     "ioredis": "5.0.4"
   },
   "engines": {
