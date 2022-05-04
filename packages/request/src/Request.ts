@@ -138,6 +138,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       case 'json': {
         return {
           status: res.statusCode,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           body: res.body
         } as RequestResponse<T>;
       }
