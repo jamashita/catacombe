@@ -1,3 +1,11 @@
+# [@jamashita/catacombe-request-v2.12.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-request-v2.11.0...@jamashita/catacombe-request-v2.12.0) (2022-05-04)
+
+
+### Features
+
+* 🎸 packages updated ([1079aec](https://github.com/jamashita/catacombe/commit/1079aec1c4db59bf958ed43d9fac44f800c0d40e))
+* 🎸 packages updated ([1f7d452](https://github.com/jamashita/catacombe/commit/1f7d45245edfc3094e6554ef081f72191ab5d35f))
+
 # [@jamashita/catacombe-request-v2.11.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-request-v2.10.0...@jamashita/catacombe-request-v2.11.0) (2022-04-15)
 
 
