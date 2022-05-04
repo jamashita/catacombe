@@ -11,7 +11,7 @@ export interface IRedisSet {
 
   pop(key: string): Promise<Nullable<string>>;
 
-  random(key: string): Promise<Nullable<string> | Array<unknown>>;
+  random(key: string): Promise<Array<unknown> | Nullable<string>>;
 
   remove(key: string, ...values: ReadonlyArray<string>): Promise<number>;
 }
