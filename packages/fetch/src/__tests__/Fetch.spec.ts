@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ObjectLiteral } from '@jamashita/anden-type';
 import { StatusCodes } from 'http-status-codes';
 import fetchMock, { MockResponseInit } from 'jest-fetch-mock';
