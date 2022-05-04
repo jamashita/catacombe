@@ -81,7 +81,7 @@ export class RedisSet implements IRedisSet {
     }
   }
 
-  public async random(key: string): Promise<Nullable<string> | Array<unknown>> {
+  public async random(key: string): Promise<Array<unknown> | Nullable<string>> {
     try {
       return await this.client.srandmember(key);
     }
