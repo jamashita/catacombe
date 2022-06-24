@@ -16,7 +16,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async delete(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+      const res: NeedleResponse = await new Promise((resolve: Resolve<NeedleResponse>, reject: Reject) => {
         needle.delete(url, null, (err: Nullable<Error>, response: NeedleResponse) => {
           if (!Kind.isNull(err)) {
             reject(err);
@@ -59,7 +59,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async get(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+      const res: NeedleResponse = await new Promise((resolve: Resolve<NeedleResponse>, reject: Reject) => {
         needle.get(url, (err: Nullable<Error>, response: NeedleResponse) => {
           if (!Kind.isNull(err)) {
             reject(err);
@@ -94,7 +94,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async head(url: string): Promise<RequestResponse<T>> {
     try {
-      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+      const res: NeedleResponse = await new Promise((resolve: Resolve<NeedleResponse>, reject: Reject) => {
         needle.head(url, (err: Nullable<Error>, response: NeedleResponse) => {
           if (!Kind.isNull(err)) {
             reject(err);
@@ -157,7 +157,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
   public async post(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
       const body: Nullable<string> = await this.flatten(payload);
-      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+      const res: NeedleResponse = await new Promise((resolve: Resolve<NeedleResponse>, reject: Reject) => {
         needle.post(url, body, (err: Nullable<Error>, response: NeedleResponse) => {
           if (!Kind.isNull(err)) {
             reject(err);
@@ -193,7 +193,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
   public async put(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
       const body: Nullable<string> = await this.flatten(payload);
-      const res: NeedleResponse = await new Promise<NeedleResponse>((resolve: Resolve<NeedleResponse>, reject: Reject) => {
+      const res: NeedleResponse = await new Promise((resolve: Resolve<NeedleResponse>, reject: Reject) => {
         needle.put(url, body, (err: Nullable<Error>, response: NeedleResponse) => {
           if (!Kind.isNull(err)) {
             reject(err);
