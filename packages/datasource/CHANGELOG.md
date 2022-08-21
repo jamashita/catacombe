@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-datasource-v2.12.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-datasource-v2.11.0...@jamashita/catacombe-datasource-v2.12.0) (2022-08-21)
+
+
+### Features
+
+* 🎸 packages updated ([2149ca1](https://github.com/jamashita/catacombe/commit/2149ca1b0c99c32f1bc7079fcae9ebc88109699e))
+
 # [@jamashita/catacombe-datasource-v2.11.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-datasource-v2.10.0...@jamashita/catacombe-datasource-v2.11.0) (2022-06-24)
 
 
