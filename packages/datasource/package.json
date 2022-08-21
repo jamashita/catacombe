@@ -23,7 +23,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@jamashita/anden-error": "2.17.0"
+    "@jamashita/anden-error": "2.18.0"
   },
   "engines": {
     "node": ">=16.0.0"
