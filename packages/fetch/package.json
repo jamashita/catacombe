@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe-fetch",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@jamashita/anden-error": "2.19.0",
     "@jamashita/anden-type": "2.12.0",
-    "@jamashita/catacombe-datasource": "^2.12.0",
+    "@jamashita/catacombe-datasource": "^2.13.0",
     "@jamashita/steckdose-json": "2.15.0"
   },
   "devDependencies": {
