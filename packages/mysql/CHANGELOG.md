@@ -1,3 +1,10 @@
+# [@jamashita/catacombe-mysql-v2.18.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.17.0...@jamashita/catacombe-mysql-v2.18.0) (2022-11-29)
+
+
+### Features
+
+* 🎸 packages updated ([0ee0c53](https://github.com/jamashita/catacombe/commit/0ee0c537ca9cbae19992f3bb64b295d42ac24ebb))
+
 # [@jamashita/catacombe-mysql-v2.17.0](https://github.com/jamashita/catacombe/compare/@jamashita/catacombe-mysql-v2.16.0...@jamashita/catacombe-mysql-v2.17.0) (2022-10-24)
 
 
