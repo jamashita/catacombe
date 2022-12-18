@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "repository": {
     "type": "git",
@@ -57,6 +57,10 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "yarn clean && tsc -b tsconfig.compilation.json",
     "clean": "rimraf dist",
@@ -70,8 +74,8 @@
     "update:upgrade": "ncu --packageManager yarn --deep --upgrade"
   },
   "dependencies": {
-    "@jamashita/anden": "1.1.0",
-    "@jamashita/steckdose": "1.1.1",
+    "@jamashita/anden": "1.1.1",
+    "@jamashita/steckdose": "1.1.2",
     "got": "12.5.3",
     "ky": "0.33.0",
     "mysql": "2.18.1",
@@ -100,7 +104,7 @@
     "semantic-release": "19.0.5",
     "sort-package-json": "2.1.0",
     "typescript": "4.9.4",
-    "vite": "4.0.1",
+    "vite": "4.0.2",
     "vitest": "0.25.8"
   },
   "engines": {
