@@ -1,6 +1,6 @@
 {
   "name": "@jamashita/catacombe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "repository": {
     "type": "git",
@@ -10,6 +10,50 @@
   "author": "jamashita <jamashita@arachnid.xyz>",
   "sideEffects": false,
   "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./datasource": {
+      "import": {
+        "types": "./dist/datasource/index.d.ts",
+        "default": "./dist/datasource/index.js"
+      }
+    },
+    "./fetch": {
+      "import": {
+        "types": "./dist/fetch/index.d.ts",
+        "default": "./dist/fetch/index.js"
+      }
+    },
+    "./heap": {
+      "import": {
+        "types": "./dist/heap/index.d.ts",
+        "default": "./dist/heap/index.js"
+      }
+    },
+    "./mysql": {
+      "import": {
+        "types": "./dist/myql/index.d.ts",
+        "default": "./dist/mysql/index.js"
+      }
+    },
+    "./redis": {
+      "import": {
+        "types": "./dist/redis/index.d.ts",
+        "default": "./dist/redis/index.js"
+      }
+    },
+    "./request": {
+      "import": {
+        "types": "./dist/request/index.d.ts",
+        "default": "./dist/request/index.js"
+      }
+    }
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
