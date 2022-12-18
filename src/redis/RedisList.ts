@@ -1,18 +1,18 @@
-import { Nullable } from '@jamashita/anden-type';
-import Redis from 'ioredis';
-import { IRedisList } from './IRedisList';
-import { RedisError } from './RedisError';
+import { Nullable } from '@jamashita/anden/type';
+import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import { IRedisList } from './IRedisList.js';
+import { RedisError } from './RedisError.js';
 
 export class RedisList implements IRedisList {
-  private readonly client: Redis;
+  private readonly client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>;
 
-  public constructor(client: Redis) {
+  public constructor(client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>) {
     this.client = client;
   }
 
   public async dump(key: string): Promise<Array<string>> {
     try {
-      return await this.client.lrange(key, 0, -1);
+      return await this.client.lRange(key, 0, -1);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -25,7 +25,7 @@ export class RedisList implements IRedisList {
 
   public async length(key: string): Promise<number> {
     try {
-      return await this.client.llen(key);
+      return await this.client.lLen(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -38,7 +38,7 @@ export class RedisList implements IRedisList {
 
   public async pop(key: string): Promise<Nullable<string>> {
     try {
-      return await this.client.rpop(key);
+      return await this.client.rPop(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -51,7 +51,7 @@ export class RedisList implements IRedisList {
 
   public async push(key: string, value: string): Promise<number> {
     try {
-      return await this.client.rpush(key, value);
+      return await this.client.rPush(key, value);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -64,7 +64,7 @@ export class RedisList implements IRedisList {
 
   public async remove(key: string, value: string): Promise<number> {
     try {
-      return await this.client.lrem(key, 0, value);
+      return await this.client.lRem(key, 0, value);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -80,7 +80,7 @@ export class RedisList implements IRedisList {
     const stop: number = offset + limit;
 
     try {
-      return await this.client.lrange(key, start, stop);
+      return await this.client.lRange(key, start, stop);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -93,7 +93,7 @@ export class RedisList implements IRedisList {
 
   public async shift(key: string): Promise<Nullable<string>> {
     try {
-      return await this.client.lpop(key);
+      return await this.client.lPop(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {

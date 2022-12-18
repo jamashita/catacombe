@@ -1,12 +1,12 @@
-import { Nullable } from '@jamashita/anden-type';
-import Redis from 'ioredis';
-import { IRedisString } from './IRedisString';
-import { RedisError } from './RedisError';
+import { Kind, Nullable } from '@jamashita/anden/type';
+import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import { IRedisString } from './IRedisString.js';
+import { RedisError } from './RedisError.js';
 
 export class RedisString implements IRedisString {
-  private readonly client: Redis;
+  private readonly client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>;
 
-  public constructor(client: Redis) {
+  public constructor(client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>) {
     this.client = client;
   }
 
@@ -25,13 +25,9 @@ export class RedisString implements IRedisString {
 
   public async set(key: string, value: string): Promise<boolean> {
     try {
-      const result: Nullable<'OK'> = await this.client.set(key, value);
+      const result: Nullable<string> = await this.client.set(key, value);
 
-      if (result === 'OK') {
-        return true;
-      }
-
-      return false;
+      return !Kind.isNull(result);
     }
     catch (err: unknown) {
       if (err instanceof Error) {

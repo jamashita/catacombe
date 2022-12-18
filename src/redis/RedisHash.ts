@@ -1,18 +1,19 @@
-import { Nullable } from '@jamashita/anden-type';
-import Redis from 'ioredis';
-import { IRedisHash } from './IRedisHash';
-import { RedisError } from './RedisError';
+import { Ambiguous } from '@jamashita/anden';
+import { Kind, Nullable } from '@jamashita/anden/type';
+import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import { IRedisHash } from './IRedisHash.js';
+import { RedisError } from './RedisError.js';
 
 export class RedisHash implements IRedisHash {
-  private readonly client: Redis;
+  private readonly client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>;
 
-  public constructor(client: Redis) {
+  public constructor(client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>) {
     this.client = client;
   }
 
   public async delete(key: string, field: string): Promise<number> {
     try {
-      return await this.client.hdel(key, field);
+      return await this.client.hDel(key, field);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -25,7 +26,13 @@ export class RedisHash implements IRedisHash {
 
   public async get(key: string, field: string): Promise<Nullable<string>> {
     try {
-      return await this.client.hget(key, field);
+      const str: Ambiguous<string> = await this.client.hGet(key, field);
+
+      if (Kind.isUndefined(str)) {
+        return null;
+      }
+
+      return str;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -38,13 +45,7 @@ export class RedisHash implements IRedisHash {
 
   public async has(key: string, field: string): Promise<boolean> {
     try {
-      const result: number = await this.client.hexists(key, field);
-
-      if (result === 0) {
-        return false;
-      }
-
-      return true;
+      return await this.client.hExists(key, field);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -57,7 +58,7 @@ export class RedisHash implements IRedisHash {
 
   public async length(key: string): Promise<number> {
     try {
-      return await this.client.hlen(key);
+      return await this.client.hLen(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -70,9 +71,13 @@ export class RedisHash implements IRedisHash {
 
   public async set(key: string, field: string, value: string): Promise<boolean> {
     try {
-      await this.client.hset(key, field, value);
+      const num: number = await this.client.hSet(key, field, value);
 
-      return true;
+      if (num > 0) {
+        return true;
+      }
+
+      return false;
     }
     catch (err: unknown) {
       if (err instanceof Error) {

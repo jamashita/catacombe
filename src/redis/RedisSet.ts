@@ -1,18 +1,18 @@
-import { Nullable } from '@jamashita/anden-type';
-import Redis from 'ioredis';
-import { IRedisSet } from './IRedisSet';
-import { RedisError } from './RedisError';
+import { Nullable } from '@jamashita/anden/type';
+import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import { IRedisSet } from './IRedisSet.js';
+import { RedisError } from './RedisError.js';
 
 export class RedisSet implements IRedisSet {
-  private readonly client: Redis;
+  private readonly client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>;
 
-  public constructor(client: Redis) {
+  public constructor(client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>) {
     this.client = client;
   }
 
   public async add(key: string, ...values: ReadonlyArray<string>): Promise<number> {
     try {
-      return await this.client.sadd(key, ...values);
+      return await this.client.sAdd(key, [...values]);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -25,7 +25,7 @@ export class RedisSet implements IRedisSet {
 
   public async dump(key: string): Promise<Array<string>> {
     try {
-      return await this.client.smembers(key);
+      return await this.client.sMembers(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -38,13 +38,7 @@ export class RedisSet implements IRedisSet {
 
   public async has(key: string, value: string): Promise<boolean> {
     try {
-      const result: number = await this.client.sismember(key, value);
-
-      if (result === 0) {
-        return false;
-      }
-
-      return true;
+      return await this.client.sIsMember(key, value);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -57,7 +51,7 @@ export class RedisSet implements IRedisSet {
 
   public async length(key: string): Promise<number> {
     try {
-      return await this.client.scard(key);
+      return await this.client.sCard(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -70,7 +64,14 @@ export class RedisSet implements IRedisSet {
 
   public async pop(key: string): Promise<Nullable<string>> {
     try {
-      return await this.client.spop(key);
+      const pop: Array<string> = await this.client.sPop(key);
+
+      if (pop.length === 0) {
+        return null;
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      return pop[0]!;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -83,7 +84,7 @@ export class RedisSet implements IRedisSet {
 
   public async random(key: string): Promise<Array<unknown> | Nullable<string>> {
     try {
-      return await this.client.srandmember(key);
+      return await this.client.sRandMember(key);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -96,7 +97,7 @@ export class RedisSet implements IRedisSet {
 
   public async remove(key: string, ...values: ReadonlyArray<string>): Promise<number> {
     try {
-      return await this.client.srem(key, ...values);
+      return await this.client.sRem(key, [...values]);
     }
     catch (err: unknown) {
       if (err instanceof Error) {

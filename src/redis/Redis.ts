@@ -1,39 +1,42 @@
-import R, { RedisOptions } from 'ioredis';
-import { IRedis } from './IRedis';
-import { RedisError } from './RedisError';
-import { RedisHash } from './RedisHash';
-import { RedisList } from './RedisList';
-import { RedisSet } from './RedisSet';
-import { RedisString } from './RedisString';
+import { BinaryConsumer } from '@jamashita/anden/type';
+import {
+  createClient,
+  RedisClientOptions,
+  RedisClientType,
+  RedisDefaultModules,
+  RedisFunctions,
+  RedisModules,
+  RedisScripts
+} from 'redis';
+import { IRedis } from './IRedis.js';
+import { RedisError } from './RedisError.js';
+import { RedisHash } from './RedisHash.js';
+import { RedisList } from './RedisList.js';
+import { RedisSet } from './RedisSet.js';
+import { RedisString } from './RedisString.js';
 
-export type RedisConfig = RedisOptions;
+export type RedisConfig = RedisClientOptions;
 
 export class Redis implements IRedis {
-  private readonly client: R;
+  private readonly client: RedisClientType<RedisDefaultModules & RedisModules, RedisFunctions, RedisScripts>;
   private readonly hash: RedisHash;
   private readonly set: RedisSet;
   private readonly list: RedisList;
   private readonly string: RedisString;
 
   public constructor(config: RedisConfig) {
-    const client: R = new R(config);
-
-    this.client = client;
-    this.hash = new RedisHash(client);
-    this.set = new RedisSet(client);
-    this.list = new RedisList(client);
-    this.string = new RedisString(client);
+    this.client = createClient(config);
+    this.hash = new RedisHash(this.client);
+    this.set = new RedisSet(this.client);
+    this.list = new RedisList(this.client);
+    this.string = new RedisString(this.client);
   }
 
   public async delete(...keys: ReadonlyArray<string>): Promise<boolean> {
     try {
-      const result: number = await this.client.del(...keys);
+      const result: number = await this.client.del([...keys]);
 
-      if (result === 0) {
-        return false;
-      }
-
-      return true;
+      return result !== 0;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -46,13 +49,9 @@ export class Redis implements IRedis {
 
   public async exists(...keys: ReadonlyArray<string>): Promise<boolean> {
     try {
-      const result: number = await this.client.exists(...keys);
+      const result: number = await this.client.exists([...keys]);
 
-      if (result === 0) {
-        return false;
-      }
-
-      return true;
+      return result !== 0;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -65,13 +64,7 @@ export class Redis implements IRedis {
 
   public async expires(key: string, seconds: number): Promise<boolean> {
     try {
-      const result: number = await this.client.expire(key, seconds);
-
-      if (result === 0) {
-        return false;
-      }
-
-      return true;
+      return await this.client.expire(key, seconds);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -80,10 +73,6 @@ export class Redis implements IRedis {
 
       throw err;
     }
-  }
-
-  public getClient(): R {
-    return this.client;
   }
 
   public getHash(): RedisHash {
@@ -102,7 +91,7 @@ export class Redis implements IRedis {
     return this.string;
   }
 
-  public on(callback: (channel: string, message: string) => void): void {
+  public on(callback: BinaryConsumer<string, string>): void {
     try {
       this.client.on('message', callback);
     }
@@ -128,9 +117,9 @@ export class Redis implements IRedis {
     }
   }
 
-  public async subscribe(...channels: ReadonlyArray<string>): Promise<unknown> {
+  public async subscribe(channel: string, callback: BinaryConsumer<string, string>): Promise<void> {
     try {
-      return await this.client.subscribe(...channels);
+      await this.client.subscribe(channel, callback);
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -141,9 +130,9 @@ export class Redis implements IRedis {
     }
   }
 
-  public async unsubscribe(...channels: ReadonlyArray<string>): Promise<unknown> {
+  public async unsubscribe(...channels: ReadonlyArray<string>): Promise<void> {
     try {
-      return await this.client.unsubscribe(...channels);
+      await this.client.unsubscribe(...channels);
     }
     catch (err: unknown) {
       if (err instanceof Error) {

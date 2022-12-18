@@ -1,14 +1,13 @@
-import { UnimplementedError } from '@jamashita/anden-error';
-import Redis from 'ioredis';
-import { IRedis } from '../IRedis';
-import { IRedisHash } from '../IRedisHash';
-import { IRedisList } from '../IRedisList';
-import { IRedisSet } from '../IRedisSet';
-import { IRedisString } from '../IRedisString';
-import { MockRedisHash } from './MockRedisHash';
-import { MockRedisList } from './MockRedisList';
-import { MockRedisSet } from './MockRedisSet';
-import { MockRedisString } from './MockRedisString';
+import { UnimplementedError } from '@jamashita/anden/error';
+import { IRedis } from '../IRedis.js';
+import { IRedisHash } from '../IRedisHash.js';
+import { IRedisList } from '../IRedisList.js';
+import { IRedisSet } from '../IRedisSet.js';
+import { IRedisString } from '../IRedisString.js';
+import { MockRedisHash } from './MockRedisHash.js';
+import { MockRedisList } from './MockRedisList.js';
+import { MockRedisSet } from './MockRedisSet.js';
+import { MockRedisString } from './MockRedisString.js';
 
 type MockRedisSetting = Partial<Readonly<{
   hash: IRedisHash;
@@ -18,7 +17,6 @@ type MockRedisSetting = Partial<Readonly<{
 }>>;
 
 export class MockRedis implements IRedis {
-  private readonly client: Redis;
   private readonly hash: IRedisHash;
   private readonly set: IRedisSet;
   private readonly list: IRedisList;
@@ -30,7 +28,6 @@ export class MockRedis implements IRedis {
     list = new MockRedisList(),
     string = new MockRedisString()
   }: MockRedisSetting = {}) {
-    this.client = new Redis({});
     this.hash = hash;
     this.set = set;
     this.list = list;
@@ -47,10 +44,6 @@ export class MockRedis implements IRedis {
 
   public expires(): Promise<boolean> {
     throw new UnimplementedError();
-  }
-
-  public getClient(): Redis {
-    return this.client;
   }
 
   public getHash(): IRedisHash {
@@ -77,11 +70,11 @@ export class MockRedis implements IRedis {
     throw new UnimplementedError();
   }
 
-  public subscribe(): Promise<unknown> {
+  public subscribe(): Promise<void> {
     throw new UnimplementedError();
   }
 
-  public unsubscribe(): Promise<unknown> {
+  public unsubscribe(): Promise<void> {
     throw new UnimplementedError();
   }
 }
