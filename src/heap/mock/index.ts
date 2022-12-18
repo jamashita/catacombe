@@ -1,1 +1,1 @@
-export * from './MockHeap';
+export * from './MockHeap.js';
