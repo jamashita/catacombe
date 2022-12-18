@@ -1,1 +1,1 @@
-export * from './MockFetch';
+export * from './MockFetch.js';

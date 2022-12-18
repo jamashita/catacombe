@@ -1,5 +1,5 @@
-import { ObjectLiteral } from '@jamashita/anden-type';
-import { FetchResponse, FetchResponseType } from './FetchResponse';
+import { ObjectLiteral } from '@jamashita/anden/type';
+import { FetchResponse, FetchResponseType } from './FetchResponse.js';
 
 export interface IFetch<T extends FetchResponseType> {
   delete(url: string): Promise<FetchResponse<T>>;

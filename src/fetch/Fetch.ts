@@ -1,8 +1,8 @@
-import { Kind, Nullable, ObjectLiteral } from '@jamashita/anden-type';
-import { JSONA } from '@jamashita/steckdose-json';
-import { FetchError } from './FetchError';
-import { FetchResponse, FetchResponseType } from './FetchResponse';
-import { IFetch } from './IFetch';
+import { ObjectLiteral } from '@jamashita/anden/type';
+import ky, { KyResponse } from 'ky';
+import { FetchError } from './FetchError.js';
+import { FetchResponse, FetchResponseType } from './FetchResponse.js';
+import { IFetch } from './IFetch.js';
 
 export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private readonly type: T;
@@ -13,9 +13,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async delete(url: string): Promise<FetchResponse<T>> {
     try {
-      const res: Response = await fetch(url, {
-        method: 'DELETE'
-      });
+      const res: KyResponse = await ky.delete(url);
 
       if (!res.ok) {
         throw new FetchError(`fetch RETURNED ${res.status}`);
@@ -36,19 +34,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     }
   }
 
-  private async flatten(payload?: ObjectLiteral): Promise<Nullable<string>> {
-    if (Kind.isUndefined(payload)) {
-      return Promise.resolve<null>(null);
-    }
-
-    return JSONA.stringify(payload);
-  }
-
   public async get(url: string): Promise<FetchResponse<T>> {
     try {
-      const res: Response = await fetch(url, {
-        method: 'GET'
-      });
+      const res: KyResponse = await ky.get(url);
 
       if (!res.ok) {
         throw new FetchError(`Fetch RETURNED ${res.status}`);
@@ -71,9 +59,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async head(url: string): Promise<FetchResponse<T>> {
     try {
-      const res: Response = await fetch(url, {
-        method: 'HEAD'
-      });
+      const res: KyResponse = await ky.head(url);
 
       if (!res.ok) {
         throw new FetchError(`fetch RETURNED ${res.status}`);
@@ -94,7 +80,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     }
   }
 
-  private async hydrate(res: Response): Promise<FetchResponse<T>> {
+  private async hydrate(res: KyResponse): Promise<FetchResponse<T>> {
     switch (this.type) {
       case 'arraybuffer': {
         const body: ArrayBuffer = await res.arrayBuffer();
@@ -113,7 +99,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         } as FetchResponse<T>;
       }
       case 'json': {
-        const body: ObjectLiteral = await res.json() as ObjectLiteral;
+        const body: ObjectLiteral = await res.json<ObjectLiteral>();
 
         return {
           status: res.status,
@@ -136,10 +122,8 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async post(url: string, payload?: ObjectLiteral): Promise<FetchResponse<T>> {
     try {
-      const body: Nullable<string> = await this.flatten(payload);
-      const res: Response = await fetch(url, {
-        method: 'POST',
-        body
+      const res: KyResponse = await ky.post(url, {
+        json: payload
       });
 
       if (!res.ok) {
@@ -163,10 +147,8 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
   public async put(url: string, payload?: ObjectLiteral): Promise<FetchResponse<T>> {
     try {
-      const body: Nullable<string> = await this.flatten(payload);
-      const res: Response = await fetch(url, {
-        method: 'PUT',
-        body
+      const res: KyResponse = await ky.put(url, {
+        json: payload
       });
 
       if (!res.ok) {
