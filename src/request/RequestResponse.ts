@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@jamashita/anden-type';
+import { ObjectLiteral } from '@jamashita/anden/type';
 
 export type RequestBodyKV = Readonly<{
   buffer: Buffer;

@@ -1,6 +1,6 @@
-import { UnimplementedError } from '@jamashita/anden-error';
-import { IRequest } from '../IRequest';
-import { RequestResponse, RequestResponseType } from '../RequestResponse';
+import { UnimplementedError } from '@jamashita/anden/error';
+import { IRequest } from '../IRequest.js';
+import { RequestResponse, RequestResponseType } from '../RequestResponse.js';
 
 export class MockRequest<T extends RequestResponseType> implements IRequest<T> {
   public delete(): Promise<RequestResponse<T>> {

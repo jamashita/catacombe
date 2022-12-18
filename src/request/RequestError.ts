@@ -1,4 +1,4 @@
-import { DataSourceError } from '@jamashita/catacombe-datasource';
+import { DataSourceError } from '../datasource/index.js';
 
 export class RequestError extends DataSourceError {
   // NOOP

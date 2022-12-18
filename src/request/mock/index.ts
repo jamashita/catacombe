@@ -1,1 +1,1 @@
-export * from './MockRequest';
+export * from './MockRequest.js';
