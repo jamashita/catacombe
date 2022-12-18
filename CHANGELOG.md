@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/jamashita/catacombe/compare/v1.0.2...v1.0.3) (2022-12-18)
+
+
+### Bug Fixes
+
+* 🐛 file ([6ae5054](https://github.com/jamashita/catacombe/commit/6ae5054deb2caecf8618c54293d4d518d1cd364e))
+
 ## [1.0.2](https://github.com/jamashita/catacombe/compare/v1.0.1...v1.0.2) (2022-12-18)
 
 
