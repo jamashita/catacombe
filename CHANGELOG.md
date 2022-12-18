@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/jamashita/catacombe/compare/v1.0.1...v1.0.2) (2022-12-18)
+
+
+### Bug Fixes
+
+* 🐛 export path ([bd1fda9](https://github.com/jamashita/catacombe/commit/bd1fda9a1c545b2a07daf6a77c0b16becc4571b3))
+
 ## [1.0.1](https://github.com/jamashita/catacombe/compare/v1.0.0...v1.0.1) (2022-12-18)
 
 
