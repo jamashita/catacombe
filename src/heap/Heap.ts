@@ -1,4 +1,4 @@
-import { Ambiguous, Kind } from '@jamashita/anden';
+import { Ambiguous, Kind } from '@jamashita/anden/type';
 import { HeapError } from './HeapError.js';
 import { IHeap } from './IHeap.js';
 

@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@jamashita/anden';
+import { ObjectLiteral } from '@jamashita/anden/type';
 
 type FetchBodyKV = Readonly<{
   arraybuffer: ArrayBuffer;
