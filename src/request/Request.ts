@@ -1,5 +1,5 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
-import { JSONA } from '@jamashita/steckdose/json';
+import { ObjectLiteral } from '@jamashita/anden';
+import { JSONA } from '@jamashita/steckdose';
 import got from 'got';
 import { IRequest } from './IRequest.js';
 import { RequestError } from './RequestError.js';
