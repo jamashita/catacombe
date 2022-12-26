@@ -29,6 +29,12 @@
         "default": "./dist/fetch/index.js"
       }
     },
+    "./file": {
+      "import": {
+        "types": "./dist/file/index.d.ts",
+        "default": "./dist/file/index.js"
+      }
+    },
     "./heap": {
       "import": {
         "types": "./dist/heap/index.d.ts",
