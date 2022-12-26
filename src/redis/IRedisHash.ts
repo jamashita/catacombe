@@ -1,4 +1,4 @@
-import { Nullable } from '@jamashita/anden';
+import { Nullable } from '@jamashita/anden/type';
 
 export interface IRedisHash {
   delete(key: string, field: string): Promise<number>;

@@ -1,4 +1,5 @@
-import { Nullable, UnimplementedError } from '@jamashita/anden';
+import { UnimplementedError } from '@jamashita/anden/error';
+import { Nullable } from '@jamashita/anden/type';
 import { IRedisHash } from '../IRedisHash.js';
 
 export class MockRedisHash implements IRedisHash {
