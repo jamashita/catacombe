@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { FetchResponse, FetchResponseType } from '../FetchResponse.js';
 import { IFetch } from '../IFetch.js';
 

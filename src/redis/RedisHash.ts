@@ -1,5 +1,4 @@
-import { Ambiguous } from '@jamashita/anden';
-import { Kind, Nullable } from '@jamashita/anden/type';
+import { Ambiguous, Kind, Nullable } from '@jamashita/anden';
 import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
 import { IRedisHash } from './IRedisHash.js';
 import { RedisError } from './RedisError.js';

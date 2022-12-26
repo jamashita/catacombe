@@ -1,4 +1,4 @@
-import { BinaryConsumer } from '@jamashita/anden/type';
+import { BinaryConsumer } from '@jamashita/anden';
 import { IRedisHash } from './IRedisHash.js';
 import { IRedisList } from './IRedisList.js';
 import { IRedisSet } from './IRedisSet.js';

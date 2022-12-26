@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { IRedis } from '../IRedis.js';
 import { IRedisHash } from '../IRedisHash.js';
 import { IRedisList } from '../IRedisList.js';

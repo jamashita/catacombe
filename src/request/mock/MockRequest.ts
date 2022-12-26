@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { IRequest } from '../IRequest.js';
 import { RequestResponse, RequestResponseType } from '../RequestResponse.js';
 

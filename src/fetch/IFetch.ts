@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
+import { ObjectLiteral } from '@jamashita/anden';
 import { FetchResponse, FetchResponseType } from './FetchResponse.js';
 
 export interface IFetch<T extends FetchResponseType> {

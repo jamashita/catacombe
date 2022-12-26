@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { IRedisList } from '../IRedisList.js';
 
 export class MockRedisList implements IRedisList {

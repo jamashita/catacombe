@@ -1,4 +1,4 @@
-import { Nullable } from '@jamashita/anden/type';
+import { Nullable } from '@jamashita/anden';
 
 export interface IRedisList {
   dump(key: string): Promise<Array<string>>;
