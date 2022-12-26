@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden';
+import { UnimplementedError } from '@jamashita/anden/error';
 import { IHeap } from '../IHeap.js';
 
 export class MockHeap implements IHeap {

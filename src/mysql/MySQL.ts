@@ -1,4 +1,4 @@
-import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden';
+import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden/type';
 import { Connection as Conn, createPool, MysqlError, Pool, PoolConfig, PoolConnection } from 'mysql';
 import { Connection } from './Connection.js';
 import { IMySQL } from './IMySQL.js';
