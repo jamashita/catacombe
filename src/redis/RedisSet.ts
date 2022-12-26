@@ -1,4 +1,4 @@
-import { Nullable } from '@jamashita/anden/type';
+import { Nullable } from '@jamashita/anden';
 import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
 import { IRedisSet } from './IRedisSet.js';
 import { RedisError } from './RedisError.js';

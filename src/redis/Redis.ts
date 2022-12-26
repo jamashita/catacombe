@@ -1,4 +1,4 @@
-import { BinaryConsumer } from '@jamashita/anden/type';
+import { BinaryConsumer } from '@jamashita/anden';
 import {
   createClient,
   RedisClientOptions,

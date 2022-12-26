@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { IMySQL } from '../IMySQL.js';
 
 export class MockMySQL implements IMySQL {

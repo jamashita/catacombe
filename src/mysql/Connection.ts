@@ -1,4 +1,4 @@
-import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden/type';
+import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden';
 import { MysqlError, PoolConnection } from 'mysql';
 import { IConnection } from './IConnection.js';
 import { MySQLError } from './MySQLError.js';

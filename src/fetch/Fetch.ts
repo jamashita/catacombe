@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
+import { ObjectLiteral } from '@jamashita/anden';
 import ky, { KyResponse } from 'ky';
 import { FetchError } from './FetchError.js';
 import { FetchResponse, FetchResponseType } from './FetchResponse.js';

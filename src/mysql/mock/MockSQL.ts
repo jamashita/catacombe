@@ -1,4 +1,4 @@
-import { UnimplementedError } from '@jamashita/anden/error';
+import { UnimplementedError } from '@jamashita/anden';
 import { ISQL } from '../ISQL.js';
 
 export class MockSQL implements ISQL {
