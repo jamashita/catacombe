@@ -1,4 +1,4 @@
-import { ObjectLiteral } from '@jamashita/anden';
+import { ObjectLiteral } from '@jamashita/anden/type';
 import { RequestResponse, RequestResponseType } from './RequestResponse.js';
 
 export interface IRequest<T extends RequestResponseType> {
