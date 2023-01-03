@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jamashita/catacombe/compare/v1.2.0...v1.3.0) (2023-01-03)
+
+
+### Features
+
+* 🎸 packages upaetd ([a8a3dd3](https://github.com/jamashita/catacombe/commit/a8a3dd3a00ae10667e8b9410387cd15e5c69a40b))
+
 # [1.2.0](https://github.com/jamashita/catacombe/compare/v1.1.0...v1.2.0) (2022-12-26)
 
 
