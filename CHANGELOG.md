@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/jamashita/catacombe/compare/v1.1.0...v1.2.0) (2022-12-26)
+
+
+### Features
+
+* 🎸 node -> nodenext ([d52f3ab](https://github.com/jamashita/catacombe/commit/d52f3ab0c994af2b873aab4447fc75f9527deaff))
+
 # [1.1.0](https://github.com/jamashita/catacombe/compare/v1.0.3...v1.1.0) (2022-12-26)
 
 
