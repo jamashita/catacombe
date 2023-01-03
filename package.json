@@ -80,17 +80,17 @@
     "update:upgrade": "ncu --packageManager yarn --deep --upgrade"
   },
   "dependencies": {
-    "@jamashita/anden": "1.4.0",
-    "@jamashita/steckdose": "1.3.0",
+    "@jamashita/anden": "1.6.0",
+    "@jamashita/steckdose": "1.6.0",
     "got": "12.5.3",
-    "ky": "0.33.0",
+    "ky": "0.33.1",
     "mysql": "2.18.1",
     "redis": "4.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
     "@commitlint/config-conventional": "17.3.0",
-    "@jamashita/eslint-plugin": "1.80.0",
+    "@jamashita/eslint-plugin": "1.82.1",
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/git": "10.0.1",
@@ -110,7 +110,7 @@
     "semantic-release": "19.0.5",
     "sort-package-json": "2.1.0",
     "typescript": "4.9.4",
-    "vitest": "0.26.2"
+    "vitest": "0.26.3"
   },
   "engines": {
     "node": ">=16.0.0"
