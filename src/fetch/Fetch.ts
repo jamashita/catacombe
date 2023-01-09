@@ -20,7 +20,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
+      return this.transform(res);
     }
     catch (err: unknown) {
       if (err instanceof FetchError) {
@@ -43,7 +43,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
+      return this.transform(res);
     }
     catch (err: unknown) {
       if (err instanceof FetchError) {
@@ -66,7 +66,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
+      return this.transform(res);
     }
     catch (err: unknown) {
       if (err instanceof FetchError) {
@@ -77,46 +77,6 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       throw err;
-    }
-  }
-
-  private async hydrate(res: KyResponse): Promise<FetchResponse<T>> {
-    switch (this.type) {
-      case 'arraybuffer': {
-        const body: ArrayBuffer = await res.arrayBuffer();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'blob': {
-        const body: Blob = await res.blob();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'json': {
-        const body: ObjectLiteral = await res.json<ObjectLiteral>();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      case 'text': {
-        const body: string = await res.text();
-
-        return {
-          status: res.status,
-          body
-        } as FetchResponse<T>;
-      }
-      default: {
-        throw new FetchError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
-      }
     }
   }
 
@@ -131,7 +91,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
+      return this.transform(res);
     }
     catch (err: unknown) {
       if (err instanceof FetchError) {
@@ -156,7 +116,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(res);
+      return this.transform(res);
     }
     catch (err: unknown) {
       if (err instanceof FetchError) {
@@ -167,6 +127,38 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       }
 
       throw err;
+    }
+  }
+
+  private async transform(res: KyResponse): Promise<FetchResponse<T>> {
+    switch (this.type) {
+      case 'arraybuffer': {
+        return {
+          status: res.status,
+          body: await res.arrayBuffer()
+        } as FetchResponse<T>;
+      }
+      case 'blob': {
+        return {
+          status: res.status,
+          body: await res.blob()
+        } as FetchResponse<T>;
+      }
+      case 'json': {
+        return {
+          status: res.status,
+          body: await res.json<ObjectLiteral>()
+        } as FetchResponse<T>;
+      }
+      case 'text': {
+        return {
+          status: res.status,
+          body: await res.text()
+        } as FetchResponse<T>;
+      }
+      default: {
+        throw new FetchError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+      }
     }
   }
 }
