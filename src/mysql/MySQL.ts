@@ -31,7 +31,7 @@ export class MySQL implements IMySQL {
   }
 
   public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
-    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
+    return new Promise((resolve: Resolve<R>, reject: Reject) => {
       this.pool.query(sql, value, (err: Nullable<MysqlError>, result: R) => {
         if (!Kind.isNull(err)) {
           reject(new MySQLError(err.message));
@@ -45,7 +45,7 @@ export class MySQL implements IMySQL {
   }
 
   private getConnection(): Promise<Connection> {
-    return new Promise<Connection>((resolve: Resolve<Connection>, reject: Reject) => {
+    return new Promise((resolve: Resolve<Connection>, reject: Reject) => {
       this.pool.getConnection((err1: MysqlError, connection: PoolConnection) => {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unnecessary-condition
         if (err1) {
