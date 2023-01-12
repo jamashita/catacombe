@@ -24,8 +24,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(rawBody, statusCode);
+      return await this.transform(rawBody, statusCode);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -49,8 +48,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(rawBody, statusCode);
+      return await this.transform(rawBody, statusCode);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -74,8 +72,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(rawBody, statusCode);
+      return await this.transform(rawBody, statusCode);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -86,33 +83,6 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       }
 
       throw err;
-    }
-  }
-
-  private async hydrate(buffer: Buffer, status: number): Promise<RequestResponse<T>> {
-    switch (this.type) {
-      case 'buffer': {
-        return {
-          status,
-          body: buffer
-        } as RequestResponse<T>;
-      }
-      case 'json': {
-        return {
-          status,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          body: await JSONA.parse(buffer.toString('utf-8'))
-        } as RequestResponse<T>;
-      }
-      case 'text': {
-        return {
-          status,
-          body: buffer.toString('utf-8')
-        } as RequestResponse<T>;
-      }
-      default: {
-        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
-      }
     }
   }
 
@@ -127,8 +97,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(rawBody, statusCode);
+      return await this.transform(rawBody, statusCode);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -153,8 +122,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         throw new RequestError(`request RETURNED ${statusCode}`);
       }
 
-      // eslint-disable-next-line @typescript-eslint/return-await
-      return this.hydrate(rawBody, statusCode);
+      return await this.transform(rawBody, statusCode);
     }
     catch (err: unknown) {
       if (err instanceof RequestError) {
@@ -165,6 +133,32 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       }
 
       throw err;
+    }
+  }
+
+  private async transform(buffer: Buffer, status: number): Promise<RequestResponse<T>> {
+    switch (this.type) {
+      case 'buffer': {
+        return {
+          status,
+          body: buffer
+        } as RequestResponse<T>;
+      }
+      case 'json': {
+        return {
+          status,
+          body: await JSONA.parse(buffer.toString('utf-8'))
+        } as RequestResponse<T>;
+      }
+      case 'text': {
+        return {
+          status,
+          body: buffer.toString('utf-8')
+        } as RequestResponse<T>;
+      }
+      default: {
+        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+      }
     }
   }
 }

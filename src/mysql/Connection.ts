@@ -11,7 +11,7 @@ export class Connection implements IConnection {
   }
 
   public commit(): Promise<void> {
-    return new Promise<void>((resolve: Resolve<void>, reject: Reject) => {
+    return new Promise((resolve: Resolve<void>, reject: Reject) => {
       this.connection.commit((err: MysqlError) => {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (err) {
@@ -26,7 +26,7 @@ export class Connection implements IConnection {
   }
 
   public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
-    return new Promise<R>((resolve: Resolve<R>, reject: Reject) => {
+    return new Promise((resolve: Resolve<R>, reject: Reject) => {
       this.connection.query(sql, value, (err: Nullable<MysqlError>, result: R) => {
         if (!Kind.isNull(err)) {
           reject(new MySQLError(err.message));
@@ -44,7 +44,7 @@ export class Connection implements IConnection {
   }
 
   public rollback(): Promise<void> {
-    return new Promise<void>((resolve: Resolve<void>, reject: Reject) => {
+    return new Promise((resolve: Resolve<void>, reject: Reject) => {
       this.connection.rollback((err: MysqlError) => {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (err) {
