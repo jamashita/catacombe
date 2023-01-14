@@ -282,33 +282,34 @@ Redis methods for list.
 
 ### `redisList.dump(key: string): Promise<Array<string>>`
 
-Retrieve all values stored under the given `key` as an Array.
+Retrieves all elements stored under the given `key` as an Array.
 
 ### `redisList.length(key: string): Promise<number>`
 
-Retrieve the length of the Array stored at the given `key`.
+Retrieves the length of the list stored at the given `key`.
 
 ### `redisList.pop(key: string): Promise<Nullable<string>>`
 
-Return the last value of the Array stored in the given `key` and remove it from the it. May return `null` if it has no
-elements.
+Returns the last element of the list stored in the given `key` and remove it from the list. May return `null` if it has
+no elements.
 
 ### `redisList.push(key: string, value: string): Promise<number>`
 
-Set the given `value` to the Array stored in the given `key`. Then return the current length of the Array.
+Adds the given `value` to the end of the list stored in the given `key`. Then return the current length of the list.
 
 ### `redisList.remove(key: string, value: string): Promise<number>`
 
-Remove the given `value` from the the Array stored in the given `key`. Return the current length of the Array.
+Removes the given `value` from the the list stored in the given `key`. Return the current length of the list.
 
 ### `redisList.select(key: string, offset: number, limit: number): Promise<Array<string>>`
 
-Retrieve a subset of values from the Array stored in `key`, starting at `offset` and ending at `offset + limit`.
+Retrieves a subset of elements from the list stored in `key`, starting at `offset` index and ending at `offset + limit`
+index.
 
 ### `redisList.shift(key: string): Promise<Nullable<string>>`
 
-Return the first value of the Array stored in the given `key` and remove it from the it. May return `null` if it has no
-elements.
+Returns the first element of the list stored in the given `key` and remove it from the list. May return `null` if it has
+no elements.
 
 ## RedisSet
 
@@ -316,32 +317,32 @@ Redis methods for set.
 
 ### `redisSet.add(key: string, ...values: ReadonlyArray<string>): Promise<number>`
 
-Add the given `values` to the Set stored in specified `key`.
+Adds the given `values` to the Set stored in specified `key`. Returns the number of elements added to the set, not
+including already existing elements.
 
 ### `redisSet.dump(key: string)`
 
-Retrieve all values stored under the given `key` as a Set.
+Retrieves all values stored under the given `key` as a Set.
 
 ### `redisSet.has(key: string, value: string): Promise<boolean>`
 
-Return `true` if the given `value` exists in the Set stored at the key specified in `key`.
+Returns `true` if the given `value` exists in the Set stored at the key specified in `key`.
 
 ### `redisSet.length(key: string): Promise<number>`
 
-Retrieve the length of the Array stored at the given `key`.
+Retrieves the length of the Set stored at the given `key`.
 
 ### `redisSet.pop(key: string): Promise<Nullable<string>>`
 
-Return the last value of the Set stored in the given `key` and remove it from the it. May return `null` if it has no
-elements.
+Removes and returns a random element from the Set stored in the given `key`. May return `null` if it has no elements.
 
 ### `redisSet.random(key: string): Promise<Array<number> | Nullable<string>>`
 
-Retrieve a random element from the Set stored at the specified `key`.
+Retrieves a random element from the Set stored at the specified `key`.
 
 ### `redisSet.remove(key: string, ...values: ReadonlyArray<string>): Promise<number>`
 
-Remove the given `values` from the the Set stored in the given `key`. Return the current size of the Set.
+Removes the given `values` from the the Set stored in the given `key`. Returns the current size of the Set.
 
 ## RedisString
 
@@ -349,13 +350,12 @@ Redis methods for string.
 
 ### `redisString.get(key: string): Promise<Nullable<string>>`
 
-Return the string of the given `key`. May return `null` if the string does not exist.
-Retrieve the value stored at the given `key` as a string. May return `null` if the `key` does not exist or the value
-stored at the `key`.
+Retrieves the value stored at the given `key` as a string. May return `null` if the key does not exist or the value
+stored at the `key` is not a string.
 
 ### `redisString.set(key: string, value: string): Promise<boolean>`
 
-Set the given `value` to the given `key`.
+Store the given `value` at the given `key`. Return `true` if the operation was successful.
 
 # Request classes
 
@@ -371,23 +371,28 @@ This is a constructor for a class that returns a response of the specified `type
 
 ### `request.delete(url: string): Promise<FetchResponseType<T>>`
 
-Send a delete request to the server.
+Sends a DELETE request to the server at the specified `url`. Returns a promise that resolves to the server's response
+with the specified data `type`.
 
 ### `request.get(url: string): Promise<FetchResponseType<T>>`
 
-Send a get request to the server.
+Sends a GET request to the server at the specified `url`. Returns a promise that resolves to the server's response with
+the specified data `type`.
 
 ### `request.head(url: string): Promise<FetchResponseType<T>>`
 
-Send a head request to the server.
+Sends a HEAD request to the server at the specified `url`. Returns a promise that resolves to the server's response with
+the specified data `type`.
 
-### `request.post(url: string): Promise<FetchResponseType<T>>`
+### `request.post(url: string, payload?: ObjectLiteral): Promise<FetchResponseType<T>>`
 
-Send a post request to the server.
+Sends a POST request to the server at the specified `url` with an optional body `payload`. Returns a promise that
+resolves to the server's response with the specified data `type`.
 
-### `request.put(url: string): Promise<FetchResponseType<T>>`
+### `request.put(url: string, payload?: ObjectLiteral): Promise<FetchResponseType<T>>`
 
-Send a put request to the server.
+Sends a PUT request to the server at the specified `url` with an optional body `payload`. Returns a promise that
+resolves to the server's response with the specified data `type`.
 
 ## RequestError
 
