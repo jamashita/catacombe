@@ -80,22 +80,22 @@
     "update:upgrade": "ncu --packageManager yarn --deep --upgrade"
   },
   "dependencies": {
-    "@jamashita/anden": "1.8.0",
-    "@jamashita/steckdose": "1.8.0",
+    "@jamashita/anden": "1.9.0",
+    "@jamashita/steckdose": "1.9.0",
     "got": "12.5.3",
-    "ky": "0.33.1",
+    "ky": "0.33.2",
     "mysql": "2.18.1",
     "redis": "4.5.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.4.0",
-    "@commitlint/config-conventional": "17.4.0",
+    "@commitlint/cli": "17.4.2",
+    "@commitlint/config-conventional": "17.4.2",
     "@jamashita/eslint-plugin": "1.82.1",
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.7",
-    "@semantic-release/npm": "9.0.1",
+    "@semantic-release/npm": "9.0.2",
     "@semantic-release/release-notes-generator": "10.0.3",
     "@types/mysql": "2.15.21",
     "@types/node": "18.11.18",
@@ -104,13 +104,13 @@
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "lint-staged": "13.1.0",
-    "nock": "13.2.9",
+    "nock": "13.3.0",
     "npm-check-updates": "16.6.2",
-    "rimraf": "3.0.2",
+    "rimraf": "4.0.4",
     "semantic-release": "20.0.2",
     "sort-package-json": "2.1.0",
     "typescript": "4.9.4",
-    "vitest": "0.26.3"
+    "vitest": "0.27.1"
   },
   "engines": {
     "node": ">=16.0.0"
