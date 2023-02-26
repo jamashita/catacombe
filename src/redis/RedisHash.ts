@@ -14,12 +14,12 @@ export class RedisHash implements IRedisHash {
     try {
       return await this.client.hDel(key, field);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON HDEL', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON HDEL', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -33,12 +33,12 @@ export class RedisHash implements IRedisHash {
 
       return str;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON HGET', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON HGET', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -46,12 +46,12 @@ export class RedisHash implements IRedisHash {
     try {
       return await this.client.hExists(key, field);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON HEXISTS', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON HEXISTS', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -59,12 +59,12 @@ export class RedisHash implements IRedisHash {
     try {
       return await this.client.hLen(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON HLEN', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON HLEN', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -72,18 +72,14 @@ export class RedisHash implements IRedisHash {
     try {
       const num: number = await this.client.hSet(key, field, value);
 
-      if (num > 0) {
-        return true;
-      }
-
-      return false;
+      return num > 0;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON HSET', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON HSET', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 }

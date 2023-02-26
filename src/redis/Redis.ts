@@ -38,12 +38,12 @@ export class Redis implements IRedis {
 
       return result !== 0;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON DELETE', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON DELETE', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -53,12 +53,12 @@ export class Redis implements IRedis {
 
       return result !== 0;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON EXISTS', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON EXISTS', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -66,12 +66,12 @@ export class Redis implements IRedis {
     try {
       return await this.client.expire(key, seconds);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON EXPIRES', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON EXPIRES', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -95,12 +95,12 @@ export class Redis implements IRedis {
     try {
       this.client.on('message', callback);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON ON', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON ON', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -108,12 +108,12 @@ export class Redis implements IRedis {
     try {
       return await this.client.publish(channel, message);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON PUBLISH', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON PUBLISH', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -121,12 +121,12 @@ export class Redis implements IRedis {
     try {
       await this.client.subscribe(channel, callback);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SUBSCRIBE', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SUBSCRIBE', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -134,12 +134,12 @@ export class Redis implements IRedis {
     try {
       await this.client.unsubscribe(...channels);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON UNSUBSCRIBE', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON UNSUBSCRIBE', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 }
