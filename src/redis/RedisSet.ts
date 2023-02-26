@@ -14,12 +14,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sAdd(key, [...values]);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SADD', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SADD', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -27,12 +27,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sMembers(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SMEMBERS', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SMEMBERS', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -40,12 +40,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sIsMember(key, value);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SISMEMBER', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SISMEMBER', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -53,12 +53,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sCard(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SCARD', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SCARD', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -73,12 +73,12 @@ export class RedisSet implements IRedisSet {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return pop[0]!;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SPOP', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SPOP', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -86,12 +86,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sRandMember(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SRANDMEMBER', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SRANDMEMBER', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -99,12 +99,12 @@ export class RedisSet implements IRedisSet {
     try {
       return await this.client.sRem(key, [...values]);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON SREM', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON SREM', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 }

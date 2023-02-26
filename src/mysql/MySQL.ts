@@ -32,9 +32,9 @@ export class MySQL implements IMySQL {
 
   public execute<R>(sql: string, value?: ObjectLiteral): Promise<R> {
     return new Promise((resolve: Resolve<R>, reject: Reject) => {
-      this.pool.query(sql, value, (err: Nullable<MysqlError>, result: R) => {
-        if (!Kind.isNull(err)) {
-          reject(new MySQLError(err.message));
+      this.pool.query(sql, value, (e: Nullable<MysqlError>, result: R) => {
+        if (!Kind.isNull(e)) {
+          reject(new MySQLError(e.message));
 
           return;
         }
@@ -79,11 +79,11 @@ export class MySQL implements IMySQL {
 
       return ret;
     }
-    catch (err: unknown) {
+    catch (e: unknown) {
       await connection.rollback();
       connection.release();
 
-      throw err;
+      throw e;
     }
   }
 }

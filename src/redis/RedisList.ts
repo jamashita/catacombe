@@ -14,12 +14,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.lRange(key, 0, -1);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LRANGE', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON LRANGE', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -27,12 +27,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.lLen(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LLEN', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON LLEN', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -40,12 +40,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.rPop(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON RPOP', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON RPOP', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -53,12 +53,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.rPush(key, value);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON RPUSH', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON RPUSH', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -66,12 +66,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.lRem(key, 0, value);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LREM', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON LREM', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -82,12 +82,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.lRange(key, start, stop);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LRANGE', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON LRANGE', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -95,12 +95,12 @@ export class RedisList implements IRedisList {
     try {
       return await this.client.lPop(key);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new RedisError('FAIL ON LPOP', err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new RedisError('FAIL ON LPOP', e);
       }
 
-      throw err;
+      throw e;
     }
   }
 }

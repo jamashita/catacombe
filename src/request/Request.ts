@@ -26,15 +26,15 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       return await this.transform(rawBody, statusCode);
     }
-    catch (err: unknown) {
-      if (err instanceof RequestError) {
-        throw err;
+    catch (e: unknown) {
+      if (e instanceof RequestError) {
+        throw e;
       }
-      if (err instanceof Error) {
-        throw new RequestError(err.message, err);
+      if (e instanceof Error) {
+        throw new RequestError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -50,15 +50,15 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       return await this.transform(rawBody, statusCode);
     }
-    catch (err: unknown) {
-      if (err instanceof RequestError) {
-        throw err;
+    catch (e: unknown) {
+      if (e instanceof RequestError) {
+        throw e;
       }
-      if (err instanceof Error) {
-        throw new RequestError(err.message, err);
+      if (e instanceof Error) {
+        throw new RequestError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -74,15 +74,15 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       return await this.transform(rawBody, statusCode);
     }
-    catch (err: unknown) {
-      if (err instanceof RequestError) {
-        throw err;
+    catch (e: unknown) {
+      if (e instanceof RequestError) {
+        throw e;
       }
-      if (err instanceof Error) {
-        throw new RequestError(err.message, err);
+      if (e instanceof Error) {
+        throw new RequestError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -99,15 +99,15 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       return await this.transform(rawBody, statusCode);
     }
-    catch (err: unknown) {
-      if (err instanceof RequestError) {
-        throw err;
+    catch (e: unknown) {
+      if (e instanceof RequestError) {
+        throw e;
       }
-      if (err instanceof Error) {
-        throw new RequestError(err.message, err);
+      if (e instanceof Error) {
+        throw new RequestError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -124,15 +124,15 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
       return await this.transform(rawBody, statusCode);
     }
-    catch (err: unknown) {
-      if (err instanceof RequestError) {
-        throw err;
+    catch (e: unknown) {
+      if (e instanceof RequestError) {
+        throw e;
       }
-      if (err instanceof Error) {
-        throw new RequestError(err.message, err);
+      if (e instanceof Error) {
+        throw new RequestError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 

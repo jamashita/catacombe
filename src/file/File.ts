@@ -10,7 +10,7 @@ export class File implements IFile {
 
       return true;
     }
-    catch (err: unknown) {
+    catch (e: unknown) {
       return false;
     }
   }
@@ -19,12 +19,12 @@ export class File implements IFile {
     try {
       return await fs.promises.readFile(path);
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new FileError(err.message, err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 
@@ -34,12 +34,12 @@ export class File implements IFile {
 
       return;
     }
-    catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new FileError(err.message, err);
+    catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
       }
 
-      throw err;
+      throw e;
     }
   }
 }

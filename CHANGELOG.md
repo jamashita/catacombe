@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/jamashita/catacombe/compare/v1.5.0...v1.6.0) (2023-02-26)
+
+
+### Features
+
+* 🎸 packages updated ([db610bb](https://github.com/jamashita/catacombe/commit/db610bbeaae3ec0a4772ac59d56f814263b660e9))
+* 🎸 pakcages upteda ([6cf6532](https://github.com/jamashita/catacombe/commit/6cf6532c8be47b7b9331790657f070f19207a06c))
+* 🎸 returns response even if the request failed ([bb923f6](https://github.com/jamashita/catacombe/commit/bb923f69b5f95dcfbf429e0d90ad8dded3e3450b))
+
 # [1.5.0](https://github.com/jamashita/catacombe/compare/v1.4.0...v1.5.0) (2023-01-14)
 
 
