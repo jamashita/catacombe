@@ -5,8 +5,6 @@ import { HeapError } from '../HeapError.js';
 describe('Heap', () => {
   describe('get', () => {
     it('can get the correct value even the key is correct', () => {
-      expect.assertions(5);
-
       const heap: Heap = new Heap();
       const identifier1: symbol = Symbol();
       const identifier2: symbol = Symbol();
@@ -33,8 +31,6 @@ describe('Heap', () => {
     });
 
     it('does not make the value disappear when timeout is set to 0', async () => {
-      expect.assertions(2);
-
       const heap: Heap = new Heap(0);
       const identifier: symbol = Symbol();
       const value: string = 'pppp';
@@ -49,8 +45,6 @@ describe('Heap', () => {
     });
 
     it('does not make the value disappear when timeout is set to negative', async () => {
-      expect.assertions(2);
-
       const heap: Heap = new Heap(-193);
       const identifier: symbol = Symbol();
       const value: string = 'pppp';
@@ -65,8 +59,6 @@ describe('Heap', () => {
     });
 
     it('performs volatilization after the timeout', async () => {
-      expect.assertions(2);
-
       const heap: Heap = new Heap(1);
       const identifier: symbol = Symbol();
       const value: string = 'pppp';
@@ -83,8 +75,6 @@ describe('Heap', () => {
     });
 
     it('will not disappear if it is updated', async () => {
-      expect.assertions(2);
-
       const heap: Heap = new Heap(3);
       const identifier: symbol = Symbol();
       const value1: string = 'pppp';
@@ -104,8 +94,6 @@ describe('Heap', () => {
     });
 
     it('only retains the last one', () => {
-      expect.assertions(2);
-
       const heap: Heap = new Heap();
       const identifier1: symbol = Symbol();
       const value1: number = 1;
@@ -118,8 +106,6 @@ describe('Heap', () => {
     });
 
     it('throws HeapError when value is not set', () => {
-      expect.assertions(1);
-
       const heap: Heap = new Heap();
       const identifier: symbol = Symbol();
 
