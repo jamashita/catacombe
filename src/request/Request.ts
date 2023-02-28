@@ -1,11 +1,9 @@
 import { ObjectLiteral } from '@jamashita/anden/type';
 import { JSONA } from '@jamashita/steckdose/json';
-import got from 'got';
+import got, { HTTPError, MaxRedirectsError } from 'got';
 import { IRequest } from './IRequest.js';
 import { RequestError } from './RequestError.js';
 import { RequestResponse, RequestResponseType } from './RequestResponse.js';
-
-const HAPPY: number = 2;
 
 export class Request<T extends RequestResponseType> implements IRequest<T> {
   private readonly type: T;
@@ -20,15 +18,13 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         responseType: this.type
       });
 
-      if (statusCode / 100 !== HAPPY) {
-        throw new RequestError(`request RETURNED ${statusCode}`);
-      }
-
       return await this.transform(rawBody, statusCode);
     }
     catch (e: unknown) {
-      if (e instanceof RequestError) {
-        throw e;
+      if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
+        const { rawBody, statusCode } = e.response;
+
+        return this.transform(rawBody, statusCode);
       }
       if (e instanceof Error) {
         throw new RequestError(e.message, e);
@@ -44,15 +40,13 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         responseType: this.type
       });
 
-      if (statusCode / 100 !== HAPPY) {
-        throw new RequestError(`request RETURNED ${statusCode}`);
-      }
-
       return await this.transform(rawBody, statusCode);
     }
     catch (e: unknown) {
-      if (e instanceof RequestError) {
-        throw e;
+      if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
+        const { rawBody, statusCode } = e.response;
+
+        return this.transform(rawBody, statusCode);
       }
       if (e instanceof Error) {
         throw new RequestError(e.message, e);
@@ -68,15 +62,13 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         responseType: this.type
       });
 
-      if (statusCode / 100 !== HAPPY) {
-        throw new RequestError(`request RETURNED ${statusCode}`);
-      }
-
       return await this.transform(rawBody, statusCode);
     }
     catch (e: unknown) {
-      if (e instanceof RequestError) {
-        throw e;
+      if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
+        const { rawBody, statusCode } = e.response;
+
+        return this.transform(rawBody, statusCode);
       }
       if (e instanceof Error) {
         throw new RequestError(e.message, e);
@@ -93,15 +85,13 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         json: payload
       });
 
-      if (statusCode / 100 !== HAPPY) {
-        throw new RequestError(`request RETURNED ${statusCode}`);
-      }
-
       return await this.transform(rawBody, statusCode);
     }
     catch (e: unknown) {
-      if (e instanceof RequestError) {
-        throw e;
+      if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
+        const { rawBody, statusCode } = e.response;
+
+        return this.transform(rawBody, statusCode);
       }
       if (e instanceof Error) {
         throw new RequestError(e.message, e);
@@ -118,15 +108,13 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         json: payload
       });
 
-      if (statusCode / 100 !== HAPPY) {
-        throw new RequestError(`request RETURNED ${statusCode}`);
-      }
-
       return await this.transform(rawBody, statusCode);
     }
     catch (e: unknown) {
-      if (e instanceof RequestError) {
-        throw e;
+      if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
+        const { rawBody, statusCode } = e.response;
+
+        return this.transform(rawBody, statusCode);
       }
       if (e instanceof Error) {
         throw new RequestError(e.message, e);
