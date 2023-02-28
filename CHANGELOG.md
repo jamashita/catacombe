@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/jamashita/catacombe/compare/v1.6.0...v1.7.0) (2023-02-28)
+
+
+### Features
+
+* 🎸 error wrapper ([51f612e](https://github.com/jamashita/catacombe/commit/51f612efd50ca04c212c0e95d13c8effeb1386ba))
+* 🎸 packages updated ([075487d](https://github.com/jamashita/catacombe/commit/075487debab6251626cbb2b0956e0bcfee56d207))
+* 🎸 returns status and data even if faild ([962d2a7](https://github.com/jamashita/catacombe/commit/962d2a78e7b37c5869fb4a5412ab6c4022c34a47))
+
 # [1.6.0](https://github.com/jamashita/catacombe/compare/v1.5.0...v1.6.0) (2023-02-26)
 
 

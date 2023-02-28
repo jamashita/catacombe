@@ -1,5 +1,6 @@
 import { ObjectLiteral } from '@jamashita/anden/type';
 import ky, { HTTPError, KyResponse } from 'ky';
+import { FileError } from '../file/index.js';
 import { FetchError } from './FetchError.js';
 import { FetchResponse, FetchResponseType } from './FetchResponse.js';
 import { IFetch } from './IFetch.js';
@@ -22,6 +23,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
+      }
 
       throw e;
     }
@@ -38,6 +42,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
+      }
 
       throw e;
     }
@@ -53,6 +60,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
+      }
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
       }
 
       throw e;
@@ -72,6 +82,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
+      }
 
       throw e;
     }
@@ -89,6 +102,9 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
     catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
+      }
+      if (e instanceof Error) {
+        throw new FileError(e.message, e);
       }
 
       throw e;
