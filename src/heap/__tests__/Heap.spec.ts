@@ -4,30 +4,22 @@ import { HeapError } from '../HeapError.js';
 
 describe('Heap', () => {
   describe('get', () => {
-    it('can get the correct value even the key is correct', () => {
+    it.each`
+    key | value
+    ${Symbol()} | ${1}
+    ${Symbol()} | ${0}
+    ${Symbol()} | ${0.2}
+    ${Symbol()} | ${NaN}
+    ${Symbol()} | ${Infinity}
+    `('can get the correct value even the key is correct, key is $key', ({
+      key,
+      value
+    }: { key: symbol; value: number }) => {
       const heap: Heap = new Heap();
-      const identifier1: symbol = Symbol();
-      const identifier2: symbol = Symbol();
-      const identifier3: symbol = Symbol();
-      const identifier4: symbol = Symbol();
-      const identifier5: symbol = Symbol();
-      const value1: number = 1;
-      const value2: number = 0;
-      const value3: number = 0.2;
-      const value4: number = NaN;
-      const value5: number = Infinity;
 
-      heap.set(identifier1, value1);
-      heap.set(identifier2, value2);
-      heap.set(identifier3, value3);
-      heap.set(identifier4, value4);
-      heap.set(identifier5, value5);
+      heap.set(key, value);
 
-      expect(heap.get<number>(identifier1)).toBe(value1);
-      expect(heap.get<number>(identifier2)).toBe(value2);
-      expect(heap.get<number>(identifier3)).toBe(value3);
-      expect(heap.get<number>(identifier4)).toBe(value4);
-      expect(heap.get<number>(identifier5)).toBe(value5);
+      expect(heap.get<number>(key)).toBe(value);
     });
 
     it('does not make the value disappear when timeout is set to 0', async () => {
