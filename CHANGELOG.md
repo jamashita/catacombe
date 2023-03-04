@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/jamashita/catacombe/compare/v1.7.0...v1.8.0) (2023-03-04)
+
+
+### Features
+
+* 🎸 packages upated ([a487237](https://github.com/jamashita/catacombe/commit/a487237f7097897012e025f05a6a378557f76ec4))
+
 # [1.7.0](https://github.com/jamashita/catacombe/compare/v1.6.0...v1.7.0) (2023-02-28)
 
 
