@@ -7,6 +7,18 @@ A repository packages that provides from various datasource.
 
 [![CI](https://github.com/jamashita/catacombe/actions/workflows/ci.yml/badge.svg)](https://github.com/jamashita/catacombe/actions/workflows/ci.yml)
 
+## Install
+
+```text
+yarn add @jamashita/catacombe
+```
+
+## Todo
+
+- [ ] IndexedDB
+- [ ] LocalStorage
+- [ ] SessionStorage
+
 ## Requisite
 
 ```
