@@ -138,7 +138,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         } as FetchResponse<T>;
       }
       default: {
-        throw new FetchError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+        throw new FetchError(`UNEXPECTED TYPE: ${this.type}`);
       }
     }
   }
