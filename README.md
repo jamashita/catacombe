@@ -19,7 +19,7 @@ yarn add @jamashita/catacombe
 - [ ] LocalStorage
 - [ ] SessionStorage
 
-## Requisite
+## Prerequisite
 
 ```
 > node -v
