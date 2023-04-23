@@ -145,7 +145,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         } as RequestResponse<T>;
       }
       default: {
-        throw new RequestError(`UNEXPECTED TYPE. GIVEN: ${this.type}`);
+        throw new RequestError(`UNEXPECTED TYPE: ${this.type}`);
       }
     }
   }
