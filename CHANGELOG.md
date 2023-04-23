@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/jamashita/catacombe/compare/v1.10.0...v1.11.0) (2023-04-23)
+
+
+### Features
+
+* 🎸 update pakageadupte ([af5355f](https://github.com/jamashita/catacombe/commit/af5355f3699065e2101667ce98ca863690070a20))
+
 # [1.10.0](https://github.com/jamashita/catacombe/compare/v1.9.0...v1.10.0) (2023-03-19)
 
 
