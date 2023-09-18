@@ -80,8 +80,8 @@
     "update:upgrade": "ncu --packageManager yarn --deep --upgrade"
   },
   "dependencies": {
-    "@jamashita/anden": "2.2.0",
-    "@jamashita/steckdose": "1.27.0",
+    "@jamashita/anden": "2.2.1",
+    "@jamashita/steckdose": "1.27.1",
     "got": "13.0.0",
     "ky": "1.0.1",
     "mysql": "2.18.1",
@@ -113,7 +113,7 @@
     "vitest": "0.34.4"
   },
   "engines": {
-    "node": ">=20.x"
+    "node": ">=18.x"
   },
   "engineStrict": true,
   "publishConfig": {
