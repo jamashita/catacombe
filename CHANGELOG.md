@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/jamashita/catacombe/compare/v1.14.0...v1.15.0) (2023-09-18)
+
+
+### Features
+
+* 🎸 pacakges updated ([10ac4aa](https://github.com/jamashita/catacombe/commit/10ac4aab8adb04e9dd73109aa0e3ce694e8c7a64))
+
 # [1.14.0](https://github.com/jamashita/catacombe/compare/v1.13.0...v1.14.0) (2023-08-27)
 
 

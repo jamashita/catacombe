@@ -387,10 +387,10 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@jamashita/anden@2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@jamashita/anden/2.2.0/95dd0620926853da26a2343751b4abc250e01e36#95dd0620926853da26a2343751b4abc250e01e36"
-  integrity sha512-XGbpJogpYBytcEWYzDDtiUrJNjIdQwPC3OkvGwIC9tCC3d6nfjeqfRBtGfGdmI2Zecb5/xnkNTepBmMMc/0p/w==
+"@jamashita/anden@2.2.1":
+  version "2.2.1"
+  resolved "https://npm.pkg.github.com/download/@jamashita/anden/2.2.1/8d2b5b63b16df33c0049746558e7a7eab22d003a#8d2b5b63b16df33c0049746558e7a7eab22d003a"
+  integrity sha512-0rSYt4uf0mYVQAmuGu705O/N8ibwikeGPTK8n5EP8OvAOpZwPwOreUHdeoNqQyBu5kMYRe8GfFzX2Y1QdI99wA==
   dependencies:
     dayjs "1.11.9"
     object-hash "3.0.0"
@@ -414,12 +414,12 @@
     eslint-plugin-react-hooks "4.6.0"
     eslint-plugin-solid "0.13.0"
 
-"@jamashita/steckdose@1.27.0":
-  version "1.27.0"
-  resolved "https://npm.pkg.github.com/download/@jamashita/steckdose/1.27.0/702d953817a701554edce6d1e525c2124eb457cd#702d953817a701554edce6d1e525c2124eb457cd"
-  integrity sha512-OGtDR9apqzwuyjMaLt26J8h8+yIkVnHixIpRwcV+9nuwaicejM3o8naYHO2eaxpYpE1pHDpenVCo1zN7oV7T/w==
+"@jamashita/steckdose@1.27.1":
+  version "1.27.1"
+  resolved "https://npm.pkg.github.com/download/@jamashita/steckdose/1.27.1/67dee86cadc40c9433286c4e81fd86abdb51210a#67dee86cadc40c9433286c4e81fd86abdb51210a"
+  integrity sha512-YSCfU8DqtdwNbIqBFwnPd9E6PIP2AYUP3wauiU7BkcIRUQwCydX5CUZi4LMQ3hrLROAoMze5+cMiTZpznZLChQ==
   dependencies:
-    "@jamashita/anden" "2.2.0"
+    "@jamashita/anden" "2.2.1"
     bcrypt "5.1.1"
     mersenne-twister "1.1.0"
     yaml "2.3.2"
