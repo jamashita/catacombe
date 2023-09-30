@@ -1,3 +1,17 @@
+# [1.16.0](https://github.com/jamashita/catacombe/compare/v1.15.1...v1.16.0) (2023-09-30)
+
+
+### Bug Fixes
+
+* 🐛 do not update timeout when get ([f30b9e2](https://github.com/jamashita/catacombe/commit/f30b9e2b4ede56d0c73eb12dcd2e5fd2931a33ad))
+
+
+### Features
+
+* 🎸 pacakge update ([65085a8](https://github.com/jamashita/catacombe/commit/65085a892d6ae7e2de3ff321e1c4ea767044db8d))
+* 🎸 pacakgesup dated ([79c5be5](https://github.com/jamashita/catacombe/commit/79c5be5557f1fbd158ab59d77f72714371f2134e))
+* 🎸 set timeout when set value ([89854e9](https://github.com/jamashita/catacombe/commit/89854e9242e691d16f04ed52972547cd86e6b190))
+
 ## [1.15.1](https://github.com/jamashita/catacombe/compare/v1.15.0...v1.15.1) (2023-09-18)
 
 
