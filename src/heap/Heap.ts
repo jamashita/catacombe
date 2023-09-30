@@ -27,6 +27,7 @@ export class Heap implements IHeap {
 
     if (!Kind.isUndefined(timeout)) {
       clearTimeout(timeout);
+      this.timeouts.delete(identifier);
     }
   }
 
@@ -36,6 +37,8 @@ export class Heap implements IHeap {
     if (Kind.isUndefined(instance)) {
       throw new HeapError(`NO SUCH IDENTIFIER: ${identifier.toString()}`);
     }
+
+    this.setTimeout(identifier);
 
     return instance as H;
   }
