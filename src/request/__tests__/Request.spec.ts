@@ -1,5 +1,5 @@
 import { ObjectLiteral } from '@jamashita/anden/type';
-import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from '@jamashita/steckdose/http';
 import nock, { Scope } from 'nock';
 import { Request } from '../Request.js';
 import { RequestResponse } from '../RequestResponse.js';

@@ -27,6 +27,7 @@ export class Heap implements IHeap {
 
     if (!Kind.isUndefined(timeout)) {
       clearTimeout(timeout);
+      this.timeouts.delete(identifier);
     }
   }
 
