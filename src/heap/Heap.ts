@@ -38,8 +38,6 @@ export class Heap implements IHeap {
       throw new HeapError(`NO SUCH IDENTIFIER: ${identifier.toString()}`);
     }
 
-    this.setTimeout(identifier);
-
     return instance as H;
   }
 
