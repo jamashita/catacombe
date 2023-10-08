@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/jamashita/catacombe/compare/v1.16.0...v1.17.0) (2023-10-08)
+
+
+### Features
+
+* 🎸 pacakges updated ([6e7e81c](https://github.com/jamashita/catacombe/commit/6e7e81ca3157923a668ad26d139220917379f245))
+
 # [1.16.0](https://github.com/jamashita/catacombe/compare/v1.15.1...v1.16.0) (2023-09-30)
 
 
