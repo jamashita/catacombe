@@ -1,4 +1,4 @@
-import { Ambiguous, Kind, Nullable } from '@jamashita/anden/type';
+import { Kind, Nullable, Undefinable } from '@jamashita/anden/type';
 import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
 import { IRedisHash } from './IRedisHash.js';
 import { RedisError } from './RedisError.js';
@@ -25,7 +25,7 @@ export class RedisHash implements IRedisHash {
 
   public async get(key: string, field: string): Promise<Nullable<string>> {
     try {
-      const str: Ambiguous<string> = await this.client.hGet(key, field);
+      const str: Undefinable<string> = await this.client.hGet(key, field);
 
       if (Kind.isUndefined(str)) {
         return null;
