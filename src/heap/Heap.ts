@@ -1,4 +1,4 @@
-import { Ambiguous, Kind } from '@jamashita/anden/type';
+import { Kind, Undefinable } from '@jamashita/anden/type';
 import { HeapError } from './HeapError.js';
 import { IHeap } from './IHeap.js';
 
@@ -23,7 +23,7 @@ export class Heap implements IHeap {
   }
 
   private cancelTimeout(identifier: symbol): void {
-    const timeout: Ambiguous<NodeJS.Timeout> = this.timeouts.get(identifier);
+    const timeout: Undefinable<NodeJS.Timeout> = this.timeouts.get(identifier);
 
     if (!Kind.isUndefined(timeout)) {
       clearTimeout(timeout);
@@ -32,7 +32,7 @@ export class Heap implements IHeap {
   }
 
   public get<H>(identifier: symbol): H {
-    const instance: Ambiguous<unknown> = this.values.get(identifier);
+    const instance: Undefinable<unknown> = this.values.get(identifier);
 
     if (Kind.isUndefined(instance)) {
       throw new HeapError(`NO SUCH IDENTIFIER: ${identifier.toString()}`);
