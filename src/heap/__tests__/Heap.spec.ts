@@ -14,7 +14,7 @@ describe('Heap', () => {
     `('can get the correct value even the key is correct, key is $key', ({
       key,
       value
-    }: { key: symbol; value: number }) => {
+    }: { key: symbol; value: number; }) => {
       const heap: Heap = new Heap();
 
       heap.set(key, value);
