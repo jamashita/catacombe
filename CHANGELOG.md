@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/jamashita/catacombe/compare/v1.17.0...v1.18.0) (2023-10-22)
+
+
+### Features
+
+* 🎸 Ambiguous -> Undefinable ([7d5c630](https://github.com/jamashita/catacombe/commit/7d5c63082ad37c97f197135c20d93dde1657eaf7))
+* 🎸 packages updated ([97b0df9](https://github.com/jamashita/catacombe/commit/97b0df956dce66475efbe6beb708d282226e11cf))
+
 # [1.17.0](https://github.com/jamashita/catacombe/compare/v1.16.0...v1.17.0) (2023-10-08)
 
 

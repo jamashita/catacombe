@@ -10,7 +10,7 @@ export class File implements IFile {
 
       return true;
     }
-    catch (e: unknown) {
+    catch {
       return false;
     }
   }
@@ -31,8 +31,6 @@ export class File implements IFile {
   public async write(path: string, data: Buffer | string): Promise<void> {
     try {
       await fs.promises.writeFile(path, data);
-
-      return;
     }
     catch (e: unknown) {
       if (e instanceof Error) {
