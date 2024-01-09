@@ -1,3 +1,16 @@
+# [1.19.0](https://github.com/jamashita/catacombe/compare/v1.18.0...v1.19.0) (2023-12-17)
+
+
+### Bug Fixes
+
+* 🐛 linter ([a465e2e](https://github.com/jamashita/catacombe/commit/a465e2ed91f24144f8bff4408b54125621d81585))
+
+
+### Features
+
+* 🎸 packages updated ([fe8fc9e](https://github.com/jamashita/catacombe/commit/fe8fc9e8cbe428cebe6558406dc0a9afbbb84849))
+* 🎸 packages updated ([dc4dbe5](https://github.com/jamashita/catacombe/commit/dc4dbe58f9b51d7e423514f4d01e255b81513b36))
+
 # [1.18.0](https://github.com/jamashita/catacombe/compare/v1.17.0...v1.18.0) (2023-10-22)
 
 
