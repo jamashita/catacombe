@@ -1,9 +1,9 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
-import ky, { HTTPError, KyResponse } from 'ky';
+import type { ObjectLiteral } from '@jamashita/anden/type';
+import ky, { HTTPError, type KyResponse } from 'ky';
 import { FileError } from '../file/index.js';
 import { FetchError } from './FetchError.js';
-import { FetchResponse, FetchResponseType } from './FetchResponse.js';
-import { IFetch } from './IFetch.js';
+import type { FetchResponse, FetchResponseType } from './FetchResponse.js';
+import type { IFetch } from './IFetch.js';
 
 export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private readonly type: T;
@@ -18,8 +18,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
@@ -37,8 +36,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
@@ -56,8 +54,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
@@ -77,8 +74,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
@@ -98,8 +94,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }

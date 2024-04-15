@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { FileError } from './FileError.js';
-import { IFile } from './IFile.js';
+import type { IFile } from './IFile.js';
 
 export class File implements IFile {
   public async exists(path: string): Promise<boolean> {
@@ -9,8 +9,7 @@ export class File implements IFile {
       await fs.promises.access(path, fs.constants.R_OK | fs.constants.W_OK);
 
       return true;
-    }
-    catch {
+    } catch {
       return false;
     }
   }
@@ -18,8 +17,7 @@ export class File implements IFile {
   public async read(path: string): Promise<Buffer> {
     try {
       return await fs.promises.readFile(path);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new FileError(e.message, e);
       }
@@ -31,8 +29,7 @@ export class File implements IFile {
   public async write(path: string, data: Buffer | string): Promise<void> {
     try {
       await fs.promises.writeFile(path, data);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new FileError(e.message, e);
       }

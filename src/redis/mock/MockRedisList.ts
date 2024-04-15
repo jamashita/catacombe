@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden/error';
-import { IRedisList } from '../IRedisList.js';
+import type { IRedisList } from '../IRedisList.js';
 
 export class MockRedisList implements IRedisList {
   public dump(): Promise<Array<string>> {
