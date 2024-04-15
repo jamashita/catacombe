@@ -1,6 +1,6 @@
 import { UnimplementedError } from '@jamashita/anden/error';
-import { FetchResponse, FetchResponseType } from '../FetchResponse.js';
-import { IFetch } from '../IFetch.js';
+import type { FetchResponse, FetchResponseType } from '../FetchResponse.js';
+import type { IFetch } from '../IFetch.js';
 
 export class MockFetch<T extends FetchResponseType> implements IFetch<T> {
   public delete(): Promise<FetchResponse<T>> {

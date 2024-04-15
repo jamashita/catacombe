@@ -1,8 +1,8 @@
-import { Inconnu, Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden/type';
-import { Connection as Conn, createPool, MysqlError, Pool, PoolConfig, PoolConnection } from 'mysql';
+import { type Inconnu, Kind, type Nullable, type ObjectLiteral, type Reject, type Resolve } from '@jamashita/anden/type';
+import { type Connection as Conn, createPool, type MysqlError, type Pool, type PoolConfig, type PoolConnection } from 'mysql';
 import { Connection } from './Connection.js';
-import { IMySQL } from './IMySQL.js';
-import { ITransaction } from './ITransaction.js';
+import type { IMySQL } from './IMySQL.js';
+import type { ITransaction } from './ITransaction.js';
 import { MySQLError } from './MySQLError.js';
 
 export class MySQL implements IMySQL {
@@ -78,8 +78,7 @@ export class MySQL implements IMySQL {
       connection.release();
 
       return ret;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       await connection.rollback();
       connection.release();
 
