@@ -1,6 +1,6 @@
-import { Nullable } from '@jamashita/anden/type';
-import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
-import { IRedisList } from './IRedisList.js';
+import type { Nullable } from '@jamashita/anden/type';
+import type { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import type { IRedisList } from './IRedisList.js';
 import { RedisError } from './RedisError.js';
 
 export class RedisList implements IRedisList {
@@ -13,8 +13,7 @@ export class RedisList implements IRedisList {
   public async dump(key: string): Promise<Array<string>> {
     try {
       return await this.client.lRange(key, 0, -1);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON LRANGE', e);
       }
@@ -26,8 +25,7 @@ export class RedisList implements IRedisList {
   public async length(key: string): Promise<number> {
     try {
       return await this.client.lLen(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON LLEN', e);
       }
@@ -39,8 +37,7 @@ export class RedisList implements IRedisList {
   public async pop(key: string): Promise<Nullable<string>> {
     try {
       return await this.client.rPop(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON RPOP', e);
       }
@@ -52,8 +49,7 @@ export class RedisList implements IRedisList {
   public async push(key: string, value: string): Promise<number> {
     try {
       return await this.client.rPush(key, value);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON RPUSH', e);
       }
@@ -65,8 +61,7 @@ export class RedisList implements IRedisList {
   public async remove(key: string, value: string): Promise<number> {
     try {
       return await this.client.lRem(key, 0, value);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON LREM', e);
       }
@@ -81,8 +76,7 @@ export class RedisList implements IRedisList {
 
     try {
       return await this.client.lRange(key, start, stop);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON LRANGE', e);
       }
@@ -94,8 +88,7 @@ export class RedisList implements IRedisList {
   public async shift(key: string): Promise<Nullable<string>> {
     try {
       return await this.client.lPop(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON LPOP', e);
       }

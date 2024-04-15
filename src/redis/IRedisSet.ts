@@ -1,4 +1,4 @@
-import { Nullable } from '@jamashita/anden/type';
+import type { Nullable } from '@jamashita/anden/type';
 
 export interface IRedisSet {
   add(key: string, ...values: ReadonlyArray<string>): Promise<number>;

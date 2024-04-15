@@ -1,6 +1,6 @@
-import { Nullable } from '@jamashita/anden/type';
-import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
-import { IRedisSet } from './IRedisSet.js';
+import type { Nullable } from '@jamashita/anden/type';
+import type { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import type { IRedisSet } from './IRedisSet.js';
 import { RedisError } from './RedisError.js';
 
 export class RedisSet implements IRedisSet {
@@ -13,8 +13,7 @@ export class RedisSet implements IRedisSet {
   public async add(key: string, ...values: ReadonlyArray<string>): Promise<number> {
     try {
       return await this.client.sAdd(key, [...values]);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SADD', e);
       }
@@ -26,8 +25,7 @@ export class RedisSet implements IRedisSet {
   public async dump(key: string): Promise<Array<string>> {
     try {
       return await this.client.sMembers(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SMEMBERS', e);
       }
@@ -39,8 +37,7 @@ export class RedisSet implements IRedisSet {
   public async has(key: string, value: string): Promise<boolean> {
     try {
       return await this.client.sIsMember(key, value);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SISMEMBER', e);
       }
@@ -52,8 +49,7 @@ export class RedisSet implements IRedisSet {
   public async length(key: string): Promise<number> {
     try {
       return await this.client.sCard(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SCARD', e);
       }
@@ -70,10 +66,9 @@ export class RedisSet implements IRedisSet {
         return null;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       return pop[0]!;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SPOP', e);
       }
@@ -85,8 +80,7 @@ export class RedisSet implements IRedisSet {
   public async random(key: string): Promise<Array<unknown> | Nullable<string>> {
     try {
       return await this.client.sRandMember(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SRANDMEMBER', e);
       }
@@ -98,8 +92,7 @@ export class RedisSet implements IRedisSet {
   public async remove(key: string, ...values: ReadonlyArray<string>): Promise<number> {
     try {
       return await this.client.sRem(key, [...values]);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SREM', e);
       }
