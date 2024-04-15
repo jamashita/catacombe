@@ -1,5 +1,5 @@
 import { UnimplementedError } from '@jamashita/anden/error';
-import { IFile } from '../IFile.js';
+import type { IFile } from '../IFile.js';
 
 export class MockFile implements IFile {
   public exists(): Promise<boolean> {

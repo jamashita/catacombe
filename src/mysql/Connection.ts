@@ -1,6 +1,6 @@
-import { Kind, Nullable, ObjectLiteral, Reject, Resolve } from '@jamashita/anden/type';
-import { MysqlError, PoolConnection } from 'mysql';
-import { IConnection } from './IConnection.js';
+import { Kind, type Nullable, type ObjectLiteral, type Reject, type Resolve } from '@jamashita/anden/type';
+import type { MysqlError, PoolConnection } from 'mysql';
+import type { IConnection } from './IConnection.js';
 import { MySQLError } from './MySQLError.js';
 
 export class Connection implements IConnection {

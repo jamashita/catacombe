@@ -1,6 +1,6 @@
-import { Kind, Nullable, Undefinable } from '@jamashita/anden/type';
-import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
-import { IRedisHash } from './IRedisHash.js';
+import { Kind, type Nullable, type Undefinable } from '@jamashita/anden/type';
+import type { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import type { IRedisHash } from './IRedisHash.js';
 import { RedisError } from './RedisError.js';
 
 export class RedisHash implements IRedisHash {
@@ -13,8 +13,7 @@ export class RedisHash implements IRedisHash {
   public async delete(key: string, field: string): Promise<number> {
     try {
       return await this.client.hDel(key, field);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON HDEL', e);
       }
@@ -32,8 +31,7 @@ export class RedisHash implements IRedisHash {
       }
 
       return str;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON HGET', e);
       }
@@ -45,8 +43,7 @@ export class RedisHash implements IRedisHash {
   public async has(key: string, field: string): Promise<boolean> {
     try {
       return await this.client.hExists(key, field);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON HEXISTS', e);
       }
@@ -58,8 +55,7 @@ export class RedisHash implements IRedisHash {
   public async length(key: string): Promise<number> {
     try {
       return await this.client.hLen(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON HLEN', e);
       }
@@ -73,8 +69,7 @@ export class RedisHash implements IRedisHash {
       const num: number = await this.client.hSet(key, field, value);
 
       return num > 0;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON HSET', e);
       }

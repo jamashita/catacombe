@@ -1,8 +1,8 @@
-import { BinaryConsumer } from '@jamashita/anden/type';
-import { IRedisHash } from './IRedisHash.js';
-import { IRedisList } from './IRedisList.js';
-import { IRedisSet } from './IRedisSet.js';
-import { IRedisString } from './IRedisString.js';
+import type { BinaryConsumer } from '@jamashita/anden/type';
+import type { IRedisHash } from './IRedisHash.js';
+import type { IRedisList } from './IRedisList.js';
+import type { IRedisSet } from './IRedisSet.js';
+import type { IRedisString } from './IRedisString.js';
 
 export interface IRedis {
   delete(...keys: ReadonlyArray<string>): Promise<boolean>;
