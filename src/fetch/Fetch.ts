@@ -1,6 +1,6 @@
+import { ExhaustiveError } from '@jamashita/anden/error';
 import type { ObjectLiteral } from '@jamashita/anden/type';
 import ky, { HTTPError, type KyResponse } from 'ky';
-import { FileError } from '../file/index.js';
 import { FetchError } from './FetchError.js';
 import type { FetchResponse, FetchResponseType } from './FetchResponse.js';
 import type { IFetch } from './IFetch.js';
@@ -23,7 +23,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -41,7 +41,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -59,7 +59,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -79,7 +79,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -99,7 +99,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -133,7 +133,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         } as FetchResponse<T>;
       }
       default: {
-        throw new FetchError(`UNEXPECTED TYPE: ${this.type}`);
+        throw new ExhaustiveError(this.type);
       }
     }
   }

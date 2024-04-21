@@ -23,10 +23,10 @@ yarn add @jamashita/catacombe
 
 ```
 > node -v
-v20.10.0
+v20.12.2
 
 > npm -v
-10.2.3
+10.5.0
 
 > yarn -v
 1.22.21
