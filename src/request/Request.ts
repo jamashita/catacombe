@@ -1,3 +1,4 @@
+import { ExhaustiveError } from '@jamashita/anden/error';
 import type { ObjectLiteral } from '@jamashita/anden/type';
 import { JSONA } from '@jamashita/steckdose/json';
 import got, { HTTPError, MaxRedirectsError } from 'got';
@@ -140,7 +141,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         } as RequestResponse<T>;
       }
       default: {
-        throw new RequestError(`UNEXPECTED TYPE: ${this.type}`);
+        throw new ExhaustiveError(this.type);
       }
     }
   }

@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/jamashita/catacombe/compare/v1.21.0...v1.22.0) (2024-04-15)
+
+
+### Features
+
+* 🎸 apcakges updated ([d6e01e6](https://github.com/jamashita/catacombe/commit/d6e01e695ffb24d5bd88f3f6966906f66d3e985f))
+
 # [1.21.0](https://github.com/jamashita/catacombe/compare/v1.20.0...v1.21.0) (2024-01-17)
 
 
