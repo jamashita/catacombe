@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/jamashita/catacombe/compare/v1.22.0...v1.22.1) (2024-04-21)
+
+
+### Bug Fixes
+
+* 🐛 error handling ([8da3215](https://github.com/jamashita/catacombe/commit/8da3215f05c02183367bf42920673a6c0ba550c8))
+
 # [1.22.0](https://github.com/jamashita/catacombe/compare/v1.21.0...v1.22.0) (2024-04-15)
 
 
