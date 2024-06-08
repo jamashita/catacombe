@@ -1,8 +1,8 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
+import type { ObjectLiteral } from '@jamashita/anden/type';
 import { StatusCodes } from '@jamashita/steckdose/http';
-import nock, { Scope } from 'nock';
+import nock, { type Scope } from 'nock';
 import { Request } from '../Request.js';
-import { RequestResponse } from '../RequestResponse.js';
+import type { RequestResponse } from '../RequestResponse.js';
 
 const sr: string = 'ce8781d8-85ac-4b3e-908f-17253facb1af';
 const jr: ObjectLiteral = {

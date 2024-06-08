@@ -1,20 +1,22 @@
 import { UnimplementedError } from '@jamashita/anden/error';
-import { IRedis } from '../IRedis.js';
-import { IRedisHash } from '../IRedisHash.js';
-import { IRedisList } from '../IRedisList.js';
-import { IRedisSet } from '../IRedisSet.js';
-import { IRedisString } from '../IRedisString.js';
+import type { IRedis } from '../IRedis.js';
+import type { IRedisHash } from '../IRedisHash.js';
+import type { IRedisList } from '../IRedisList.js';
+import type { IRedisSet } from '../IRedisSet.js';
+import type { IRedisString } from '../IRedisString.js';
 import { MockRedisHash } from './MockRedisHash.js';
 import { MockRedisList } from './MockRedisList.js';
 import { MockRedisSet } from './MockRedisSet.js';
 import { MockRedisString } from './MockRedisString.js';
 
-type MockRedisSetting = Partial<Readonly<{
-  hash: IRedisHash;
-  set: IRedisSet;
-  list: IRedisList;
-  string: IRedisString;
-}>>;
+type MockRedisSetting = Partial<
+  Readonly<{
+    hash: IRedisHash;
+    set: IRedisSet;
+    list: IRedisList;
+    string: IRedisString;
+  }>
+>;
 
 export class MockRedis implements IRedis {
   private readonly hash: IRedisHash;

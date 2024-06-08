@@ -1,9 +1,10 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
+import { ExhaustiveError } from '@jamashita/anden/error';
+import type { ObjectLiteral } from '@jamashita/anden/type';
 import { JSONA } from '@jamashita/steckdose/json';
 import got, { HTTPError, MaxRedirectsError } from 'got';
-import { IRequest } from './IRequest.js';
+import type { IRequest } from './IRequest.js';
 import { RequestError } from './RequestError.js';
-import { RequestResponse, RequestResponseType } from './RequestResponse.js';
+import type { RequestResponse, RequestResponseType } from './RequestResponse.js';
 
 export class Request<T extends RequestResponseType> implements IRequest<T> {
   private readonly type: T;
@@ -19,8 +20,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       });
 
       return await this.transform(rawBody, statusCode);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
         const { rawBody, statusCode } = e.response;
 
@@ -41,8 +41,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       });
 
       return await this.transform(rawBody, statusCode);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
         const { rawBody, statusCode } = e.response;
 
@@ -63,8 +62,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       });
 
       return await this.transform(rawBody, statusCode);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
         const { rawBody, statusCode } = e.response;
 
@@ -86,8 +84,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       });
 
       return await this.transform(rawBody, statusCode);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
         const { rawBody, statusCode } = e.response;
 
@@ -109,8 +106,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
       });
 
       return await this.transform(rawBody, statusCode);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof MaxRedirectsError || e instanceof HTTPError) {
         const { rawBody, statusCode } = e.response;
 
@@ -145,7 +141,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
         } as RequestResponse<T>;
       }
       default: {
-        throw new RequestError(`UNEXPECTED TYPE: ${this.type}`);
+        throw new ExhaustiveError(this.type);
       }
     }
   }

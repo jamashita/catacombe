@@ -5,16 +5,13 @@ import { HeapError } from '../HeapError.js';
 describe('Heap', () => {
   describe('get', () => {
     it.each`
-    key | value
-    ${Symbol()} | ${1}
-    ${Symbol()} | ${0}
-    ${Symbol()} | ${0.2}
-    ${Symbol()} | ${NaN}
-    ${Symbol()} | ${Infinity}
-    `('can get the correct value even the key is correct, key is $key', ({
-      key,
-      value
-    }: { key: symbol; value: number; }) => {
+      key         | value
+      ${Symbol()} | ${1}
+      ${Symbol()} | ${0}
+      ${Symbol()} | ${0.2}
+      ${Symbol()} | ${Number.NaN}
+      ${Symbol()} | ${Number.POSITIVE_INFINITY}
+    `('can get the correct value even the key is correct, key is $key', ({ key, value }: { key: symbol; value: number }) => {
       const heap: Heap = new Heap();
 
       heap.set(key, value);

@@ -1,9 +1,9 @@
-import { ObjectLiteral } from '@jamashita/anden/type';
-import ky, { HTTPError, KyResponse } from 'ky';
-import { FileError } from '../file/index.js';
+import { ExhaustiveError } from '@jamashita/anden/error';
+import type { ObjectLiteral } from '@jamashita/anden/type';
+import ky, { HTTPError, type KyResponse } from 'ky';
 import { FetchError } from './FetchError.js';
-import { FetchResponse, FetchResponseType } from './FetchResponse.js';
-import { IFetch } from './IFetch.js';
+import type { FetchResponse, FetchResponseType } from './FetchResponse.js';
+import type { IFetch } from './IFetch.js';
 
 export class Fetch<T extends FetchResponseType> implements IFetch<T> {
   private readonly type: T;
@@ -18,13 +18,12 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -37,13 +36,12 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -56,13 +54,12 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -77,13 +74,12 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -98,13 +94,12 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
 
       // eslint-disable-next-line @typescript-eslint/return-await
       return this.transform(res);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof HTTPError) {
         return this.transform(e.response);
       }
       if (e instanceof Error) {
-        throw new FileError(e.message, e);
+        throw new FetchError(e.message, e);
       }
 
       throw e;
@@ -138,7 +133,7 @@ export class Fetch<T extends FetchResponseType> implements IFetch<T> {
         } as FetchResponse<T>;
       }
       default: {
-        throw new FetchError(`UNEXPECTED TYPE: ${this.type}`);
+        throw new ExhaustiveError(this.type);
       }
     }
   }

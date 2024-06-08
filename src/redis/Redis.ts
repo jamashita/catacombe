@@ -1,14 +1,14 @@
-import { BinaryConsumer } from '@jamashita/anden/type';
+import type { BinaryConsumer } from '@jamashita/anden/type';
 import {
   createClient,
-  RedisClientOptions,
-  RedisClientType,
-  RedisDefaultModules,
-  RedisFunctions,
-  RedisModules,
-  RedisScripts
+  type RedisClientOptions,
+  type RedisClientType,
+  type RedisDefaultModules,
+  type RedisFunctions,
+  type RedisModules,
+  type RedisScripts
 } from 'redis';
-import { IRedis } from './IRedis.js';
+import type { IRedis } from './IRedis.js';
 import { RedisError } from './RedisError.js';
 import { RedisHash } from './RedisHash.js';
 import { RedisList } from './RedisList.js';
@@ -37,8 +37,7 @@ export class Redis implements IRedis {
       const result: number = await this.client.del([...keys]);
 
       return result !== 0;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON DELETE', e);
       }
@@ -52,8 +51,7 @@ export class Redis implements IRedis {
       const result: number = await this.client.exists([...keys]);
 
       return result !== 0;
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON EXISTS', e);
       }
@@ -65,8 +63,7 @@ export class Redis implements IRedis {
   public async expires(key: string, seconds: number): Promise<boolean> {
     try {
       return await this.client.expire(key, seconds);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON EXPIRES', e);
       }
@@ -94,8 +91,7 @@ export class Redis implements IRedis {
   public on(callback: BinaryConsumer<string, string>): void {
     try {
       this.client.on('message', callback);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON ON', e);
       }
@@ -107,8 +103,7 @@ export class Redis implements IRedis {
   public async publish(channel: string, message: string): Promise<number> {
     try {
       return await this.client.publish(channel, message);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON PUBLISH', e);
       }
@@ -120,8 +115,7 @@ export class Redis implements IRedis {
   public async subscribe(channel: string, callback: BinaryConsumer<string, string>): Promise<void> {
     try {
       await this.client.subscribe(channel, callback);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SUBSCRIBE', e);
       }
@@ -133,8 +127,7 @@ export class Redis implements IRedis {
   public async unsubscribe(...channels: ReadonlyArray<string>): Promise<void> {
     try {
       await this.client.unsubscribe(...channels);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON UNSUBSCRIBE', e);
       }

@@ -1,6 +1,6 @@
 import { constants, promises } from 'fs';
 import { FileError } from './FileError.js';
-import { IFile } from './IFile.js';
+import type { IFile } from './IFile.js';
 
 export class File implements IFile {
   public async append(path: string, data: Buffer | string): Promise<void> {
@@ -31,7 +31,6 @@ export class File implements IFile {
 
   public async exists(path: string): Promise<boolean> {
     try {
-      // eslint-disable-next-line no-bitwise
       await promises.access(path, constants.R_OK | constants.W_OK);
 
       return true;

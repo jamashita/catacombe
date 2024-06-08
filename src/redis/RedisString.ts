@@ -1,6 +1,6 @@
-import { Kind, Nullable } from '@jamashita/anden/type';
-import { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
-import { IRedisString } from './IRedisString.js';
+import { Kind, type Nullable } from '@jamashita/anden/type';
+import type { RedisClientType, RedisDefaultModules, RedisFunctions, RedisModules, RedisScripts } from 'redis';
+import type { IRedisString } from './IRedisString.js';
 import { RedisError } from './RedisError.js';
 
 export class RedisString implements IRedisString {
@@ -13,8 +13,7 @@ export class RedisString implements IRedisString {
   public async get(key: string): Promise<Nullable<string>> {
     try {
       return await this.client.get(key);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON GET', e);
       }
@@ -28,8 +27,7 @@ export class RedisString implements IRedisString {
       const result: Nullable<string> = await this.client.set(key, value);
 
       return !Kind.isNull(result);
-    }
-    catch (e: unknown) {
+    } catch (e: unknown) {
       if (e instanceof Error) {
         throw new RedisError('FAIL ON SET', e);
       }

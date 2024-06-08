@@ -1,8 +1,8 @@
-import { Kind, Undefinable } from '@jamashita/anden/type';
+import { Kind, type Undefinable } from '@jamashita/anden/type';
 import { HeapError } from './HeapError.js';
-import { IHeap } from './IHeap.js';
+import type { IHeap } from './IHeap.js';
 
-const LIFETIME_MAX: number = Infinity;
+const LIFETIME_MAX: number = Number.POSITIVE_INFINITY;
 
 export class Heap implements IHeap {
   private readonly values: Map<symbol, unknown>;
