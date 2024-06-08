@@ -1,3 +1,16 @@
+# [1.23.0](https://github.com/jamashita/catacombe/compare/v1.22.1...v1.23.0) (2024-06-08)
+
+
+### Bug Fixes
+
+* 🐛 fs -> node:fs ([b5659df](https://github.com/jamashita/catacombe/commit/b5659df02a303b5443002a125b2eee5fdcc3abd3))
+* 🐛 implement ifile ([dceb350](https://github.com/jamashita/catacombe/commit/dceb35032eaf908a17fd92947b7991be7480c118))
+
+
+### Features
+
+* 🎸 append(), dir() ([084a1f7](https://github.com/jamashita/catacombe/commit/084a1f70fa6b6e5e168dc6edf4014abab9f163e5))
+
 ## [1.22.1](https://github.com/jamashita/catacombe/compare/v1.22.0...v1.22.1) (2024-04-21)
 
 
