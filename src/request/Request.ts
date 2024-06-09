@@ -15,9 +15,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async delete(url: string): Promise<RequestResponse<T>> {
     try {
-      const { rawBody, statusCode } = await got.delete(url, {
-        responseType: this.type
-      });
+      const { rawBody, statusCode } = await got.delete(url);
 
       return await this.transform(rawBody, statusCode);
     } catch (e: unknown) {
@@ -36,9 +34,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async get(url: string): Promise<RequestResponse<T>> {
     try {
-      const { rawBody, statusCode } = await got.get(url, {
-        responseType: this.type
-      });
+      const { rawBody, statusCode } = await got.get(url);
 
       return await this.transform(rawBody, statusCode);
     } catch (e: unknown) {
@@ -57,9 +53,7 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
 
   public async head(url: string): Promise<RequestResponse<T>> {
     try {
-      const { rawBody, statusCode } = await got.head(url, {
-        responseType: this.type
-      });
+      const { rawBody, statusCode } = await got.head(url);
 
       return await this.transform(rawBody, statusCode);
     } catch (e: unknown) {
@@ -79,7 +73,6 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
   public async post(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
       const { rawBody, statusCode } = await got.post(url, {
-        responseType: this.type,
         json: payload
       });
 
@@ -101,7 +94,6 @@ export class Request<T extends RequestResponseType> implements IRequest<T> {
   public async put(url: string, payload?: ObjectLiteral): Promise<RequestResponse<T>> {
     try {
       const { rawBody, statusCode } = await got.put(url, {
-        responseType: this.type,
         json: payload
       });
 
