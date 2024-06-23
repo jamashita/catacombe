@@ -1,3 +1,15 @@
+# [1.24.0](https://github.com/jamashita/catacombe/compare/v1.23.0...v1.24.0) (2024-06-09)
+
+
+### Bug Fixes
+
+* 🐛 responsetype ([5a1b1ac](https://github.com/jamashita/catacombe/commit/5a1b1acef6328b5f96db251039fdf02794073b4d))
+
+
+### Features
+
+* 🎸 packages updated ([edf0019](https://github.com/jamashita/catacombe/commit/edf0019656bce134a2c74230a4703c5c1e87c54f))
+
 # [1.23.0](https://github.com/jamashita/catacombe/compare/v1.22.1...v1.23.0) (2024-06-08)
 
 
