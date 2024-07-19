@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/jamashita/catacombe/compare/v1.25.0...v1.26.0) (2024-07-19)
+
+
+### Features
+
+* 🎸 packages udpated ([87c2da6](https://github.com/jamashita/catacombe/commit/87c2da6a2659e451c09a161d3cb459f07697d40b))
+
 # [1.25.0](https://github.com/jamashita/catacombe/compare/v1.24.0...v1.25.0) (2024-06-23)
 
 
